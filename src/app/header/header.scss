@@ -1,0 +1,66 @@
+@import '../../styles/variables';
+:host {
+  width: 100%;
+  height: 48px;
+  background-color: $tertiary;
+  display: flex;
+  align-items: center;
+  /* remove justify-content: space-around */
+  padding: 0 1rem;
+  /* optional */
+}
+
+.email {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.call {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+a,
+p {
+  text-decoration: none;
+  color: white;
+  font-size: 16px;
+}
+
+.contact {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  font-size: 16px;
+}
+
+.genInfo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 10rem;
+  gap: 3rem;
+}
+
+.infoWrapper {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  width: 100%;
+  gap: 140%;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.options ul {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-size: 16px;
+  margin-right: -5rem;
+}

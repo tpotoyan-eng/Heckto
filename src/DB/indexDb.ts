@@ -1,31 +1,67 @@
-class Product {
-  brand: string | null;
-  discountOffer: number;
-  rating: number;
-  categories: string;
-  img: string;
-  price: string;
-  like: number;
-  smallDescription: string;
-  constructor(
-    brand: string | null = null,
-    discountOffer: number = 0,
-    rating: number = 0,
-    categories: string = '',
-    img: string = '',
-    price: string = '',
-    like: number = 0,
-    smallDescription: string = ''
-  ) {
-    this.brand = brand;
-    this.discountOffer = discountOffer;
-    this.rating = rating;
-    this.categories = categories;
-    this.img = img;
-    this.price = price;
-    this.like = like;
-    this.smallDescription = smallDescription;
-  }
-}
+import { url } from 'inspector';
 
-const products = [];
+export let data = [
+  {
+    name: 'Watches',
+    currentPrice: 42.0,
+    originalPrice: 62.0,
+    rating: 4,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
+    url: '../shared/watch1.svg',
+  },
+  {
+    name: 'Watches',
+    currentPrice: 42.0,
+    originalPrice: 64.0,
+    rating: 4,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
+    url: '../shared/watch2.svg',
+  },
+  {
+    name: 'Headphones',
+    currentPrice: 90.0,
+    originalPrice: 99.0,
+    rating: 3,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
+    url: '../shared/HeadPoint1.svg',
+  },
+  {
+    name: 'Laptop',
+    currentPrice: 89.0,
+    originalPrice: 99.0,
+    rating: 2,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
+    url: '../shared/playstation.svg',
+  },
+  {
+    name: 'Black watches',
+    currentPrice: 35.0,
+    originalPrice: 55.0,
+    rating: 4,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
+    url: '../shared/watch2.svg',
+  },
+  {
+    name: 'Game console',
+    currentPrice: 76.0,
+    originalPrice: 89.0,
+    rating: 4,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
+    url: '../shared/playstation.svg',
+  },
+  {
+    name: 'Shoes',
+    currentPrice: 57.0,
+    originalPrice: 75.0,
+    rating: 4,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
+    url: '../shared/shoes1.svg',
+  },
+];
