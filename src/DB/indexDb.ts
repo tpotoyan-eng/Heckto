@@ -1,6 +1,7 @@
 import { url } from 'inspector';
+import { discountProduct, Product } from '../interfaces/app.model';
 
-export let data = [
+export let data: Array<Product> = [
   {
     name: 'Watches',
     currentPrice: 42.0,
@@ -63,5 +64,32 @@ export let data = [
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
     url: '../shared/shoes1.svg',
+  },
+];
+
+export const DISCOUNT_PRODUCTS: discountProduct[] = [
+  {
+    _id: 1,
+    smallTitle: 'Best Headphones For Your Life....',
+    Title: 'New Trendy Collection Headphones',
+    paragraph:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
+    imgUrl: 'hero-HeadPoint.svg',
+  },
+  {
+    _id: 1,
+    smallTitle: 'Best Headphones For Your Life....',
+    Title: 'New Trendy Collection Headphones',
+    paragraph:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
+    imgUrl: 'hero-HeadPoint.svg',
+  },
+  {
+    _id: 1,
+    smallTitle: 'Best Headphones For Your Life....',
+    Title: 'New Trendy Collection Headphones',
+    paragraph:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
+    imgUrl: 'hero-HeadPoint.svg',
   },
 ];

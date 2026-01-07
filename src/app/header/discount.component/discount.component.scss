@@ -1,0 +1,204 @@
+@import '../../../styles/variables';
+@import '../../../styles/_typography';
+:host {
+  display: block;
+  background-color: #f2f0ff;
+}
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  height: 764px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: #f2f0ff;
+}
+
+.hero-wrapper {
+  max-width: 1140px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 120%;
+  padding: 0 1rem;
+  z-index: 2;
+  margin-right: 8rem;
+  gap: 3rem;
+}
+
+.hero-light {
+  margin-bottom: 35rem;
+}
+
+.hero-image-container {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  position: relative;
+  animation: fadeInRight 2s ease;
+  .image-wrapper {
+    position: relative;
+    display: inline-block;
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 110%;
+      height: 110%;
+      background: radial-gradient(circle, #ece7ff 0%, rgba(242, 240, 255, 0) 70%);
+      z-index: 0;
+    }
+    .product-image {
+      position: relative;
+      max-width: 100%;
+      height: auto;
+      z-index: 1;
+    }
+  }
+}
+
+.discount-badge {
+  position: absolute;
+  top: 40px;
+  right: -20px;
+  z-index: 10;
+  width: 160px;
+  height: 140px;
+  // Ensure the path to public assets is correct for your build tool
+  background-image: url('../../../../public/discount-bage.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  animation: fadeInRight 2s ease;
+  span {
+    color: white;
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 35px;
+    font-weight: 700;
+    line-height: 1;
+  }
+}
+
+.decorative-lamp {
+  position: absolute;
+  top: -20px;
+  left: 3%;
+  z-index: 1;
+  animation: slideFromTop 2s cubic-bezier(0.16, 1, 0.3, 1);
+  img {
+    max-width: 380px;
+    height: auto;
+  }
+}
+
+.sub-title {
+  color: $primary;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.main-title {
+  color: $grey-4;
+}
+
+.hero-content {
+  animation: fadeInUp 1s ease-out;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  flex: 1.2;
+  width: 160%;
+  max-width: 600px;
+  .description {
+    font-size: 1.6rem;
+    color: #8a8fb9;
+    line-height: 2.8rem;
+    margin-bottom: 1rem;
+    width: 500px;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+// 2. The Refined Keyframes
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+}
+
+@keyframes slideFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
