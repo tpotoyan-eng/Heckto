@@ -1,14 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import './styles/buttons';
 @import './styles/_variables';
+@import './styles/buttons';
 @import './styles/typography';
 * {
-  margin: 0;
-  box-sizing: border-box;
-  font-size: 69%;
+    margin: 0;
+    box-sizing: border-box;
+    font-size: 69%;
 }
 
 body {
-  font-family: 'Josefin Sans', sans-serif;
+    font-family: 'Josefin Sans', sans-serif;
 }

@@ -1,23 +1,173 @@
+@import '../../styles/variables';
 .features {
-  margin-top: 10rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  gap: 6rem;
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 6rem;
 }
 
 .featue-products {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 7rem;
+    padding: 0 2rem;
+    width: 100%;
 }
 
 .section-title {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  width: 100%;
-  height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    width: 100%;
+    height: 150px;
+}
+
+.subtitles {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-right: 4rem;
+    ul {
+        width: 100%;
+        list-style: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4rem;
+    }
+}
+
+.active {
+    color: $primary;
+}
+
+.leatest-products {
+    margin-top: -12rem;
+}
+
+.product-grid {
+    max-width: 1300px;
+    justify-content: center;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(250px, 1fr));
+    grid-template-rows: repeat(2, 1fr);
+    gap: 5rem;
+    &__item {
+        animation-fill-mode: forwards;
+        animation: fadeIn 0.8s ease-in-out forwards;
+        &:hover {
+            transform: translateY(-10px) scale(1.02) !important;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        }
+        width: 416px;
+        height: 320px;
+        transition: transform 0.3s ease;
+        cursor: pointer;
+        &:hover {
+            .image-wrapper {
+                background-color: #ebebeb;
+            }
+        }
+        .image-wrapper {
+            position: relative;
+            background-color: $grey-4;
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            overflow: hidden;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                object-position: center;
+                display: block;
+            }
+            .sale-tag {
+                position: absolute;
+                top: 15px;
+                left: 15px;
+                background-color: $primary;
+                color: white;
+                padding: 4px 12px;
+                font-size: 12px;
+                border-radius: 2px;
+                font-weight: 500;
+            }
+        }
+        .info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+            color: $grey-4;
+            font-size: 2rem;
+            .product-name {
+                font-size: 16px;
+                font-weight: 600;
+                margin: 0;
+                border-bottom: 2px solid transparent;
+                color: $grey-4;
+            }
+            .prices {
+                display: flex;
+                gap: 10px;
+                align-items: center;
+                .current-price {
+                    font-size: 14px;
+                    color: $grey-4;
+                }
+                .original-price {
+                    font-size: 12px;
+                    text-decoration: line-through;
+                    color: $primary;
+                    opacity: 0.8;
+                }
+            }
+        }
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.unique {
+    margin-top: 100px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    background-color: $grey-2;
+    height: 576px;
+    &-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        gap: 5rem;
+        width: 80%;
+    }
+    &-img {}
+    &-Info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        width: 50%;
+        margin-right: 35rem;
+    }
 }

@@ -79,6 +79,16 @@ export const PRODUCTS: Array<IProduct> = [
     url: 'shoes1.svg',
     type: 'Fashion',
   },
+  {
+    id: 7,
+    name: 'chaire',
+    currentPrice: 39,
+    originalPrice: 60,
+    rating: 5,
+    description: 'Unique Features Of leatest & Trending Poducts',
+    url: 'Chaire-blue.svg',
+    type: 'Home',
+  },
 ];
 
 export const DISCOUNT_PRODUCTS: discountProduct[] = [

@@ -1,7 +1,8 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, inject, input, signal } from '@angular/core';
 import { DataBase } from '../services/data-base';
 import { IProduct } from '../../interfaces/app.model';
 import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -12,12 +13,16 @@ import { CommonModule } from '@angular/common';
 })
 export class Product {
   product = input.required<IProduct>();
-
   isHovered = signal(false);
+  navigate = inject(Router);
 
   constructor(protected db: DataBase) {}
 
   onHover(state: boolean) {
     this.isHovered.set(state);
+  }
+
+  viewDetailes() {
+    this.navigate.navigate(['/product', this.product().id]);
   }
 }

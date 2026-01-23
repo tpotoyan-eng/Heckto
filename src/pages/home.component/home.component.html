@@ -1,34 +1,73 @@
 <ng-container>
-  <section class="features">
-    <div
-      [ngStyle]="{
+    <section class="features">
+        <div [ngStyle]="{
         display: 'flex',
         'align-items': 'center',
         'justify-content': 'center',
         width: '100%',
-      }"
-    >
-      <h2 class="heading-2">Featured Products</h2>
-    </div>
-    <div class="featue-products">
-      @for (item of featurdProducts(); track item.id) {
-        <app-product [product]="item" />
-      }
-    </div>
-  </section>
+      }">
+            <h2 class="heading-2">Featured Products</h2>
+        </div>
+        <div class="featue-products">
+            @for (item of featurdProducts(); track item.id) {
+            <app-product [product]="item" /> }
+        </div>
+    </section>
 
-  <section class="leatest-products">
-    <div class="section-title">
-      <h2 class="heading-2">Leatest Products</h2>
-      <div class="subtitles">
-        <ul>
-          <li>New Arrival</li>
-          <li>Best Seller</li>
-          <li>Featured</li>
-          <li>Special Offer</li>
-        </ul>
-      </div>
-    </div>
-    <div class="product-grid"></div>
-  </section>
+    <section class="leatest-products">
+        <div class="section-title">
+            <h2 class="heading-2">Leatest Products</h2>
+            <div class="subtitles">
+                <ul class="nav-list">
+                    @for (item of navItems; track $index) {
+                    <li class="nav__item">
+                        <a [routerLink]="item.link" [class.active]="activeNavIndex() === $index" (click)="setActiveNav($index)">
+                {{ item.name }}
+              </a>
+                    </li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="product-grid">
+            @for (item of leastestProducts(); track item.id) {
+            <div class="product-grid__item" (click)="seeItem(item)">
+                <div class="image-wrapper">
+                    <img [src]="item.url" alt="Product" />
+                </div>
+                <div class="info">
+                    <p>{{ item.name }}</p>
+                    <div class="prices">
+                        <span>{{ item.currentPrice | currency }}</span>
+                        <span class="original-price">{{ item.originalPrice | currency }}</span>
+                    </div>
+                </div>
+            </div>
+            } @empty {
+            <p>No products found.</p>
+            }
+        </div>
+    </section>
+
+    <section class="unique">
+        <div class="unique-wrapper">
+            <div class="unique-img">
+                <img [src]="chaire.url" alt="chaire" />
+            </div>
+            <div class="unique-Info">
+                <h2 class="heading-2"></h2>
+                <div class="unique-info__cons">
+                    <ul>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                </div>
+                <div class="action">
+                    <button class="btn-primary">Add to Cart</button>
+                    <p></p>
+                </div>
+            </div>
+        </div>
+    </section>
 </ng-container>

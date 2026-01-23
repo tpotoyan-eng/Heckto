@@ -1,36 +1,31 @@
-<div
-  class="product"
-  [class.is-hovered]="isHovered()"
-  (mouseenter)="onHover(true)"
-  (mouseleave)="onHover(false)"
->
-  <div class="product__actions">
-    <div class="icon-circle cart">
-      <img src="Basket-icon.svg" alt="cart" />
-    </div>
-    <div class="icon-circle">
-      <img src="heart-icon.svg" alt="wishlist" />
-    </div>
-    <div class="icon-circle">
-      <img src="Zoom-icon.svg" alt="wishlist" />
-    </div>
-  </div>
-
-  <div class="product__img">
-    <img [src]="product().url" [alt]="product().name" />
-    <button class="view-details-btn">View Details</button>
-  </div>
-
-  <div class="product__fullIn">
-    <h3 class="product-title">{{ product().name }}</h3>
-
-    <div class="product-decor">
-      <span class="dot pink"></span>
-      <span class="dot blue"></span>
-      <span class="dot navy"></span>
+<div class="product" [class.is-hovered]="isHovered()" (mouseenter)="onHover(true)" (mouseleave)="onHover(false)">
+    <div class="product__actions">
+        <div class="icon-circle cart">
+            <img src="Basket-icon.svg" alt="cart" />
+        </div>
+        <div class="icon-circle">
+            <img src="heart-icon.svg" alt="wishlist" />
+        </div>
+        <div class="icon-circle">
+            <img src="Zoom-icon.svg" alt="wishlist" />
+        </div>
     </div>
 
-    <p class="product-code">Code - Y523{{ product().id }}</p>
-    <p class="product-price">${{ product().currentPrice | number: '1.2-2' }}</p>
-  </div>
+    <div class="product__img">
+        <img [src]="product().url" [alt]="product().name" />
+        <button class="view-details-btn" (click)="viewDetailes()">View Details</button>
+    </div>
+
+    <div class="product__fullIn">
+        <h3 class="product-title">{{ product().name }}</h3>
+
+        <div class="product-decor">
+            <span class="dot pink"></span>
+            <span class="dot blue"></span>
+            <span class="dot navy"></span>
+        </div>
+
+        <p class="product-code">Code - Y523{{ product().id }}</p>
+        <p class="product-price">${{ product().currentPrice | number: '1.2-2' }}</p>
+    </div>
 </div>
