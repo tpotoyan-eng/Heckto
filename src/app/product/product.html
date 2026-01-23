@@ -15,7 +15,7 @@
         <img [src]="product().url" [alt]="product().name" />
         <button class="view-details-btn" (click)="viewDetailes()">View Details</button>
     </div>
-
+    @switch (typeProduct()) { @default {
     <div class="product__fullIn">
         <h3 class="product-title">{{ product().name }}</h3>
 
@@ -28,4 +28,17 @@
         <p class="product-code">Code - Y523{{ product().id }}</p>
         <p class="product-price">${{ product().currentPrice | number: '1.2-2' }}</p>
     </div>
+    } @case ('Trend') {
+    <div class="product__fullIn">
+        <h3 class="product-title">{{ product().name }}</h3>
+        <br />
+        <br />
+        <div class="flex-row">
+            <p class="product-price">${{ product().currentPrice | number: '1.2-2' }}</p>
+            <p class="product-price grey">
+                <s>${{ product().originalPrice | number: '1.2-2' }}</s>
+            </p>
+        </div>
+    </div>
+    } }
 </div>

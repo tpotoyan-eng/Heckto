@@ -1,4 +1,6 @@
-export type ProductType = 'Tech' | 'Fashion' | 'Home' | 'Beauty' | 'Sports';
+export type ProductType = 'Tech' | 'Fashion' | 'Home' | 'Beauty' | 'Sports' | 'Trend';
+export type DiscountType = 'HeadPhone' | 'LapTop' | 'Other';
+
 export interface IProduct {
   id: number;
   name: string;
@@ -16,4 +18,6 @@ export interface discountProduct {
   paragraph: string;
   _id: number;
   imgUrl: string;
+  id: number;
+  Type: DiscountType;
 }

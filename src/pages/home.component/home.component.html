@@ -8,7 +8,7 @@
       }">
             <h2 class="heading-2">Featured Products</h2>
         </div>
-        <div class="featue-products">
+        <div class="product-container">
             @for (item of featurdProducts(); track item.id) {
             <app-product [product]="item" /> }
         </div>
@@ -55,18 +55,80 @@
                 <img [src]="chaire.url" alt="chaire" />
             </div>
             <div class="unique-Info">
-                <h2 class="heading-2"></h2>
+                <div class="titile">
+                    <h2 class="heading-2">Unique Features Of Leatest & Trending Poducts</h2>
+                </div>
                 <div class="unique-info__cons">
                     <ul>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li>All frames constructed with hardwood solids and laminates</li>
+                        <li>Reinforced with double wood dowels, glue, screw - nails corner</li>
+                        <li>Arms, backs and seats are structurally reinforced</li>
                     </ul>
                 </div>
                 <div class="action">
-                    <button class="btn-primary">Add to Cart</button>
-                    <p></p>
+                    <button class="btn-primary">Add To Cart</button>
+                    <div class="product-meta">
+                        <span>B&B Italian Sofa</span>
+                        <span>$32.00</span>
+                    </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="Trending-products">
+        <div class="section-title">
+            <h2 class="heading-2">Trending Products</h2>
+        </div>
+        <div class="product-container">
+            @for (item of trandProducts; track $index) {
+            <app-product [product]="item" [typeProduct]="item.type"></app-product>
+            }
+        </div>
+    </section>
+
+    <section class="DiscountItem">
+        <div class="section-title">
+            <h2 class="heading-2">Discount Item</h2>
+            <div class="subtitles">
+                <ul class="nav-list">
+                    @for (item of discountNavItems; track $index) {
+                    <li class="nav__item">
+                        <a [routerLink]="item.link" [class.active]="activeDiscountNavIndex() === $index" (click)="setActiveDiscountNav($index)">
+                {{ item.name }}
+              </a>
+                    </li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="itemInfo">
+            <div class="itemInfo__container">
+                @for (item of discountProducts(); track $index) { @if (item.Type === discountNavItems[activeDiscountNavIndex()].type) {
+                <div class="shortInfo">
+                    <h3 class="heading-3">20% Discount Of All Products</h3>
+                    <h4 class="heading-4 primary-color">{{ item.smallTitle }}</h4>
+                    <span class="paragraph grey font-size">{{ item.paragraph }}</span>
+                    <div class="extentions grey font-size">
+                        <div class="ext-item">
+                            <span>Material expose like metals</span>
+                        </div>
+                        <div class="ext-item">
+                            <span>Clear lines and geomatric figures</span>
+                        </div>
+                        <div class="ext-item">
+                            <span>Material expose like metals</span>
+                        </div>
+                        <div class="ext-item">
+                            <span>Simple neutral colours.</span>
+                        </div>
+                    </div>
+                    <button class="btn-primary">Shop Now</button>
+                </div>
+                <div class="item__img">
+                    <img [src]="item.imgUrl" [alt]="item.Type" />
+                </div>
+                } }
             </div>
         </div>
     </section>

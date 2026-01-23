@@ -1,6 +1,6 @@
 @import '../../styles/variables';
 .product {
-    margin-bottom: 20rem;
+    // margin-bottom: 20rem;
     position: relative;
     width: 270px;
     height: 300px;
@@ -48,11 +48,12 @@
         }
         .product-code {
             color: $grey-3;
-            font-size: 14px;
+            font-size: 16px;
             margin: 8px 0;
         }
         .product-price {
-            color: #151875;
+            font-size: 16px;
+            color: $grey-4;
             font-weight: bold;
         }
     }

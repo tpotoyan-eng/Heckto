@@ -1,4 +1,3 @@
-import { url } from 'inspector';
 import { discountProduct, IProduct } from '../interfaces/app.model';
 
 export const PRODUCTS: Array<IProduct> = [
@@ -66,7 +65,7 @@ export const PRODUCTS: Array<IProduct> = [
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
     url: 'playstation.svg',
-    type: 'Tech',
+    type: 'Trend',
   },
   {
     id: 6,
@@ -77,7 +76,7 @@ export const PRODUCTS: Array<IProduct> = [
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
     url: 'shoes1.svg',
-    type: 'Fashion',
+    type: 'Trend',
   },
   {
     id: 7,
@@ -89,25 +88,31 @@ export const PRODUCTS: Array<IProduct> = [
     url: 'Chaire-blue.svg',
     type: 'Home',
   },
+  {
+    id: 8,
+    name: 'Game console',
+    currentPrice: 76.0,
+    originalPrice: 89.0,
+    rating: 4,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
+    url: 'playstation.svg',
+    type: 'Trend',
+  },
+  {
+    id: 9,
+    name: 'Game console',
+    currentPrice: 76.0,
+    originalPrice: 89.0,
+    rating: 4,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
+    url: 'playstation.svg',
+    type: 'Trend',
+  },
 ];
 
 export const DISCOUNT_PRODUCTS: discountProduct[] = [
-  {
-    _id: 1,
-    smallTitle: 'Premium Home Furniture Collection',
-    Title: 'Elegant Blue Velvet \n Accent Chairs',
-    paragraph:
-      'Enhance your living space with our latest ergonomic designs. Crafted for comfort and styled for the modern home.',
-    imgUrl: 'Chaire-blue.svg',
-  },
-  {
-    _id: 2,
-    smallTitle: 'Best Headphones For Your Life....',
-    Title: 'New Trendy Collection \n Headphones',
-    paragraph:
-      'Experience immersive sound quality and noise cancellation. Perfect for music lovers and professionals alike.',
-    imgUrl: 'hero-HeadPoint.svg',
-  },
   {
     _id: 3,
     smallTitle: 'Ultimate Gaming Experience',
@@ -115,5 +120,27 @@ export const DISCOUNT_PRODUCTS: discountProduct[] = [
     paragraph:
       'Take your gaming to the next level with high-precision controllers and lightning-fast response times.',
     imgUrl: 'playstation.svg',
+    id: 8,
+    Type: 'LapTop',
+  },
+  {
+    _id: 1,
+    smallTitle: 'Premium Home Furniture Collection',
+    Title: 'Elegant Blue Velvet \n Accent Chairs',
+    paragraph:
+      'Enhance your living space with our latest ergonomic designs. Crafted for comfort and styled for the modern home.',
+    imgUrl: 'Chaire-blue.svg',
+    id: 7,
+    Type: 'Other',
+  },
+  {
+    _id: 2,
+    Title: '20% Discount Of All Products',
+    smallTitle: 'Headphones Compact',
+    paragraph:
+      'Experience immersive sound quality and noise cancellation. Perfect for music lovers and professionals alike.',
+    imgUrl: 'hero-HeadPoint.svg',
+    id: 2,
+    Type: 'HeadPhone',
   },
 ];

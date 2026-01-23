@@ -1,11 +1,10 @@
-import { Component, OnInit, OnDestroy, signal, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, signal, inject, ElementRef, ViewChild } from '@angular/core';
 import { DiscountComponent } from './discount.component/discount.component';
 import { discountProduct } from '../../interfaces/app.model';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { DataBase } from '../services/data-base';
-
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -17,7 +16,7 @@ export class Header implements OnInit, OnDestroy {
   discountes: discountProduct[] = [];
   currentIndex = signal<number>(0);
   showHero = signal<boolean>(true);
-
+  @ViewChild('search') search!: ElementRef;
   private intervalId: any;
   private routeSub!: Subscription;
   private router = inject(Router);
@@ -81,5 +80,9 @@ export class Header implements OnInit, OnDestroy {
     if (this.routeSub) {
       this.routeSub.unsubscribe();
     }
+  }
+
+  onSearch() {
+    this.search.nativeElement.style.transform = 'scale(1)';
   }
 }

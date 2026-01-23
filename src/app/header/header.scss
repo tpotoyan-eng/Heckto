@@ -1,258 +1,261 @@
 @import '../../styles/variables';
 header {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .container {
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 0 1rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.infoWrapper {
-  background-color: $tertiary;
-  color: white;
-  padding: 10px 0;
-  font-family: 'Josefin Sans', sans-serif;
-  .container {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-  .genInfo {
-    display: flex;
-  }
-  .contact {
-    display: flex;
-    gap: 2rem;
-    .email,
-    .call {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      a,
-      p {
-        font-size: 16px;
-        font-weight: 600;
-        transition: color 0.3s ease;
-      }
-      a {
-        color: white;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        &:hover {
-          display: inline-block;
-          transform: translateY(-2px);
-        }
-      }
-    }
-  }
-  .options ul {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    .options__item,
-    .basket {
-      display: flex;
-      align-items: center;
-      position: relative;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-      a,
-      span {
+    width: 100%;
+}
+
+.infoWrapper {
+    background-color: $tertiary;
+    color: white;
+    padding: 10px 0;
+    font-family: 'Josefin Sans', sans-serif;
+    .container {
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        gap: 6px;
-        font-size: 14px;
-        font-weight: 500;
-        color: white;
-        text-decoration: none;
-        position: relative;
-        padding-bottom: 2px;
-        &::after {
-          content: '';
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          width: 0;
-          height: 1px;
-          background-color: rgba(255, 255, 255, 0.7);
-          transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-      }
-      img {
-        width: 16px;
-        height: 16px;
-        transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      }
-      &:hover {
-        transform: translateY(-1px);
-        a::after,
-        span::after {
-          width: 100%;
-        }
-        img {
-          filter: brightness(1.2);
-        }
-        img[src*='arrow'] {
-          transform: rotate(180deg);
-        }
-        img[src*='heart'],
-        img[src*='basket'] {
-          transform: scale(1.2);
-        }
-      }
-      &:active {
-        transform: scale(0.95);
-      }
     }
-  }
+    .genInfo {
+        display: flex;
+    }
+    .contact {
+        display: flex;
+        gap: 2rem;
+        .email,
+        .call {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            a,
+            p {
+                font-size: 16px;
+                font-weight: 600;
+                transition: color 0.3s ease;
+            }
+            a {
+                color: white;
+                text-decoration: none;
+                transition: all 0.3s ease;
+                &:hover {
+                    display: inline-block;
+                    transform: translateY(-2px);
+                }
+            }
+        }
+    }
+    .options ul {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        .options__item,
+        .basket {
+            display: flex;
+            align-items: center;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            a,
+            span {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                font-size: 14px;
+                font-weight: 500;
+                color: white;
+                text-decoration: none;
+                position: relative;
+                padding-bottom: 2px;
+                &::after {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 0;
+                    height: 1px;
+                    background-color: rgba(255, 255, 255, 0.7);
+                    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+                }
+            }
+            img {
+                width: 16px;
+                height: 16px;
+                transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            }
+            &:hover {
+                transform: translateY(-1px);
+                a::after,
+                span::after {
+                    width: 100%;
+                }
+                img {
+                    filter: brightness(1.2);
+                }
+                img[src*='arrow'] {
+                    transform: rotate(180deg);
+                }
+                img[src*='heart'],
+                img[src*='basket'] {
+                    transform: scale(1.2);
+                }
+            }
+            &:active {
+                transform: scale(0.95);
+            }
+        }
+    }
 }
 
 .search {
-  display: flex;
-  align-items: center;
-  border: 2px solid #e7e6ef;
-  border-radius: 5px;
-  height: 30px;
-  background-color: white;
-  transition: all 0.3s ease;
-  &:focus-within {
-    transform: scale(1.1);
-  }
-  &__input {
-    flex: 1;
-    border: none;
-    outline: none;
-    padding: 0 15px;
-    font-size: 14px;
-    border-color: $grey-2;
-    color: $grey-3;
-    &::placeholder {
-      color: #cbcbe0;
-    }
-  }
-  &__button {
-    width: 50px;
-    height: 100%;
-    background-color: $primary;
-    border: none;
     display: flex;
     align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background 0.3s ease;
-    border-radius: 6px;
-    &:hover {
-      background-color: darken($primary, 5%);
+    border: 2px solid #e7e6ef;
+    border-radius: 5px;
+    height: 30px;
+    background-color: white;
+    transition: all 0.3s ease;
+    &:focus-within {
+        transform: scale(1.2);
     }
-    img {
-      width: 15px;
-      height: 15px;
+    &__input {
+        flex: 1;
+        border: none;
+        outline: none;
+        padding: 0 15px;
+        font-size: 14px;
+        border-color: $grey-2;
+        color: $grey-3;
+        &::placeholder {
+            color: #cbcbe0;
+        }
     }
-  }
+    &__button {
+        width: 50px;
+        height: 100%;
+        background-color: $primary;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.1s ease;
+        border-radius: 6px;
+        &:hover {
+            background-color: darken($primary, 5%);
+        }
+        img {
+            width: 15px;
+            height: 15px;
+        }
+        &:active {
+            transform: scale(0.9);
+        }
+    }
 }
 
 .navigation {
-  background-color: white;
-  display: flex;
-  align-items: center;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
-  margin-left: -7.6rem;
-  .nav-list {
+    background-color: white;
     display: flex;
     align-items: center;
-    list-style: none;
-    gap: 2.5rem;
-    .nav__item {
-      &.big a {
-        font-size: 24px;
-        font-weight: 700;
-        color: #0d0e43;
-        margin-right: 2rem;
-      }
-      a {
-        text-decoration: none;
-        color: #0d0e43;
-        font-size: 16px;
-        transition: 0.3s;
-        &:hover {
-          color: $primary;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: -7.6rem;
+    .nav-list {
+        display: flex;
+        align-items: center;
+        list-style: none;
+        gap: 2.5rem;
+        .nav__item {
+            &.big a {
+                font-size: 24px;
+                font-weight: 700;
+                color: #0d0e43;
+                margin-right: 2rem;
+            }
+            a {
+                text-decoration: none;
+                color: #0d0e43;
+                font-size: 16px;
+                transition: 0.3s;
+                &:hover {
+                    color: $primary;
+                }
+            }
         }
-      }
     }
-  }
 }
 
 .basket {
-  cursor: pointer;
-  transition: transform 0.3s ease;
-  &:hover {
-    animation: wiggle 0.5s ease-in-out;
-    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
-  }
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    &:hover {
+        animation: wiggle 0.5s ease-in-out;
+        filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+    }
 }
 
 @keyframes wiggle {
-  0%,
-  100% {
-    transform: rotate(0);
-  }
-  25% {
-    transform: rotate(-10deg);
-  }
-  75% {
-    transform: rotate(10deg);
-  }
+    0%,
+    100% {
+        transform: rotate(0);
+    }
+    25% {
+        transform: rotate(-10deg);
+    }
+    75% {
+        transform: rotate(10deg);
+    }
 }
 
 .hero-section {
-  width: 100%;
-  overflow: hidden;
-  position: relative;
-  background-color: #f2f0ff;
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background-color: #f2f0ff;
 }
 
 .carousel-track {
-  display: flex;
-  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-  width: 100%;
-  margin-bottom: 3rem;
+    display: flex;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    width: 100%;
+    margin-bottom: 3rem;
 }
 
 .carousel-item {
-  min-width: 100%;
-  flex-shrink: 0;
+    min-width: 100%;
+    flex-shrink: 0;
 }
 
 .carousel-indicators {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 10px;
-  z-index: 10;
-  .dot {
-    transform: rotate(45deg);
-    width: 12px;
-    height: 12px;
-    border: 1px solid $primary;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    &.active {
-      background-color: $primary;
-      border-radius: 2px;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+    .dot {
+        transform: rotate(45deg);
+        width: 12px;
+        height: 12px;
+        border: 1px solid $primary;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        &.active {
+            background-color: $primary;
+            border-radius: 2px;
+        }
     }
-  }
 }

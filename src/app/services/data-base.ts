@@ -35,4 +35,8 @@ export class DataBase {
     }
     return undefined;
   }
+
+  getTrendProducts(): IProduct[] {
+    return this.products.filter((pr) => pr.type === 'Trend');
+  }
 }

@@ -64,3 +64,24 @@
         }
     }
 }
+
+.flex-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.grey {
+    color: $grey-3 !important;
+}
+
+.primary-color {
+    color: $primary;
+}
+
+.font-size {
+    font-size: 16px;
+}
