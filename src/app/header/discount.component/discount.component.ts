@@ -1,4 +1,4 @@
-import { Component, input, OnInit } from '@angular/core';
+import { Component, input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { discountProduct } from '../../../interfaces/app.model';
 @Component({
   selector: 'app-discount',
@@ -6,9 +6,9 @@ import { discountProduct } from '../../../interfaces/app.model';
   templateUrl: './discount.component.html',
   styleUrl: './discount.component.scss',
 })
-export class DiscountComponent implements OnInit {
+export class DiscountComponent implements OnChanges {
   product = input.required<discountProduct>();
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges): void {
     console.log(this.product());
   }
 }

@@ -1,1 +1,34 @@
-<section class="home"></section>
+<ng-container>
+  <section class="features">
+    <div
+      [ngStyle]="{
+        display: 'flex',
+        'align-items': 'center',
+        'justify-content': 'center',
+        width: '100%',
+      }"
+    >
+      <h2 class="heading-2">Featured Products</h2>
+    </div>
+    <div class="featue-products">
+      @for (item of featurdProducts(); track item.id) {
+        <app-product [product]="item" />
+      }
+    </div>
+  </section>
+
+  <section class="leatest-products">
+    <div class="section-title">
+      <h2 class="heading-2">Leatest Products</h2>
+      <div class="subtitles">
+        <ul>
+          <li>New Arrival</li>
+          <li>Best Seller</li>
+          <li>Featured</li>
+          <li>Special Offer</li>
+        </ul>
+      </div>
+    </div>
+    <div class="product-grid"></div>
+  </section>
+</ng-container>

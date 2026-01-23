@@ -1,71 +1,72 @@
 <header>
-  <div class="infoWrapper">
-    <div class="container">
-      <div class="genInfo">
-        <div class="contact">
-          <div class="email">
-            <img src="white-Email.svg" alt="" class="icon" />
-            <a href="mailto:mhhasanul@gmail.com">mhhasanul@gmail.com</a>
-          </div>
-          <div class="call">
-            <img src="white-call.svg" alt="" class="icon" />
-            <p>(12345)67890</p>
-          </div>
+    <div class="infoWrapper">
+        <div class="container">
+            <div class="genInfo">
+                <div class="contact">
+                    <div class="email">
+                        <img src="white-Email.svg" alt="" class="icon" />
+                        <a href="mailto:mhhasanul@gmail.com">mhhasanul@gmail.com</a>
+                    </div>
+                    <div class="call">
+                        <img src="white-call.svg" alt="" class="icon" />
+                        <p>(12345)67890</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="options">
+                <ul>
+                    <li class="options__item"><span>English</span><img src="white-arrow.svg" alt="" /></li>
+                    <li class="options__item"><span>USD</span><img src="white-arrow.svg" alt="" /></li>
+                    <li class="options__item">
+                        <a href="/login">Login</a><img src="white-user.svg" alt="" />
+                    </li>
+                    <li class="options__item">
+                        <a href="/wishings">Wishings</a><img src="white-heart.svg" alt="" />
+                    </li>
+                    <li class="basket">
+                        <a href="/basket"><img src="white-basket.svg" alt="Cart" /></a>
+                    </li>
+                </ul>
+            </div>
         </div>
-      </div>
-
-      <div class="options">
-        <ul>
-          <li class="options__item"><span>English</span><img src="white-arrow.svg" alt="" /></li>
-          <li class="options__item"><span>USD</span><img src="white-arrow.svg" alt="" /></li>
-          <li class="options__item">
-            <a href="/login">Login</a><img src="white-user.svg" alt="" />
-          </li>
-          <li class="options__item">
-            <a href="/wishings">Wishings</a><img src="white-heart.svg" alt="" />
-          </li>
-          <li class="basket">
-            <a href="/basket"><img src="white-basket.svg" alt="Cart" /></a>
-          </li>
-        </ul>
-      </div>
     </div>
-  </div>
 
-  <div class="navigation">
-    <div class="container">
-      <nav>
-        <ul class="nav-list">
-          <li class="nav__item big"><a href="/">Heckto</a></li>
-          <li class="nav__item"><a href="/">Home</a></li>
-          <li class="nav__item"><a href="/products">Products</a></li>
-          <li class="nav__item"><a href="/blog">Blog</a></li>
-          <li class="nav__item"><a href="/contact">Contact</a></li>
-        </ul>
-      </nav>
+    <div class="navigation">
+        <div class="container">
+            <nav>
+                <ul class="nav-list">
+                    <li class="nav__item big"><a href="/">Heckto</a></li>
+                    <li class="nav__item"><a href="/">Home</a></li>
+                    <li class="nav__item"><a href="/products">Products</a></li>
+                    <li class="nav__item"><a href="/blog">Blog</a></li>
+                    <li class="nav__item"><a href="/contact">Contact</a></li>
+                </ul>
+            </nav>
 
-      <div class="search">
-        <input type="text" placeholder="Search" class="search__input" />
-        <button class="search__button">
+            <div class="search">
+                <input type="text" placeholder="Search" class="search__input" />
+                <button class="search__button">
           <img src="Search-icon.svg" alt="" class="search__button" />
         </button>
-      </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="hero-section">
-    <div class="carousel-track" [style.transform]="'translateX(-' + currentIndex() * 100 + '%)'">
-      @for (item of discountes; track item._id) {
-      <div class="carousel-item">
-        <app-discount [product]="item"></app-discount>
-      </div>
-      }
-    </div>
+    @if (showHero()) {
+    <div class="hero-section">
+        <div class="carousel-track" [style.transform]="'translateX(-' + currentIndex() * 100 + '%)'">
+            @for (item of discountes; track item._id) {
+            <div class="carousel-item">
+                <app-discount [product]="item"></app-discount>
+            </div>
+            }
+        </div>
 
-    <div class="carousel-indicators">
-      @for (item of discountes; track $index) {
-      <span class="dot" [class.active]="currentIndex() === $index" (click)="goToSlide($index)">
-      </span>
-      }
+        <div class="carousel-indicators">
+            @for (item of discountes; track $index) {
+            <span class="dot" [class.active]="currentIndex() === $index" (click)="goToSlide($index)">
+          </span> }
+        </div>
     </div>
-  </div>
+    }
 </header>

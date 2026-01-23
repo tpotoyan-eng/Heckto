@@ -1,0 +1,23 @@
+.features {
+  margin-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 6rem;
+}
+
+.featue-products {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.section-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  height: 150px;
+}

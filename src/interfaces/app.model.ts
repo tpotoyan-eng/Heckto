@@ -1,10 +1,13 @@
-export interface Product {
+export type ProductType = 'Tech' | 'Fashion' | 'Home' | 'Beauty' | 'Sports';
+export interface IProduct {
+  id: number;
   name: string;
   currentPrice: number;
   originalPrice: number;
   rating: number;
   description: string;
   url: string;
+  type: ProductType;
 }
 
 export interface discountProduct {
