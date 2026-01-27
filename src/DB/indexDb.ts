@@ -144,3 +144,95 @@ export const DISCOUNT_PRODUCTS: discountProduct[] = [
     Type: 'HeadPhone',
   },
 ];
+
+export const TOP_CATEGORIES: IProduct[] = [
+  {
+    id: 0,
+    name: 'Perfum',
+    currentPrice: 42.0,
+    originalPrice: 62.0,
+    rating: 4,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
+    url: 'Perfume1.svg',
+    type: 'Fashion',
+  },
+  {
+    id: 1,
+    name: 'Ring',
+    currentPrice: 42.0,
+    originalPrice: 62.0,
+    rating: 4,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
+    url: 'Ring.svg',
+    type: 'Trend',
+  },
+  {
+    id: 2,
+    name: 'present-box',
+    currentPrice: 42.0,
+    originalPrice: 62.0,
+    rating: 4,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
+    url: 'present-box.svg',
+    type: 'Tech',
+  },
+  {
+    id: 3,
+    name: 'Braslet',
+    currentPrice: 42.0,
+    originalPrice: 62.0,
+    rating: 4,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
+    url: 'braslet.svg',
+    type: 'Tech',
+  },
+];
+
+export const HOMES: IProduct[] = [
+  {
+    id: 0,
+    owner: 'Jon Doe',
+    date: new Date('2023-08-21'), // YYYY-MM-DD
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit hendrerit ex.',
+    url: 'Home-trand1.svg',
+    type: 'Home',
+    rating: 5,
+    name: 'Home',
+    Title: 'Top essential Trends in 2023',
+    currentPrice: 211,
+    originalPrice: 232,
+  },
+  {
+    id: 1,
+    owner: 'Jon Doe',
+    date: new Date('2023-08-21'),
+    description:
+      'Nullam nec fringilla erat, ac dapibus nunc. Integer semper ipsum in fermentum aliquam. ',
+    url: 'Home-trand2.svg',
+    type: 'Home',
+    rating: 5,
+    name: 'Home',
+    Title: 'Top essential Trends in 2023',
+    currentPrice: 211,
+    originalPrice: 232,
+  },
+  {
+    id: 2,
+    owner: 'Jon Doe',
+    date: new Date('2023-08-21'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit hendrerit ex.',
+    url: 'home-trand3.svg',
+    type: 'Home',
+    rating: 5,
+    name: 'Home',
+    Title: 'Top essential Trends in 2023',
+    currentPrice: 211,
+    originalPrice: 232,
+  },
+];

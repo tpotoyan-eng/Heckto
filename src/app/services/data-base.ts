@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { discountProduct } from '../../interfaces/app.model';
-import { DISCOUNT_PRODUCTS, PRODUCTS } from '../../DB/indexDb';
+import { DISCOUNT_PRODUCTS, HOMES, PRODUCTS, TOP_CATEGORIES } from '../../DB/indexDb';
 import { IProduct } from '../../interfaces/app.model';
 
 @Injectable({
@@ -9,7 +9,11 @@ import { IProduct } from '../../interfaces/app.model';
 export class DataBase {
   private discountedProducts: discountProduct[] = DISCOUNT_PRODUCTS;
   private products: IProduct[] = PRODUCTS;
-
+  private topCategories: IProduct[] = TOP_CATEGORIES;
+  private homes: IProduct[] = HOMES;
+  getTopCategories(): IProduct[] {
+    return this.topCategories;
+  }
   getDiscountedProducts(): discountProduct[] {
     return this.discountedProducts;
   }
@@ -38,5 +42,9 @@ export class DataBase {
 
   getTrendProducts(): IProduct[] {
     return this.products.filter((pr) => pr.type === 'Trend');
+  }
+
+  getHomes() {
+    return this.homes;
   }
 }

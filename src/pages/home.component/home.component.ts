@@ -4,14 +4,11 @@ import { discountProduct, IProduct } from '../../interfaces/app.model';
 import { Product } from '../../app/product/product';
 import { CurrencyPipe, NgStyle } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import { it } from 'node:test';
-import { link } from 'fs';
-import { sign } from 'crypto';
-import { IpcNetConnectOpts } from 'net';
+import { CycleProductComponent } from '../../app/cycle-product-component/cycle-product-component';
 
 @Component({
   selector: 'app-home.component',
-  imports: [Product, NgStyle, RouterLink, CurrencyPipe],
+  imports: [Product, NgStyle, RouterLink, CurrencyPipe, CycleProductComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
@@ -22,10 +19,10 @@ export class HomeComponent implements OnInit {
   featurdProducts = signal<IProduct[]>([]);
   leastestProducts = signal<IProduct[]>([]);
   discountProducts = signal<discountProduct[]>([]);
-
+  topCategories = signal<IProduct[]>([]);
   activeNavIndex = signal(0);
   activeDiscountNavIndex = signal(0);
-
+  homes = signal<IProduct[]>([]);
   chaire: IProduct = this.db.getProductById(7)!;
   trandProducts: IProduct[] = this.db.getTrendProducts();
 
@@ -40,14 +37,14 @@ export class HomeComponent implements OnInit {
     { name: 'LapTop ', link: '/', type: 'LapTop' },
     { name: 'Other', link: '/', type: 'Other' },
   ];
-
+  dotes = [{ active: true }, { active: false }, { active: false }];
   ngOnInit(): void {
     this.featurdProducts.set(this.db.getFeaturedProducts());
-
     this.leastestProducts.set(this.db.getFirstN(6));
-
+    this.topCategories.set(this.db.getTopCategories());
     const disP = this.db.getDiscountedProducts();
     this.discountProducts.set(disP);
+    this.homes.set(this.db.getHomes());
   }
 
   setActiveNav(index: number) {
@@ -67,5 +64,25 @@ export class HomeComponent implements OnInit {
   }
   setActiveDiscountNav(index: number) {
     this.activeDiscountNavIndex.set(index);
+  }
+
+  doteClick(index: number) {
+    console.log('dote index:', index);
+    const newArr = this.shuffleArray<IProduct>(this.topCategories());
+    this.topCategories.set(newArr);
+    this.dotes = this.dotes.map((d, i) => ({
+      ...d,
+      active: i === index,
+    }));
+  }
+  private shuffleArray<T>(array: T[]): T[] {
+    console.log(array);
+    const newArray = [...array];
+    for (let i = newArray.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+    }
+    console.log(newArray);
+    return newArray;
   }
 }

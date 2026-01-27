@@ -26,3 +26,24 @@
     transform: scale(0.97);
   }
 }
+
+.view-details-btn {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  background: #08d15f;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 15px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  z-index: 14;
+}
+
+.view-details-btn.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-25px);
+}

@@ -1,25 +1,28 @@
-import { Component, inject, input, signal } from '@angular/core';
+import { Component, OnChanges, SimpleChanges, input, signal, inject } from '@angular/core';
 import { DataBase } from '../services/data-base';
 import { IProduct } from '../../interfaces/app.model';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
-import { ProductType } from '../../interfaces/app.model';
+import { Router, RouterLink } from '@angular/router';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-product',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './product.html',
   styleUrl: './product.scss',
 })
-export class Product {
+export class Product implements OnChanges {
   product = input.required<IProduct>();
   isHovered = signal(false);
   navigate = inject(Router);
-  typeProduct = input<ProductType>();
+  typeProduct = input<string>('Tech');
   constructor(protected db: DataBase) {}
 
   onHover(state: boolean) {
     this.isHovered.set(state);
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(this.typeProduct());
   }
 
   viewDetailes() {

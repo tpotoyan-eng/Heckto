@@ -2,6 +2,9 @@ export type ProductType = 'Tech' | 'Fashion' | 'Home' | 'Beauty' | 'Sports' | 'T
 export type DiscountType = 'HeadPhone' | 'LapTop' | 'Other';
 
 export interface IProduct {
+  owner?: string;
+  date?: Date;
+  Title?: string;
   id: number;
   name: string;
   currentPrice: number;
