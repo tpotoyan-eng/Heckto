@@ -3,6 +3,7 @@ import { HomeComponent } from '../pages/home.component/home.component';
 import { ProductDescrition } from '../pages/product-descritiom/product-descritiom';
 import { LoginComponent } from './login-component/login-component';
 import { BasketComponent } from '../pages/basket.component/basket.component';
+import { ProductPage } from '../pages/product-page/product-page';
 
 export const routes: Routes = [
   {
@@ -14,7 +15,7 @@ export const routes: Routes = [
     redirectTo: '',
   },
   {
-    path: 'product/:id',
+    path: 'products/:id',
     component: ProductDescrition,
   },
   {
@@ -24,5 +25,9 @@ export const routes: Routes = [
   {
     path: 'basket',
     component: BasketComponent,
+  },
+  {
+    path: 'products',
+    component: ProductPage,
   },
 ];

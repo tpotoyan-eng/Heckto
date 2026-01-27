@@ -1,40 +1,54 @@
-<div class="basket-container">
-  <div class="basket-layout">
-    <div class="products-column">
-      <div class="products-header">
-        <span>Product</span>
-        <span>Price</span>
-        <span>Quantity</span>
-        <span>Total</span>
-      </div>
-
-      <div class="products-list">
-        @for (item of items(); track item.id) {
-          <app-basket-item [itemInp]="item" (passToParent)="reciveFromChild($event)">
-          </app-basket-item>
-        }
-      </div>
-    </div>
-
-    <div class="summary-column">
-      <h3 class="summary-title">Cart Totals</h3>
-      <div class="summary-card">
-        <div class="summary-row subtotal">
-          <span>Subtotal:</span>
-          <span>${{ calculateSubtotal() | number: '1.2-2' }}</span>
+@if (items().length > 0) {
+  <div class="basket-container">
+    <div class="basket-layout">
+      <div class="products-column">
+        <div class="products-header">
+          <span>Product</span>
+          <span>Price</span>
+          <span>Quantity</span>
+          <span>Total</span>
         </div>
 
-        <div class="summary-row total">
-          <span>Total:</span>
-          <span>${{ calculateSubtotal() + 100 | number: '1.2-2' }}</span>
+        <div class="products-list">
+          @for (item of items(); track item.id) {
+            <app-basket-item
+              [itemInp]="item"
+              (passToParent)="reciveFromChild($event)"
+              (deleteItem)="handleDelete($event)"
+            >
+            </app-basket-item>
+          }
         </div>
-        <p class="shipping-info"><span class="dote active"></span> Shipping: $100.00</p>
-
-        <button class="btn-primary">Proceed to checkout</button>
       </div>
-      <div class="basket-actions">
-        <button class="btn-primary" (click)="clearCart()">Clear cart</button>
+
+      <div class="summary-column">
+        <h3 class="summary-title">Cart Totals</h3>
+        <div class="summary-card">
+          <div class="summary-row subtotal">
+            <span>Subtotal:</span>
+            <span>${{ calculateSubtotal() | number: '1.2-2' }}</span>
+          </div>
+
+          <div class="summary-row total">
+            <span>Total:</span>
+            <span>${{ calculateSubtotal() + 100 | number: '1.2-2' }}</span>
+          </div>
+          <p class="shipping-info"><span class="dote active"></span> Shipping: $100.00</p>
+
+          <button class="btn-primary">Proceed to checkout</button>
+        </div>
+        <div class="basket-actions">
+          <button class="btn-primary" (click)="clearCart()">Clear cart</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+} @else {
+  <div class="empty">
+    <div class="empty__img">
+      <img src="empty-basket.svg" alt="empty basket img" />
+    </div>
+    <h2 class="heading-2">Your cart is empty</h2>
+    <button class="btn-primary" (click)="startShopping()">Start Shopping</button>
+  </div>
+}

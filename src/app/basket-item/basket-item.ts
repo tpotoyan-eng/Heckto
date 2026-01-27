@@ -16,6 +16,7 @@ export class BasketItem implements OnInit {
   quantity = signal(1);
 
   passToParent = output<IProduct>();
+  deleteItem = output<number>();
 
   ngOnInit(): void {
     const product = this.itemInp();
@@ -30,19 +31,25 @@ export class BasketItem implements OnInit {
     const currentProduct = this.item();
 
     if (currentProduct) {
-      const newQuantity = this.quantity() + count;
+      this.changeQuantity(currentProduct, count);
+    }
+  }
 
-      if (newQuantity >= 1) {
-        this.quantity.set(newQuantity);
+  private changeQuantity(currentProduct: IProduct, count: number) {
+    const newQuantity = this.quantity() + count;
 
-        const updatedItem = {
-          ...currentProduct,
-          quantity: newQuantity,
-        };
-        this.item.set(updatedItem);
+    if (newQuantity >= 1) {
+      this.quantity.set(newQuantity);
 
-        this.passToParent.emit(updatedItem);
-      }
+      const updatedItem = {
+        ...currentProduct,
+        quantity: newQuantity,
+      };
+      this.item.set(updatedItem);
+
+      this.passToParent.emit(updatedItem);
+    } else {
+      this.deleteItem.emit(currentProduct.id);
     }
   }
 }
