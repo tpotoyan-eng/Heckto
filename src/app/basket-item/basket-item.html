@@ -1,0 +1,21 @@
+<div class="basket-item">
+  <div class="product-info">
+    <div class="product-image">
+      <img [src]="item()?.url || 'placeholder.png'" [alt]="item()?.name" />
+    </div>
+    <div class="product-details">
+      <h3 class="product-name">{{ item()?.name }}</h3>
+      <p class="product-price">${{ item()?.currentPrice | number: '1.2-2' }}</p>
+    </div>
+  </div>
+
+  <div class="actions">
+    <div class="quantity-selector">
+      <button (click)="updateCount(-1)" type="button">-</button>
+      <span class="count">{{ quantity() }}</span>
+      <button (click)="updateCount(1)" type="button">+</button>
+    </div>
+
+    <div class="total-price">${{ (item()?.currentPrice || 0) * quantity() | number: '1.2-2' }}</div>
+  </div>
+</div>

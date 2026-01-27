@@ -5,13 +5,13 @@
   (mouseleave)="onHover(false)"
 >
   <div class="product__actions">
-    <div class="icon-circle cart">
+    <div class="icon-circle cart" (click)="handleProductAction('Basket')">
       <img src="Basket-icon.svg" alt="cart" />
     </div>
-    <div class="icon-circle">
+    <div class="icon-circle" (click)="handleProductAction('Like')">
       <img src="heart-icon.svg" alt="wishlist" />
     </div>
-    <div class="icon-circle">
+    <div class="icon-circle" (click)="handleProductAction('Zoom')">
       <img src="Zoom-icon.svg" alt="wishlist" />
     </div>
   </div>
@@ -75,5 +75,15 @@
         <a class="read-more-link" [routerLink]="['/readmore']" class="link">Read More</a>
       </div>
     }
+    @case ('basket') {}
   }
 </div>
+
+@if (isZoomed) {
+  <div class="zoom-overlay" (click)="isZoomed = false">
+    <div class="zoom-content" (click)="$event.stopPropagation()">
+      <img [src]="product().url" [alt]="product().name" />
+      <button class="close-btn" (click)="closeZoom()">Close</button>
+    </div>
+  </div>
+}

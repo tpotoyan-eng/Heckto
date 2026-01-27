@@ -1,5 +1,6 @@
 export type ProductType = 'Tech' | 'Fashion' | 'Home' | 'Beauty' | 'Sports' | 'Trend';
 export type DiscountType = 'HeadPhone' | 'LapTop' | 'Other';
+export type ProductActionType = 'Basket' | 'Zoom' | 'Like';
 
 export interface IProduct {
   owner?: string;
@@ -13,6 +14,7 @@ export interface IProduct {
   description: string;
   url: string;
   type: ProductType;
+  quantity?: number;
 }
 
 export interface discountProduct {

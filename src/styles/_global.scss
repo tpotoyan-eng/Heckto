@@ -71,3 +71,52 @@
   font-weight: 400;
   width: 100%;
 }
+
+.search {
+  display: flex;
+  align-items: center;
+  border: 2px solid #e7e6ef;
+  border-radius: 5px;
+  height: 30px;
+  background-color: white;
+  transition: all 0.3s ease;
+  &:focus-within {
+    transform: scale(1.2);
+  }
+  &__input {
+    flex: 1;
+    border: none;
+    outline: none;
+    padding: 0 15px;
+    font-size: 14px;
+    border-color: $grey-2;
+    color: $grey-3;
+    &::placeholder {
+      color: #cbcbe0;
+    }
+  }
+  &__button {
+    width: 50px;
+    height: 100%;
+    background-color: $primary;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition:
+      background 0.3s ease,
+      transform 0.1s ease;
+    border-radius: 6px;
+    &:hover {
+      background-color: darken($primary, 5%);
+    }
+    img {
+      width: 15px;
+      height: 15px;
+    }
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+}
