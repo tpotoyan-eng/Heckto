@@ -18,6 +18,7 @@ export class Product implements OnChanges {
   typeProduct = input<string>('Tech');
   isZoomed = false;
   basket!: IProduct[];
+
   constructor(protected db: DataBase) {
     const data = localStorage.getItem('Heckto');
     this.basket = data ? JSON.parse(data).basket : [];
@@ -70,5 +71,6 @@ export class Product implements OnChanges {
     } else {
       alert('Product is already in the basket');
     }
+    this.navigate.navigate(['/basket']);
   }
 }

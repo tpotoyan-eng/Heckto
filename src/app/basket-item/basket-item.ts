@@ -1,4 +1,4 @@
-import { Component, input, OnInit, signal } from '@angular/core';
+import { Component, input, OnInit, signal, output, effect } from '@angular/core';
 import { IProduct } from '../../interfaces/app.model';
 import { CommonModule } from '@angular/common';
 
@@ -11,28 +11,37 @@ import { CommonModule } from '@angular/common';
 })
 export class BasketItem implements OnInit {
   itemInp = input.required<IProduct>();
-  item = signal<IProduct | null>(null);
 
-  quantity = signal(0);
+  item = signal<IProduct | null>(null);
+  quantity = signal(1);
+
+  passToParent = output<IProduct>();
 
   ngOnInit(): void {
-    this.item.set(this.itemInp());
-    this.quantity.set(this.item()?.quantity ?? 1);
+    const product = this.itemInp();
+
+    this.item.set(product);
+
+    const initialQty = product.quantity ?? 1;
+    this.quantity.set(initialQty);
   }
 
-  updateCount(count: number) {
-    const currentItem = this.item();
+  updateCount(count: number): void {
+    const currentProduct = this.item();
 
-    if (currentItem && currentItem.quantity !== undefined) {
-      const newQuantity = currentItem.quantity + count;
+    if (currentProduct) {
+      const newQuantity = this.quantity() + count;
 
       if (newQuantity >= 1) {
-        this.item.set({
-          ...currentItem,
-          quantity: newQuantity,
-        });
-
         this.quantity.set(newQuantity);
+
+        const updatedItem = {
+          ...currentProduct,
+          quantity: newQuantity,
+        };
+        this.item.set(updatedItem);
+
+        this.passToParent.emit(updatedItem);
       }
     }
   }

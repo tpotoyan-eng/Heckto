@@ -194,7 +194,7 @@ export const TOP_CATEGORIES: IProduct[] = [
 
 export const HOMES: IProduct[] = [
   {
-    id: 0,
+    id: 11,
     owner: 'Jon Doe',
     date: new Date('2023-08-21'), // YYYY-MM-DD
     description:
@@ -208,7 +208,7 @@ export const HOMES: IProduct[] = [
     originalPrice: 232,
   },
   {
-    id: 1,
+    id: 12,
     owner: 'Jon Doe',
     date: new Date('2023-08-21'),
     description:
@@ -222,7 +222,7 @@ export const HOMES: IProduct[] = [
     originalPrice: 232,
   },
   {
-    id: 2,
+    id: 13,
     owner: 'Jon Doe',
     date: new Date('2023-08-21'),
     description:
