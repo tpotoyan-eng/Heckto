@@ -4,6 +4,7 @@ import { ProductDescrition } from '../pages/product-descritiom/product-descritio
 import { LoginComponent } from './login-component/login-component';
 import { BasketComponent } from '../pages/basket.component/basket.component';
 import { ProductPage } from '../pages/product-page/product-page';
+import { ProductDetailsComponent } from './product-details-component/product-details-component';
 
 export const routes: Routes = [
   {
@@ -15,8 +16,8 @@ export const routes: Routes = [
     redirectTo: '',
   },
   {
-    path: 'products/:id',
-    component: ProductDescrition,
+    path: 'product/:id',
+    component: ProductDetailsComponent,
   },
   {
     path: 'login',

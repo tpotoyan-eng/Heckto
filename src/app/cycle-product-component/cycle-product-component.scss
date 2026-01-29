@@ -15,6 +15,7 @@
         object-fit: cover;
         z-index: 5;
         transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        width: 272px;
     }
     &.isHovered {
         background-color: #10175040;
@@ -32,5 +33,5 @@
 
 .view-details-btn.visible {
     opacity: 1;
-    transform: translateX(-50%) translateY(-55px);
+    transform: translateX(-50%) translateY(-76px);
 }

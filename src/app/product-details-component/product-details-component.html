@@ -1,0 +1,48 @@
+<div class="details-container container">
+    <div class="gallery-section">
+        <div class="thumbnails">
+            <img src="thumb1.png" alt="view 1" />
+            <img src="thumb2.png" alt="view 2" />
+            <img src="thumb3.png" alt="view 3" />
+        </div>
+        <div class="main-preview">
+            <img [src]="product()?.url" [alt]="product()?.name" />
+        </div>
+    </div>
+
+    <div class="info-section">
+        <h3 class="heading-3">{{ product()?.name || 'Headphones' }}</h3>
+
+        <div class="rating">
+            <span class="stars">★★★★☆</span>
+            <span class="count">(22)</span>
+        </div>
+
+        <div class="pricing">
+            <span class="current">$26.00</span>
+            <span class="discounted">$52.00</span>
+        </div>
+
+        <p class="description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris tellus porttitor purus, et volutpat sit.
+        </p>
+
+        <div class="actions">
+            <button class="add-to-cart">Add To Cart</button>
+            <button class="wishlist-btn"><img src="heart-icon.svg" alt="" /></button>
+        </div>
+    </div>
+</div>
+
+<section class="tabs-wrapper container">
+    <nav class="tabs-nav">
+        <a class="active">Description</a>
+        <a>Additional Info</a>
+        <a>Reviews</a>
+        <a>Video</a>
+    </nav>
+    <div class="tab-content">
+        <h3>Varius tempor.</h3>
+        <p>Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus...</p>
+    </div>
+</section>

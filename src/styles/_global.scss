@@ -1,9 +1,6 @@
+@import '../styles/mixins';
 .flex-container {
-    display: flex;
-    justify-content: space-between;
-    gap: 4rem;
-    align-items: center;
-    width: 100%;
+    @include flex-box($gap: 4rem);
 }
 
 .dotes {
@@ -59,6 +56,7 @@
     color: $grey-3;
     font-weight: 400;
     width: 100%;
+    font-size: 1rem;
 }
 
 .search {

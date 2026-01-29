@@ -103,16 +103,6 @@
             font-size: 2.5rem;
         }
     }
-    .description {
-        font-size: 1.6rem;
-        color: #8a8fb9;
-        line-height: 2.8rem;
-        max-width: 500px;
-        @media (max-width: 576px) {
-            font-size: 1.2rem;
-            line-height: 2rem;
-        }
-    }
     .btn-primary {
         align-self: flex-start;
         @media (max-width: 992px) {

@@ -43,7 +43,7 @@ export const PRODUCTS: Array<IProduct> = [
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
     url: 'playstation.svg',
-    type: 'Tech',
+    type: 'Beauty',
   },
   {
     id: 4,
@@ -53,8 +53,8 @@ export const PRODUCTS: Array<IProduct> = [
     rating: 4,
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
-    url: 'watch2.svg',
-    type: 'Fashion',
+    url: 'MacBook.svg',
+    type: 'Trend',
   },
   {
     id: 5,
@@ -65,7 +65,7 @@ export const PRODUCTS: Array<IProduct> = [
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
     url: 'playstation.svg',
-    type: 'Trend',
+    type: 'Tech',
   },
   {
     id: 6,

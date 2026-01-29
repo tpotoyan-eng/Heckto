@@ -2,19 +2,23 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { DataBase } from '../../app/services/data-base';
 import { discountProduct, IProduct } from '../../interfaces/app.model';
 import { Product } from '../../app/product/product';
-import { CurrencyPipe, NgStyle } from '@angular/common';
+import { CommonModule, CurrencyPipe, NgStyle } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { CycleProductComponent } from '../../app/cycle-product-component/cycle-product-component';
+import { sign } from 'crypto';
 
 @Component({
   selector: 'app-home.component',
-  imports: [Product, RouterLink, CurrencyPipe, CycleProductComponent],
+  imports: [Product, RouterLink, CurrencyPipe, CycleProductComponent, CommonModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
   protected db = inject(DataBase);
   protected navigator = inject(Router);
+
+  isZoomed = signal(false);
+  url = signal('');
 
   featurdProducts = signal<IProduct[]>([]);
   leastestProducts = signal<IProduct[]>([]);
@@ -84,5 +88,37 @@ export class HomeComponent implements OnInit {
     }
     console.log(newArray);
     return newArray;
+  }
+
+  handleAction(type: string, product: IProduct): void {
+    console.log(type);
+    if (type === 'Basket') return this.addToBasket(product);
+    if (type === 'Like') return alert('Liked');
+    if (type === 'Zoom') return this.handleZoom(true, product);
+  }
+
+  handleZoom(show: boolean, item: IProduct | null = null) {
+    this.isZoomed.set(show);
+    if (item) {
+      this.url.set(item.url);
+    }
+  }
+
+  private addToBasket(product: IProduct) {
+    const storageData = JSON.parse(localStorage.getItem('Heckto') || '{"basket": []}');
+    const currentBasket: IProduct[] = storageData.basket;
+
+    const exists = currentBasket.find((item) => item.id === product.id);
+
+    if (!exists) {
+      currentBasket.push(product);
+
+      localStorage.setItem('Heckto', JSON.stringify({ ...storageData, basket: currentBasket }));
+
+      alert(`${product.name} added to basket!`);
+    } else {
+      alert('Product is already in the basket');
+    }
+    this.navigator.navigate(['/basket']);
   }
 }

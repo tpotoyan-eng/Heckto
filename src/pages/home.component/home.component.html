@@ -28,12 +28,25 @@
             @for (item of leastestProducts(); track item.id) {
             <div class="product-grid__item" (click)="seeItem(item)">
                 <div class="image-wrapper">
+                    <div class="product__actions">
+                        <div class="icon-circle" (click)="$event.stopPropagation(); handleAction('Basket', item)">
+                            <img src="Basket-icon.svg" alt="cart" />
+                        </div>
+                        <div class="icon-circle" (click)="$event.stopPropagation(); handleAction('Like', item)">
+                            <img src="heart-icon.svg" alt="wishlist" />
+                        </div>
+                        <div class="icon-circle zoom-btn" (click)="$event.stopPropagation(); handleAction('Zoom', item)">
+                            <img src="Zoom-icon.svg" alt="zoom" />
+                        </div>
+                    </div>
+
                     <img [src]="item.url" alt="Product" />
                 </div>
+
                 <div class="info">
-                    <p>{{ item.name }}</p>
+                    <p class="product-name">{{ item.name }}</p>
                     <div class="prices">
-                        <span>{{ item.currentPrice | currency }}</span>
+                        <span class="current-price">{{ item.currentPrice | currency }}</span>
                         <span class="original-price">{{ item.originalPrice | currency }}</span>
                     </div>
                 </div>
@@ -161,3 +174,12 @@
         </div>
     </section>
 </ng-container>
+
+@if (isZoomed()) {
+<div class="zoom-overlay" (click)="handleZoom(false, null)">
+    <div class="zoom-content" (click)="$event.stopPropagation()">
+        <img [src]="url()" alt="Zoomed Product" />
+        <button class="close-btn" (click)="handleZoom(false, null)">Close</button>
+    </div>
+</div>
+}

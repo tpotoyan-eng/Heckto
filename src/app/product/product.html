@@ -1,4 +1,4 @@
-<div class="product" [class.is-hovered]="isHovered()" (mouseenter)="onHover(true)" (mouseleave)="onHover(false)" [class.product--big]="typeProduct().toLowerCase() === 'home'">
+<div class="product" [class.is-hovered]="isHovered()" (mouseenter)="onHover(true)" (mouseleave)="onHover(false)" [class.product--big]="typeProduct().toLowerCase() === 'home'" [class.product--actions-left]="">
     <div class="product__actions">
         <div class="icon-circle cart" (click)="handleProductAction('Basket')">
             <img src="Basket-icon.svg" alt="cart" />
