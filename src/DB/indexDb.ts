@@ -135,7 +135,7 @@ export const DISCOUNT_PRODUCTS: discountProduct[] = [
   },
   {
     _id: 2,
-    Title: '20% Discount Of All Products',
+    Title: 'New Trendy Collection Headphones',
     smallTitle: 'Headphones Compact',
     paragraph:
       'Experience immersive sound quality and noise cancellation. Perfect for music lovers and professionals alike.',

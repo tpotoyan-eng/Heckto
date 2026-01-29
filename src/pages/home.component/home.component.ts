@@ -8,7 +8,7 @@ import { CycleProductComponent } from '../../app/cycle-product-component/cycle-p
 
 @Component({
   selector: 'app-home.component',
-  imports: [Product, NgStyle, RouterLink, CurrencyPipe, CycleProductComponent],
+  imports: [Product, RouterLink, CurrencyPipe, CycleProductComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
 })

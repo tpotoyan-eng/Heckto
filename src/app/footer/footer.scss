@@ -1,45 +1,49 @@
 @import '../../styles/variables';
 .linkes {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-around;
-  background-color: $grey-1;
-  padding-top: 3rem;
-  height: 488px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-top: 6rem;
+    min-height: 488px;
 }
 
 footer {
-  margin-top: 4rem;
+    flex: 1;
+    margin-top: 4rem;
 }
 
 .additonal {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-around;
-  flex-direction: column;
-  gap: 3rem;
-  a {
-    text-decoration: none;
-    color: $grey-3;
-  }
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    flex-direction: column;
+    gap: 3rem;
+    a {
+        text-decoration: none;
+        color: $grey-3;
+    }
 }
 
 .static-info {
-  background-color: $grey-2;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  gap: 2rem;
-  padding-left: 10rem;
-  padding-right: 7rem;
-  height: 56px;
-  padding-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    height: 56px;
 }
 
 .icons-container {
-  display: flex;
-  width: 10%;
-  align-items: center;
-  justify-content: space-around;
-  gap: 2rem;
+    display: flex;
+    width: 10%;
+    align-items: center;
+    justify-content: space-around;
+    gap: 2rem;
+}
+
+.bckColor-grey-1 {
+    background-color: $grey-1;
+}
+
+.bckColor-grey-2 {
+    background-color: $grey-2;
 }

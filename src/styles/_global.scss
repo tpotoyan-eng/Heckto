@@ -1,122 +1,115 @@
 .flex-container {
-  display: flex;
-  justify-content: space-around;
-  gap: 3rem;
-  align-items: center;
-  width: 100%;
-  padding-left: 23rem;
-  padding-right: 15rem;
-  @media (max-width: 1200px) {
-    padding-left: 10%;
-    padding-right: 10%;
-  }
-  @media (max-width: 768px) {
-    flex-direction: column;
-    padding-left: 5%;
-    padding-right: 5%;
-  }
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+    align-items: center;
+    width: 100%;
 }
 
 .dotes {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  width: auto;
-}
-
-.container-full-width {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
-  padding: 20px 0;
-}
-
-.dote {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  display: inline-block;
-  border: 2px solid $primary;
-  background-color: transparent;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  pointer-events: auto;
-  z-index: 101231231230;
-}
-
-.dote.active {
-  background-color: $primary;
-}
-
-.margin-top-middle {
-  margin-top: 2rem;
-}
-
-.padding-middle {
-  padding: 4rem;
-}
-
-.link {
-  text-decoration: none;
-  color: $primary;
-  font-size: 1rem;
-  cursor: pointer;
-  font-weight: 700;
-}
-
-.paragraph {
-  color: $grey-3;
-  font-weight: 400;
-  width: 100%;
-}
-
-.search {
-  display: flex;
-  align-items: center;
-  border: 2px solid #e7e6ef;
-  border-radius: 5px;
-  height: 30px;
-  background-color: white;
-  transition: all 0.3s ease;
-  &:focus-within {
-    transform: scale(1.2);
-  }
-  &__input {
-    flex: 1;
-    border: none;
-    outline: none;
-    padding: 0 15px;
-    font-size: 14px;
-    border-color: $grey-2;
-    color: $grey-3;
-    &::placeholder {
-      color: #cbcbe0;
-    }
-  }
-  &__button {
-    width: 50px;
-    height: 100%;
-    background-color: $primary;
-    border: none;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
+    width: auto;
+}
+
+.container-full-width {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+}
+
+.dote {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 2px solid $primary;
+    background-color: transparent;
+    transition: all 0.3s ease;
     cursor: pointer;
-    transition:
-      background 0.3s ease,
-      transform 0.1s ease;
-    border-radius: 6px;
-    &:hover {
-      background-color: darken($primary, 5%);
+    pointer-events: auto;
+    z-index: 101231231230;
+}
+
+.dote.active {
+    background-color: $primary;
+}
+
+.margin-top-middle {
+    margin-top: 2rem;
+}
+
+.padding-middle {
+    padding: 4rem;
+}
+
+.link {
+    text-decoration: none;
+    color: $primary;
+    font-size: 1rem;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.paragraph {
+    color: $grey-3;
+    font-weight: 400;
+    width: 100%;
+}
+
+.search {
+    display: flex;
+    align-items: center;
+    border: 2px solid #e7e6ef;
+    border-radius: 5px;
+    height: 30px;
+    background-color: white;
+    transition: all 0.3s ease;
+    &:focus-within {
+        transform: scale(1.2);
     }
-    img {
-      width: 15px;
-      height: 15px;
+    &__input {
+        flex: 1;
+        border: none;
+        outline: none;
+        padding: 0 15px;
+        font-size: 14px;
+        border-color: $grey-2;
+        color: $grey-3;
+        &::placeholder {
+            color: #cbcbe0;
+        }
     }
-    &:active {
-      transform: scale(0.9);
+    &__button {
+        width: 60px;
+        height: 100%;
+        background-color: $primary;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: background 0.3s ease, transform 0.1s ease;
+        border-radius: 6px;
+        &:hover {
+            background-color: darken($primary, 5%);
+        }
+        img {
+            width: 15px;
+            height: 15px;
+        }
+        &:active {
+            transform: scale(0.9);
+        }
     }
-  }
+}
+
+.container {
+    max-width: 1140px;
+    margin: 0 auto;
+    width: 100%;
 }
