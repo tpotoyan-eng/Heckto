@@ -13,11 +13,9 @@ export class CycleProductComponent {
   route = inject(Router);
 
   viewDetails() {
-    console.log('View product:', this.product());
     this.route.navigateByUrl(`/product/${this.product().id}`);
   }
   onHover(state: boolean) {
     this.hovered.set(state);
-    console.log('hovered');
   }
 }

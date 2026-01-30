@@ -1,7 +1,7 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { IProduct } from '../../interfaces/app.model';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DataBase } from '../../app/services/data-base';
+import { DataBase } from '../../app/services/DataBaseService/data-base';
 import { Product } from '../../app/product/product';
 import { CommonModule } from '@angular/common';
 
@@ -31,7 +31,6 @@ export class ProductDetailsComponent implements OnInit {
       } else {
         this.navigator.navigate(['']);
       }
-      console.log(this.product());
     });
   }
 
@@ -65,7 +64,5 @@ export class ProductDetailsComponent implements OnInit {
         }
       }
     }
-
-    console.log(this.stars());
   }
 }

@@ -1,7 +1,7 @@
 export type ProductType = 'Tech' | 'Fashion' | 'Home' | 'Beauty' | 'Sports' | 'Trend';
 export type DiscountType = 'HeadPhone' | 'LapTop' | 'Other';
 export type ProductActionType = 'Basket' | 'Zoom' | 'Like';
-
+export type Layout = 'grid' | 'list';
 export interface IProduct {
   owner?: string;
   date?: Date;

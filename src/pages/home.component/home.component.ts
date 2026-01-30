@@ -1,5 +1,5 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { DataBase } from '../../app/services/data-base';
+import { DataBase } from '../../app/services/DataBaseService/data-base';
 import { discountProduct, IProduct } from '../../interfaces/app.model';
 import { Product } from '../../app/product/product';
 import { CommonModule, CurrencyPipe, NgStyle } from '@angular/common';
@@ -60,8 +60,6 @@ export class HomeComponent implements OnInit {
     setTimeout(() => {
       this.leastestProducts.set(shuffled);
     }, 10);
-
-    console.log('shuffeled');
   }
   seeItem(item: IProduct) {
     this.navigator.navigate(['/product', item.id]);
@@ -71,7 +69,6 @@ export class HomeComponent implements OnInit {
   }
 
   doteClick(index: number) {
-    console.log('dote index:', index);
     const newArr = this.shuffleArray<IProduct>(this.topCategories());
     this.topCategories.set(newArr);
     this.dotes = this.dotes.map((d, i) => ({
@@ -80,18 +77,16 @@ export class HomeComponent implements OnInit {
     }));
   }
   private shuffleArray<T>(array: T[]): T[] {
-    console.log(array);
     const newArray = [...array];
     for (let i = newArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
     }
-    console.log(newArray);
+
     return newArray;
   }
 
   handleAction(type: string, product: IProduct): void {
-    console.log(type);
     if (type === 'Basket') return this.addToBasket(product);
     if (type === 'Like') return alert('Liked');
     if (type === 'Zoom') return this.handleZoom(true, product);

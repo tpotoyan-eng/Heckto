@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { discountProduct } from '../../interfaces/app.model';
-import { DISCOUNT_PRODUCTS, HOMES, PRODUCTS, TOP_CATEGORIES } from '../../DB/indexDb';
-import { IProduct } from '../../interfaces/app.model';
+import { discountProduct } from '../../../interfaces/app.model';
+import { DISCOUNT_PRODUCTS, HOMES, PRODUCTS, TOP_CATEGORIES } from '../../../DB/indexDb';
+import { IProduct } from '../../../interfaces/app.model';
+import { from } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +12,18 @@ export class DataBase {
   private products: IProduct[] = PRODUCTS;
   private topCategories: IProduct[] = TOP_CATEGORIES;
   private homes: IProduct[] = HOMES;
+  readonly defaultPerPage = 10;
+
+  getProductsInRange(pageNum: number, PerPage: number = 10): [IProduct[], number] {
+    const to = pageNum * PerPage;
+    const from = (pageNum - 1) * PerPage;
+    return [this.products.slice(from, to), this.getPageCount(PerPage)];
+  }
+
+  getPageCount(perPage: number = 10): number {
+    return Math.ceil(this.products.length / perPage);
+  }
+
   getTopCategories(): IProduct[] {
     return this.topCategories;
   }

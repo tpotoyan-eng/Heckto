@@ -244,3 +244,86 @@
         transform: scale(1);
     }
 }
+
+$text-navy: #151875;
+$text-light-blue: #8a8fb9;
+$star-gold: #ffc416;
+$star-empty: #e2e2fb;
+// Shared Styles for Shop Layouts
+.product-rating {
+    margin: 5px 0;
+    .star {
+        font-size: 14px;
+        &.filled {
+            color: $star-gold;
+        }
+        &.empty {
+            color: $star-empty;
+        }
+    }
+    &.center {
+        text-align: center;
+    }
+}
+
+.product-price-row {
+    display: flex;
+    gap: 15px;
+    margin: 10px 0;
+    font-size: 16px;
+    .price-current {
+        color: $text-navy;
+    }
+    .price-old {
+        color: $text-light-blue;
+        text-decoration: line-through;
+    }
+    &.center {
+        justify-content: center;
+    }
+}
+
+.product-description {
+    color: #9096ad;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    &.short {
+        text-align: center;
+    }
+}
+
+.product__list-actions {
+    display: flex;
+    gap: 20px;
+    &.center {
+        justify-content: center;
+    }
+    .action-icon {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 5px;
+        transition: transform 0.2s;
+        img {
+            width: 18px;
+            height: 18px;
+        }
+        &:hover {
+            transform: scale(1.2);
+        }
+    }
+}
+
+:host-context(.list-layout) .product {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 20px;
+    gap: 30px;
+    text-align: left;
+    .product__img {
+        flex: 0 0 300px;
+        height: auto;
+    }
+}

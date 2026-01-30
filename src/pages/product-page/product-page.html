@@ -1,1 +1,118 @@
-<p>product-page works!</p>
+<div class="container flex-header">
+    <h1 class="heading-1">Products</h1>
+    <div class="breadcrumb">
+        <span class="home-text">Home </span>
+        <span class="dot">•</span>
+        <span class="active-text">Product</span>
+    </div>
+</div>
+
+<div class="product-toolbar container">
+    <div class="toolbar-group">
+        <label>Per Page</label>
+        <div class="custom-select-container">
+            <select class="styled-select" (change)="onPerPageChange($event)">
+        <option [value]="10">10</option>
+        <option value="5">5</option>
+      </select>
+        </div>
+    </div>
+
+    <div class="toolbar-group">
+        <label>Sort By</label>
+        <div class="custom-select-container sort-wide">
+            <select class="styled-select" (change)="onSortChange($event)">
+        <option value="high-low">Price: High -> Low</option>
+        <option value="low-high">Price: Low -> High</option>
+      </select>
+        </div>
+    </div>
+
+    <div class="toolbar-group view-mode">
+        <label>View</label>
+        <div class="icon-group">
+            <button class="view-btn" [class.active]="viewMode() === 'grid'" (click)="toggleView('grid')">
+        <svg
+          width="12"
+          height="12"
+          viewBox="0 0 12 12"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect x="0.5" y="0.5" width="4" height="4" stroke="currentColor" />
+          <rect x="7.5" y="0.5" width="4" height="4" stroke="currentColor" />
+          <rect x="0.5" y="7.5" width="4" height="4" stroke="currentColor" />
+          <rect x="7.5" y="7.5" width="4" height="4" stroke="currentColor" />
+        </svg>
+      </button>
+
+            <button class="view-btn" [class.active]="viewMode() === 'list'" (click)="toggleView('list')">
+        <svg
+          width="15"
+          height="12"
+          viewBox="0 0 15 12"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect width="15" height="4" rx="1" fill="currentColor" />
+          <rect y="8" width="15" height="4" rx="1" fill="currentColor" />
+        </svg>
+      </button>
+        </div>
+    </div>
+</div>
+
+<div class="shop-container container">
+    <aside class="filter-sidebar">
+        <section class="filter-group">
+            <h3>Product Brand</h3>
+            <ul>
+                <li><input type="checkbox" id="apple" /> <label for="apple">Apple</label></li>
+                <li><input type="checkbox" id="sony" /> <label for="sony">Sony</label></li>
+                <li><input type="checkbox" id="nike" /> <label for="nike">Nike</label></li>
+            </ul>
+        </section>
+
+        <section class="filter-group">
+            <h3>Rating Item</h3>
+            <div class="rating-list">
+                <div class="rating-row">
+                    <input type="checkbox" />
+                    <span class="stars">★★★★★</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="filter-group">
+            <h3>Price Filter</h3>
+            <ul>
+                <li><input type="checkbox" id="p1" /> <label for="p1">$0.00 - $150.00</label></li>
+                <li><input type="checkbox" id="p2" /> <label for="p2">$150.00 - $350.00</label></li>
+            </ul>
+        </section>
+    </aside>
+
+    <div class="products-area" [ngClass]="viewMode() === 'grid' ? 'grid-mode' : 'list-mode'">
+        @for (item of productes(); track $index) {
+        <app-shop-product [product]="item" [layout]="$any(viewMode() === 'grid' ? 'grid' : 'list')"></app-shop-product>
+        }
+    </div>
+</div>
+<div class="pagination-container container">
+    <div class="pagination-wrapper">
+        <button class="page-btn prev" (click)="goToPage(pageNum() - 1)">
+      <span class="arrow">❮</span>
+    </button>
+
+        <div class="page-numbers">
+            @for (page of perPageArr; track $index) {
+            <button class="number-btn" [class.active]="pageNum() === page" (click)="goToPage(page)">
+          {{ page }}
+        </button> }
+        </div>
+
+        <button class="page-btn next" (click)="goToPage(pageNum() + 1)">
+      <span class="arrow">❯</span>
+    </button>
+    </div>
+</div>

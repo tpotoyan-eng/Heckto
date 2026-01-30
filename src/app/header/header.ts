@@ -4,7 +4,7 @@ import { discountProduct } from '../../interfaces/app.model';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { DataBase } from '../services/data-base';
+import { DataBase } from '../services/DataBaseService/data-base';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -28,7 +28,6 @@ export class Header implements OnInit, OnDestroy {
     this.routeSub = this.router.events
       .pipe(filter((event): event is NavigationEnd => event instanceof NavigationEnd))
       .subscribe((event) => {
-        console.log('URL changed:', event.urlAfterRedirects);
         this.updateHeroVisibility(event.urlAfterRedirects);
       });
   }

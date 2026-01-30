@@ -1,0 +1,178 @@
+@import '../../styles/variables';
+.checked {
+    color: $star-active-color;
+}
+
+$navy-blue: #151875;
+$pink-accent: #fb2e86;
+$sky-blue: #f1f0ff;
+$text-muted: #9295aa;
+$star-gold: #ffc416;
+$border-color: #f6f7fb;
+:host {
+    display: block;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    padding: 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+    max-width: 320px;
+    cursor: pointer;
+    text-align: left;
+    &:hover {
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.05);
+        transform: translateY(-13px);
+        .image-container {
+            background-color: #ebf0ff;
+        }
+    }
+    .image-container {
+        background-color: #f6f7fb;
+        border-radius: 3px;
+        height: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        margin-bottom: 15px;
+        transition: background 0.3s;
+        img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+    }
+    .content-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        .header {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-end;
+            gap: 4px;
+            .title {
+                color: $navy-blue;
+                font-size: 1.15rem;
+                font-weight: 700;
+                margin: 0;
+            }
+            .rating {
+                font-size: 0.8rem;
+                color: #e2e2e2; // Empty star
+                .checked {
+                    color: $star-gold;
+                }
+            }
+        }
+        .pricing {
+            display: flex;
+            gap: 15px;
+            font-size: 0.95rem;
+            .current-price {
+                color: $navy-blue;
+                font-weight: 600;
+            }
+            .original-price {
+                color: $pink-accent;
+                text-decoration: line-through;
+                opacity: 0.8;
+            }
+        }
+        .description {
+            color: $text-muted;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            margin: 0;
+            // Hide description in grid view to keep it clean
+            display: none;
+        }
+        .actions {
+            display: flex;
+            gap: 18px;
+            margin-top: 5px;
+            .icon-btn {
+                background: transparent;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+                color: #535399; // Muted purple-ish blue
+                font-size: 1.1rem;
+                transition: color 0.2s;
+                &:hover {
+                    color: $pink-accent;
+                }
+            }
+        }
+    }
+    &.list {
+        flex-direction: row;
+        max-width: 100%;
+        padding: 20px;
+        gap: 30px;
+        align-items: center;
+        .image-container {
+            flex: 0 0 320px; // Fixed width for the left side
+            margin-bottom: 0;
+            height: 220px;
+        }
+        .content-container {
+            flex: 1;
+            .header {
+                flex-direction: row; // Title and Stars side-by-side
+                align-items: center;
+                gap: 20px;
+            }
+            .description {
+                display: -webkit-box; // Show description in list view
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+            .actions {
+                margin-top: 10px;
+            }
+        }
+    }
+}
+
+.actions {
+    display: flex;
+    gap: 15px; // Space between buttons
+    margin-top: 15px;
+    align-items: center;
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 35px;
+        height: 35px;
+        padding: 0;
+        background-color: transparent;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        img {
+            object-fit: contain;
+            filter: opacity(0.7);
+            transition: filter 0.2s;
+        }
+        &:hover {
+            background-color: $grey-2;
+            transform: translateY(-2px);
+            img {
+                filter: opacity(1) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+            }
+        }
+        &:active {
+            transform: scale(0.95);
+        }
+    }
+}

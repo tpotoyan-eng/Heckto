@@ -6,9 +6,6 @@ import { discountProduct } from '../../../interfaces/app.model';
   templateUrl: './discount.component.html',
   styleUrl: './discount.component.scss',
 })
-export class DiscountComponent implements OnChanges {
+export class DiscountComponent {
   product = input.required<discountProduct>();
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.product());
-  }
 }

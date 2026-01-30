@@ -1,9 +1,10 @@
 import { Component, OnChanges, SimpleChanges, input, signal, inject } from '@angular/core';
-import { DataBase } from '../services/data-base';
+import { DataBase } from '../services/DataBaseService/data-base';
 import { IProduct } from '../../interfaces/app.model';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { type ProductActionType } from '../../interfaces/app.model';
+import { LocalStorageService } from '../services/localstorageServicee/local-storage-service';
 
 @Component({
   selector: 'app-product',
@@ -12,25 +13,21 @@ import { type ProductActionType } from '../../interfaces/app.model';
   templateUrl: './product.html',
   styleUrl: './product.scss',
 })
-export class Product implements OnChanges {
+export class Product {
   product = input.required<IProduct>();
   isHovered = signal(false);
-  navigate = inject(Router);
   typeProduct = input<string>('Tech');
+  private navigate = inject(Router);
+  private localStorageService = inject(LocalStorageService);
+  private db = inject(DataBase);
+
   isZoomed = false;
   basket!: IProduct[];
 
-  constructor(protected db: DataBase) {
-    const data = localStorage.getItem('Heckto');
-    this.basket = data ? JSON.parse(data).basket : [];
-    console.log(this.basket);
-  }
+  constructor() {}
 
   onHover(state: boolean) {
     this.isHovered.set(state);
-  }
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.typeProduct());
   }
 
   viewDetailes() {
@@ -39,7 +36,7 @@ export class Product implements OnChanges {
 
   handleProductAction(actionType: ProductActionType) {
     if (actionType === 'Basket') {
-      this.addToBasket();
+      this.addToBasket(this.product());
       return;
     }
     if (actionType === 'Like') {
@@ -55,23 +52,7 @@ export class Product implements OnChanges {
     this.isZoomed = false;
     document.body.style.overflow = 'auto';
   }
-  private addToBasket() {
-    const storageData = JSON.parse(localStorage.getItem('Heckto') || '{"basket": []}');
-    const currentBasket: IProduct[] = storageData.basket;
-
-    const exists = currentBasket.find((item) => item.id === this.product().id);
-
-    if (!exists) {
-      currentBasket.push(this.product());
-
-      localStorage.setItem('Heckto', JSON.stringify({ ...storageData, basket: currentBasket }));
-
-      this.basket = currentBasket;
-
-      alert(`${this.product().name} added to basket!`);
-    } else {
-      alert('Product is already in the basket');
-    }
-    this.navigate.navigate(['/basket']);
+  private addToBasket(item: IProduct) {
+    this.localStorageService.addToBasket(item);
   }
 }
