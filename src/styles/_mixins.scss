@@ -1,9 +1,9 @@
-@mixin flex-box( $direction: row, $align: center, $justify: space-between, $wrap: nowrap, $gap: 0rem) {
+@mixin flex-box( $direction: row, $align: center, $justify: space-between, $wrap: nowrap, $gap: 0rem, $width: 100%) {
     display: flex;
     flex-direction: $direction;
     align-items: $align;
     justify-content: $justify;
     flex-wrap: $wrap;
     gap: $gap;
-    width: 100%;
+    width: $width;
 }

@@ -6,6 +6,7 @@ export interface IProduct {
   owner?: string;
   date?: Date;
   Title?: string;
+  _id?: number;
   id: number;
   name: string;
   currentPrice: number;

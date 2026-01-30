@@ -1,15 +1,26 @@
 import { discountProduct, IProduct } from '../interfaces/app.model';
 
-export const PRODUCTS: Array<IProduct> = [
+export let PRODUCTS: Array<IProduct> = [
   {
     id: 0,
     name: 'Watches',
     currentPrice: 42.0,
     originalPrice: 62.0,
-    rating: 4,
+    rating: 2,
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
     url: 'watch1.svg',
+    type: 'Tech',
+  },
+  {
+    id: 11,
+    name: 'Headphones',
+    currentPrice: 90.0,
+    originalPrice: 99.0,
+    rating: 3,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
+    url: 'Head-Point2.svg',
     type: 'Tech',
   },
   {
@@ -110,6 +121,95 @@ export const PRODUCTS: Array<IProduct> = [
     url: 'playstation.svg',
     type: 'Trend',
   },
+  {
+    id: 10,
+    name: 'Headphones',
+    currentPrice: 90.0,
+    originalPrice: 99.0,
+    rating: 3,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
+    url: 'HeadPoint1.svg',
+    type: 'Tech',
+  },
+  {
+    _id: 1,
+    id: 11,
+    name: 'Ring',
+    currentPrice: 42.0,
+    originalPrice: 62.0,
+    rating: 4,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
+    url: 'Ring.svg',
+    type: 'Trend',
+  },
+  {
+    name: 'present-box',
+    id: 12,
+    currentPrice: 42.0,
+    originalPrice: 62.0,
+    rating: 4,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
+    url: 'present-box.svg',
+    type: 'Tech',
+  },
+  {
+    id: 13,
+    name: 'Braslet',
+    currentPrice: 42.0,
+    originalPrice: 62.0,
+    rating: 4,
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
+    url: 'braslet.svg',
+    type: 'Tech',
+  },
+  {
+    id: 14,
+    _id: 1,
+    owner: 'Jon Doe',
+    date: new Date('2023-08-21'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit hendrerit ex.',
+    url: 'Home-trand1.svg',
+    type: 'Home',
+    rating: 5,
+    name: 'Home',
+    Title: 'Top essential Trends in 2023',
+    currentPrice: 211,
+    originalPrice: 232,
+  },
+  {
+    id: 15,
+    owner: 'Jon Doe',
+    date: new Date('2023-08-21'),
+    description:
+      'Nullam nec fringilla erat, ac dapibus nunc. Integer semper ipsum in fermentum aliquam. ',
+    url: 'Home-trand2.svg',
+    type: 'Home',
+    rating: 5,
+    name: 'Home',
+    Title: 'Top essential Trends in 2023',
+    currentPrice: 211,
+    originalPrice: 232,
+  },
+  {
+    _id: 3,
+    id: 16,
+    owner: 'Jon Doe',
+    date: new Date('2023-08-21'),
+    description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit hendrerit ex.',
+    url: 'home-trand3.svg',
+    type: 'Home',
+    rating: 5,
+    name: 'Home',
+    Title: 'Top essential Trends in 2023',
+    currentPrice: 211,
+    originalPrice: 232,
+  },
 ];
 
 export const DISCOUNT_PRODUCTS: discountProduct[] = [
@@ -147,6 +247,7 @@ export const DISCOUNT_PRODUCTS: discountProduct[] = [
 
 export const TOP_CATEGORIES: IProduct[] = [
   {
+    _id: 0,
     id: 0,
     name: 'Perfum',
     currentPrice: 42.0,
@@ -158,7 +259,8 @@ export const TOP_CATEGORIES: IProduct[] = [
     type: 'Fashion',
   },
   {
-    id: 1,
+    _id: 1,
+    id: 11,
     name: 'Ring',
     currentPrice: 42.0,
     originalPrice: 62.0,
@@ -169,8 +271,9 @@ export const TOP_CATEGORIES: IProduct[] = [
     type: 'Trend',
   },
   {
-    id: 2,
+    _id: 2,
     name: 'present-box',
+    id: 12,
     currentPrice: 42.0,
     originalPrice: 62.0,
     rating: 4,
@@ -180,7 +283,8 @@ export const TOP_CATEGORIES: IProduct[] = [
     type: 'Tech',
   },
   {
-    id: 3,
+    _id: 3,
+    id: 13,
     name: 'Braslet',
     currentPrice: 42.0,
     originalPrice: 62.0,
@@ -194,9 +298,10 @@ export const TOP_CATEGORIES: IProduct[] = [
 
 export const HOMES: IProduct[] = [
   {
-    id: 11,
+    id: 14,
+    _id: 1,
     owner: 'Jon Doe',
-    date: new Date('2023-08-21'), // YYYY-MM-DD
+    date: new Date('2023-08-21'),
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec hendrerit hendrerit ex.',
     url: 'Home-trand1.svg',
@@ -208,7 +313,8 @@ export const HOMES: IProduct[] = [
     originalPrice: 232,
   },
   {
-    id: 12,
+    _id: 2,
+    id: 15,
     owner: 'Jon Doe',
     date: new Date('2023-08-21'),
     description:
@@ -222,7 +328,8 @@ export const HOMES: IProduct[] = [
     originalPrice: 232,
   },
   {
-    id: 13,
+    _id: 3,
+    id: 16,
     owner: 'Jon Doe',
     date: new Date('2023-08-21'),
     description:

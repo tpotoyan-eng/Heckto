@@ -1,6 +1,10 @@
 @import '../styles/mixins';
 .flex-container {
-    @include flex-box($gap: 4rem);
+    @include flex-box($gap: 1rem);
+}
+
+.flex-column {
+    @include flex-box(column, flex-start, flex-start, $gap: 2rem);
 }
 
 .dotes {

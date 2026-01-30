@@ -1,97 +1,104 @@
 @import '../../styles/variables';
 .login-wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: $hero-section;
-  font-family: 'Lato', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 55vh;
+    font-family: 'Lato', sans-serif;
 }
 
 .login-card {
-  width: $width-big;
-  height: $height-big;
-  background-color: $white;
-  padding: 40px;
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  h2 {
-    color: #000;
-    font-size: 32px;
-    margin-bottom: 8px;
-  }
-  p {
-    color: $grey-3;
-    margin-bottom: 25px;
-  }
+    width: 18%;
+    height: $height-big;
+    background-color: $white;
+    padding: 40px;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    h2 {
+        color: #000;
+        font-size: 32px;
+        margin-bottom: 8px;
+    }
+    p {
+        color: $grey-3;
+        margin-bottom: 25px;
+    }
 }
 
 .form-group {
-  margin-bottom: 20px;
-  text-align: left;
-  input {
-    width: 100%;
-    padding: 12px;
-    border: 1.5px solid #c2c5e1;
-    border-radius: 2px;
-    box-sizing: border-box;
-    outline: none;
-    color: $grey-4;
-    &:focus {
-      border-color: $primary;
+    margin-bottom: 20px;
+    text-align: left;
+    input,
+    textarea,
+    select {
+        width: 100%;
+        padding: 12px;
+        border: 1.5px solid #c2c5e1;
+        border-radius: 2px;
+        box-sizing: border-box;
+        outline: none;
+        color: $grey-4;
+        transition: border-color 0.3s;
+        &:focus {
+            border-color: $primary;
+        }
+        // Angular invalid state
+        &.ng-invalid.ng-touched {
+            border-color: $danger;
+        }
     }
-  }
 }
 
 .forgot-password {
-  display: block;
-  text-align: left;
-  color: $grey-3;
-  font-size: 14px;
-  margin-bottom: 25px;
-  text-decoration: none;
-  &:hover {
-    color: $primary;
-  }
+    display: block;
+    text-align: left;
+    color: $grey-3;
+    font-size: 14px;
+    margin-bottom: 25px;
+    text-decoration: none;
+    &:hover {
+        color: $primary;
+    }
 }
 
 .btn-primary {
-  background-color: $primary;
-  color: $white;
-  border: none;
-  padding: 14px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.3s;
-  width: 100%;
-  &:hover {
-    background-color: $primary-dark;
-  }
+    background-color: $primary;
+    color: $white;
+    border: none;
+    padding: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+    &:hover {
+        background-color: $primary-dark;
+    }
 }
 
 .footer-link {
-  margin-top: 25px;
-  color: $grey-3;
-  a {
+    margin-top: 25px;
     color: $grey-3;
-    text-decoration: none;
-    &:hover {
-      color: $primary;
+    a {
+        color: $grey-3;
+        text-decoration: none;
+        &:hover {
+            color: $primary;
+        }
     }
-  }
 }
 
 .error-text {
-  color: $danger;
-  font-size: 12px;
-  display: block;
-  margin-top: 5px;
-  text-align: left;
+    color: $danger;
+    font-size: 12px;
+    display: block;
+    margin-top: 5px;
+    text-align: left;
+    min-height: 18px; // prevent layout shift when error appears
 }
 
 input.ng-invalid.ng-touched {
-  border-color: $danger !important;
+    border-color: $danger !important;
 }

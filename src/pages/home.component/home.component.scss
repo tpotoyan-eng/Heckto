@@ -10,7 +10,7 @@
 }
 
 .product-container {
-    @include flex-box($gap: 1rem);
+    @include flex-box($gap: 1.5rem, $wrap: wrap);
 }
 
 .section-title {

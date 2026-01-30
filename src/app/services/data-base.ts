@@ -32,12 +32,12 @@ export class DataBase {
     return featuredPr;
   }
 
-  getProductById(id: number): undefined | IProduct {
+  getProductById(id: number): null | IProduct {
     const product = this.products.find((product) => product.id === id);
     if (product) {
       return product;
     }
-    return undefined;
+    return null;
   }
 
   getTrendProducts(): IProduct[] {
@@ -46,5 +46,11 @@ export class DataBase {
 
   getHomes() {
     return this.homes;
+  }
+  getSimilarItems(itemName: string): IProduct[] | null {
+    const similars: IProduct[] = this.products.filter((item) =>
+      item.name.toLowerCase().includes(itemName.slice(3)),
+    );
+    return similars.slice(0, 3);
   }
 }

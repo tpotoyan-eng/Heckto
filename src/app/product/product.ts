@@ -4,6 +4,7 @@ import { IProduct } from '../../interfaces/app.model';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { type ProductActionType } from '../../interfaces/app.model';
+
 @Component({
   selector: 'app-product',
   standalone: true,

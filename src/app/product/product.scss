@@ -127,7 +127,7 @@
         background: $grey-2;
     }
     img {
-        pointer-events: none; // make sure img doesn’t block hover
+        pointer-events: none;
     }
 }
 
@@ -185,18 +185,18 @@
 }
 
 .zoom-overlay {
-    position: fixed; // Ensures it stays relative to the viewport
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100%; // Use 100% for better compatibility
-    height: 100%;
-    background: rgba(16, 23, 80, 0.85); // Using your $grey-4 with transparency
+    width: 100vw;
+    height: 100vh;
+    background: rgba(16, 23, 80, 0.85);
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 9999; // High z-index to stay above everything
     backdrop-filter: blur(8px);
-    cursor: zoom-out; // Visual cue that clicking closes it
+    cursor: zoom-out;
 }
 
 .zoom-content {
@@ -234,7 +234,6 @@
     }
 }
 
-// Simple entrance animation
 @keyframes zoomIn {
     from {
         opacity: 0;
