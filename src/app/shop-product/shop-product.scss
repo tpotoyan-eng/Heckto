@@ -1,177 +1,195 @@
 @import '../../styles/variables';
 @import '../../styles/mixins';
-.checked {
-    color: $star-active-color;
-}
-
-$navy-blue: #151875;
-$pink-accent: #fb2e86;
-$sky-blue: #f1f0ff;
-$text-muted: #9295aa;
-$border-color: #f6f7fb;
-:host {
-    display: block;
-    font-family: 'Josefin Sans', sans-serif;
-}
-
 .product-card {
     display: flex;
     flex-direction: column;
     background: #ffffff;
-    padding: 12px;
-    border-radius: 4px;
+    border-radius: 8px;
     transition: all 0.3s ease-in-out;
-    max-width: 320px;
+    max-width: 300px;
+    padding: 1rem;
     cursor: pointer;
-    text-align: left;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
     &:hover {
-        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.08);
-        transform: translateY(-13px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        transform: translateY(-5px);
     }
     .image-container {
-        border-radius: 3px;
+        border-radius: 8px;
+        height: 240px;
         display: flex;
         align-items: center;
         justify-content: center;
+        margin-bottom: 15px;
         overflow: hidden;
-        transition: background 0.3s;
         img {
             max-width: 100%;
-            max-height: 100%;
             width: 100%;
             height: 100%;
             object-fit: contain;
-            border-radius: 4px;
         }
     }
     .content-container {
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 8px;
         .header {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            align-items: flex-end;
-            gap: 4px;
-            .title {
-                color: $grey-3;
-                font-size: 1.15rem;
-                font-weight: 700;
+            align-items: flex-start;
+            gap: 5px;
+            h3 {
                 margin: 0;
+                color: #151875;
+                font-size: 22px;
+                font-weight: 700;
             }
             .rating {
-                font-size: 0.8rem;
+                display: flex;
+                gap: 4px;
                 color: #e2e2e2;
-                @include flex-box($gap: 0.1rem, $justify: space-between, $align: flex-end);
-                width: 20%;
+                font-size: 14px;
                 .checked {
-                    color: $star-active-color;
+                    color: #ffc416;
                 }
             }
         }
         .pricing {
             display: flex;
-            gap: 15px;
-            font-size: 0.95rem;
+            align-items: center;
+            gap: 12px;
+            font-size: 18px;
             .current-price {
-                color: $navy-blue;
+                color: #151875;
                 font-weight: 600;
             }
             .original-price {
                 color: $grey-3;
                 text-decoration: line-through;
-                opacity: 0.8;
+                font-size: 14px;
             }
         }
         .description {
-            color: $text-muted;
-            font-size: 0.9rem;
-            line-height: 1.7;
-            margin: 0;
-            // Hide description in grid view to keep it clean
-            display: none;
+            display: block;
+            color: $grey-3;
+            font-size: 14px;
+            line-height: 1.5;
+            margin: 10px 0;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }
         .actions {
             display: flex;
-            gap: 18px;
-            margin-top: 5px;
-            .icon-btn {
-                background: transparent;
-                border: none;
+            gap: 15px;
+            align-items: center;
+            margin-left: -0.75rem;
+            button {
+                @include flex-box($align: center, $justify: center);
+                width: 40px;
+                height: 40px;
                 padding: 0;
+                background-color: transparent;
+                border: none;
+                border-radius: 50%;
                 cursor: pointer;
-                color: #535399; // Muted purple-ish blue
-                font-size: 1.1rem;
-                transition: color 0.2s;
+                transition: background-color 0.3s ease, transform 0.2s ease;
+                img {
+                    width: 20px;
+                    height: 20px;
+                    object-fit: contain;
+                    filter: invert(24%) sepia(87%) saturate(3467%) hue-rotate(289deg) brightness(92%) contrast(106%);
+                    transition: transform 0.2s ease;
+                }
                 &:hover {
-                    color: $pink-accent;
+                    background-color: $grey-2;
+                    img {
+                        transform: scale(1.1);
+                    }
                 }
             }
         }
+        // Your filter remains for the icon color
     }
     &.list {
         flex-direction: row;
         max-width: 100%;
         padding: 20px;
         gap: 30px;
-        align-items: center;
         .image-container {
-            flex: 0 0 320px; // Fixed width for the left side
-            margin-bottom: 0;
+            flex: 0 0 320px;
             height: 220px;
+            margin-bottom: 0;
         }
         .content-container {
             flex: 1;
+            @include flex-box($direction: column, $align: flex-start);
+            padding-bottom: 1rem;
             .header {
-                flex-direction: row; // Title and Stars side-by-side
-                align-items: center;
-                gap: 20px;
-            }
-            .description {
-                display: -webkit-box; // Show description in list view
-                -webkit-line-clamp: 2;
-                -webkit-box-orient: vertical;
-                overflow: hidden;
-            }
-            .actions {
-                margin-top: 10px;
+                @include flex-box();
             }
         }
     }
 }
 
-.actions {
+.zoom-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(16, 23, 80, 0.85);
     display: flex;
-    gap: 15px; // Space between buttons
-    margin-top: 15px;
+    justify-content: center;
     align-items: center;
-    button {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 35px;
-        height: 35px;
-        padding: 0;
-        background-color: transparent;
+    z-index: 9999; // High z-index to stay above everything
+    backdrop-filter: blur(8px);
+    cursor: zoom-out;
+}
+
+.zoom-content {
+    position: relative;
+    max-width: 90vw;
+    max-height: 85vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: zoomIn 0.3s ease-out; // Smooth entrance
+    img {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
+        border-radius: 8px;
+        border: 3px solid $white;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        cursor: default;
+        object-fit: contain;
+    }
+    .close-btn {
+        margin-top: 20px;
+        background: $primary;
+        color: $white;
         border: none;
-        border-radius: 50%;
+        padding: 12px 30px;
+        border-radius: 4px;
+        font-weight: 600;
         cursor: pointer;
-        transition: all 0.2s ease-in-out;
-        img {
-            object-fit: contain;
-            filter: opacity(0.7);
-            transition: filter 0.2s;
-        }
+        transition: background 0.2s;
         &:hover {
-            background-color: $grey-2;
-            transform: translateY(-2px);
-            img {
-                filter: opacity(1) drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
-            }
+            background: $primary-dark;
         }
-        &:active {
-            transform: scale(0.95);
-        }
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
     }
 }

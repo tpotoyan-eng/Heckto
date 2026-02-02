@@ -80,7 +80,7 @@ export const PRODUCTS: Array<IProduct> = [
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
     url: 'MacBook.svg',
-    type: 'Trend',
+    type: 'Fashion',
     brand: 'Casio',
     discountOffer: 5,
     category: 'Laptop',

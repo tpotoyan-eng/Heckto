@@ -20,7 +20,13 @@ export class FilterProducts {
   constructor() {
     this.products = this.db.getProducts();
   }
-
+  filterProductsByName(name: string): boolean | number {
+    name = name.toLowerCase().trim();
+    if (!name) {
+      return false;
+    }
+    return this.products.findIndex((p) => p.name.toLowerCase().trim().startsWith(name));
+  }
   filterProducts(filterObj: filterSettings): IProduct[] {
     return this.products.filter(
       (p) =>

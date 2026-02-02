@@ -17,6 +17,33 @@ header {
     height: 42px;
 }
 
+.options__item {
+    position: relative; // Required so the menu stays attached to this item
+    cursor: pointer;
+    .dropdown-menu {
+        position: absolute;
+        top: 100%; // Appears directly below the item
+        left: 0;
+        background: #7e33e0; // Use your primary purple or variable
+        list-style: none;
+        padding: 10px 0;
+        min-width: 100px;
+        z-index: 100;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        li {
+            padding: 5px 15px;
+            color: white;
+            &:hover {
+                background: rgba(255, 255, 255, 0.1);
+            }
+        }
+    }
+    img.rotate {
+        transform: rotate(180deg);
+        transition: transform 0.2s;
+    }
+}
+
 .infoWrapper {
     width: 100%;
     background-color: $tertiary;

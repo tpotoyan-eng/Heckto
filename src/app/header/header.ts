@@ -5,6 +5,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { filter, Subscription } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { DataBase } from '../services/DataBaseService/data-base';
+import { FilterProducts } from '../services/FilterProducts-service/filter-products';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -21,7 +22,35 @@ export class Header implements OnInit, OnDestroy {
   private routeSub!: Subscription;
   private router = inject(Router);
   private db = inject(DataBase);
+  private filterService = inject(FilterProducts);
 
+  activeDropdown: 'lang' | 'curr' | 'none' = 'none';
+
+  readonly languages = ['English', 'Spanish', 'French'];
+  readonly currencies = ['USD', 'EUR', 'GBP'];
+
+  selectedLanguage = 'English';
+  selectedCurrency = 'USD';
+
+  toggleDropdown(menu: 'lang' | 'curr', event: Event) {
+    event.stopPropagation();
+
+    if (this.activeDropdown === menu) {
+      this.activeDropdown = 'none';
+    } else {
+      this.activeDropdown = menu;
+    }
+  }
+
+  selectLanguage(lang: string) {
+    this.selectedLanguage = lang;
+    this.activeDropdown = 'none';
+  }
+
+  selectCurrency(curr: string) {
+    this.selectedCurrency = curr;
+    this.activeDropdown = 'none';
+  }
   ngOnInit(): void {
     this.updateHeroVisibility(this.router.url);
     this.discountes = this.db.getDiscountedProducts();
@@ -83,5 +112,20 @@ export class Header implements OnInit, OnDestroy {
 
   onSearch() {
     this.search.nativeElement.style.transform = 'scale(1)';
+  }
+
+  handleSearch(element: HTMLInputElement) {
+    const name = element.value.trim();
+
+    if (!name) return;
+
+    const index = this.filterService.filterProductsByName(name);
+
+    if (index === -1 || index === null || index === undefined) {
+      alert('Item not found');
+      return;
+    }
+
+    this.router.navigate(['product', index]);
   }
 }

@@ -131,3 +131,7 @@
 .color-pink {
     color: $primary-dark;
 }
+
+.section-container {
+    @include flex-box($direction: column, $align: center, $gap: 4rem);
+}

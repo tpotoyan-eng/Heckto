@@ -1,4 +1,4 @@
-<header class="">
+<header (keydown.enter)="handleSearch(inp)">
     <div class="infoWrapper">
         <div class="container" style="height: 48px">
             <div class="genInfo">
@@ -16,13 +16,33 @@
 
             <div class="options">
                 <ul>
-                    <li class="options__item"><span>English</span><img src="white-arrow.svg" alt="" /></li>
-                    <li class="options__item"><span>USD</span><img src="white-arrow.svg" alt="" /></li>
+                    <li class="options__item dropdown" (click)="toggleDropdown('lang', $event)">
+                        <span>{{ selectedLanguage }}</span>
+                        <img src="white-arrow.svg" alt="" [class.rotate]="activeDropdown === 'lang'" /> @if (activeDropdown === 'lang') {
+                        <ul class="dropdown-menu">
+                            @for (lang of languages; track lang) {
+                            <li (click)="selectLanguage(lang); $event.stopPropagation()">{{ lang }}</li>
+                            }
+                        </ul>
+                        }
+                    </li>
+
+                    <li class="options__item dropdown" (click)="toggleDropdown('curr', $event)">
+                        <span>{{ selectedCurrency }}</span>
+                        <img src="white-arrow.svg" alt="" [class.rotate]="activeDropdown === 'curr'" /> @if (activeDropdown === 'curr') {
+                        <ul class="dropdown-menu">
+                            @for (curr of currencies; track curr) {
+                            <li (click)="selectCurrency(curr); $event.stopPropagation()">{{ curr }}</li>
+                            }
+                        </ul>
+                        }
+                    </li>
+
                     <li class="options__item">
                         <a href="/login">Login</a><img src="white-user.svg" alt="" />
                     </li>
                     <li class="options__item">
-                        <a href="/wishings">Wishings</a><img src="white-heart.svg" alt="" />
+                        <a href="/wishings">Wishings<img src="white-heart.svg" alt="Cart" /></a>
                     </li>
                     <li class="basket">
                         <a href="/basket"><img src="white-basket.svg" alt="Cart" /></a>
@@ -44,8 +64,8 @@
         </nav>
 
         <div class="search">
-            <input type="text" placeholder="Search" class="search__input" />
-            <button class="search__button">
+            <input #inp type="text" placeholder="Search" class="search__input" />
+            <button class="search__button" (click)="handleSearch(inp)">
         <img src="Search-icon.svg" alt="" class="search__button" />
       </button>
         </div>

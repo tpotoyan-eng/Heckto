@@ -36,7 +36,7 @@ export class ProductPage implements OnInit {
   ];
   perPageArr: number[] = [];
   productes = signal<IProduct[]>([]);
-  viewMode = signal<'grid' | 'list'>('list');
+  viewMode = signal<'grid' | 'list'>('grid');
   sortBy = signal<string>('high-low');
   pageNum = signal(1);
   perPage = signal(10);

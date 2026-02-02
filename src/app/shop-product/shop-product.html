@@ -25,9 +25,25 @@
         </p>
 
         <div class="actions">
-            <button><img src="Basket-icon.svg" alt="basket" /></button>
-            <button><img src="heart-icon.svg" alt="heart icon" /></button>
-            <button><img src="Zoom-icon.svg" alt="Zoom icon" /></button>
+            <button><img src="Basket-icon.svg" alt="basket" (click)="handleAction('basket')" /></button>
+            <button><img src="heart-icon.svg" alt="heart icon" (click)="handleAction('like')" /></button>
+            <button>
+        <img
+          src="Zoom-icon.svg"
+          alt="Zoom icon"
+          style="transform: scale(2.5)"
+          (click)="handleAction('Zoom')"
+        />
+      </button>
         </div>
     </div>
 </div>
+
+@if (isZoomed) {
+<div class="zoom-overlay" (click)="isZoomed = false">
+    <div class="zoom-content" (click)="$event.stopPropagation()">
+        <img [src]="product().url" [alt]="product().name" />
+        <button class="close-btn" (click)="closeZoom()">Close</button>
+    </div>
+</div>
+}
