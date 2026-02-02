@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { discountProduct } from '../../../interfaces/app.model';
 import { DISCOUNT_PRODUCTS, HOMES, PRODUCTS, TOP_CATEGORIES } from '../../../DB/indexDb';
 import { IProduct } from '../../../interfaces/app.model';
-import { from } from 'rxjs';
+import { type filterSettings } from '../../../interfaces/app.model';
 
 @Injectable({
   providedIn: 'root',

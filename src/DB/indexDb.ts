@@ -1,6 +1,6 @@
 import { discountProduct, IProduct } from '../interfaces/app.model';
 
-export let PRODUCTS: Array<IProduct> = [
+export const PRODUCTS: Array<IProduct> = [
   {
     id: 0,
     name: 'Watches',
@@ -11,6 +11,9 @@ export let PRODUCTS: Array<IProduct> = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
     url: 'watch1.svg',
     type: 'Tech',
+    brand: 'Casio',
+    discountOffer: 25,
+    category: 'Watches',
   },
   {
     id: 11,
@@ -22,6 +25,9 @@ export let PRODUCTS: Array<IProduct> = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
     url: 'Head-Point2.svg',
     type: 'Tech',
+    brand: 'Sony',
+    discountOffer: 20,
+    category: 'Headphones',
   },
   {
     id: 1,
@@ -33,6 +39,9 @@ export let PRODUCTS: Array<IProduct> = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
     url: '/watch2.svg',
     type: 'Tech',
+    brand: 'Apple',
+    discountOffer: 25,
+    category: 'Watches',
   },
   {
     id: 2,
@@ -44,6 +53,9 @@ export let PRODUCTS: Array<IProduct> = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
     url: 'HeadPoint1.svg',
     type: 'Tech',
+    brand: 'Sony',
+    discountOffer: 5,
+    category: 'Headphones',
   },
   {
     id: 3,
@@ -55,17 +67,23 @@ export let PRODUCTS: Array<IProduct> = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
     url: 'playstation.svg',
     type: 'Beauty',
+    brand: 'Apple',
+    discountOffer: 20,
+    category: 'Laptop',
   },
   {
     id: 4,
-    name: 'Black watches',
+    name: 'MacBook',
     currentPrice: 35.0,
     originalPrice: 55.0,
-    rating: 4,
+    rating: 5,
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
     url: 'MacBook.svg',
     type: 'Trend',
+    brand: 'Casio',
+    discountOffer: 5,
+    category: 'Laptop',
   },
   {
     id: 5,
@@ -77,6 +95,9 @@ export let PRODUCTS: Array<IProduct> = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
     url: 'playstation.svg',
     type: 'Tech',
+    brand: 'Sony',
+    discountOffer: 25,
+    category: 'Game Console',
   },
   {
     id: 6,
@@ -88,16 +109,22 @@ export let PRODUCTS: Array<IProduct> = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
     url: 'shoes1.svg',
     type: 'Trend',
+    brand: 'Nike',
+    discountOffer: 20,
+    category: 'Clothe',
   },
   {
     id: 7,
-    name: 'chaire',
+    name: 'Chaire',
     currentPrice: 39,
     originalPrice: 60,
     rating: 5,
     description: 'Unique Features Of leatest & Trending Poducts',
     url: 'Chaire-blue.svg',
     type: 'Home',
+    brand: 'Glassiness',
+    discountOffer: 5,
+    category: 'Jewellery',
   },
   {
     id: 8,
@@ -109,6 +136,9 @@ export let PRODUCTS: Array<IProduct> = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
     url: 'playstation.svg',
     type: 'Trend',
+    brand: 'Sony',
+    discountOffer: 25,
+    category: 'Game Console',
   },
   {
     id: 9,
@@ -120,6 +150,9 @@ export let PRODUCTS: Array<IProduct> = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
     url: 'playstation.svg',
     type: 'Trend',
+    brand: 'Sony',
+    discountOffer: 25,
+    category: 'Game Console',
   },
   {
     id: 10,
@@ -131,6 +164,9 @@ export let PRODUCTS: Array<IProduct> = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
     url: 'HeadPoint1.svg',
     type: 'Tech',
+    brand: 'Sony',
+    discountOffer: 20,
+    category: 'Headphones',
   },
   {
     _id: 1,
@@ -143,9 +179,12 @@ export let PRODUCTS: Array<IProduct> = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
     url: 'Ring.svg',
     type: 'Trend',
+    brand: 'Vke',
+    discountOffer: 5,
+    category: 'Jewellery',
   },
   {
-    name: 'present-box',
+    name: 'Present-box',
     id: 12,
     currentPrice: 42.0,
     originalPrice: 62.0,
@@ -154,6 +193,9 @@ export let PRODUCTS: Array<IProduct> = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
     url: 'present-box.svg',
     type: 'Tech',
+    brand: 'Apple',
+    discountOffer: 5,
+    category: 'Other',
   },
   {
     id: 13,
@@ -165,6 +207,9 @@ export let PRODUCTS: Array<IProduct> = [
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Magna in est adipiscing in phasellus non in justo.',
     url: 'braslet.svg',
     type: 'Tech',
+    brand: 'Apple',
+    discountOffer: 20,
+    category: 'Jewellery',
   },
   {
     id: 14,
@@ -180,13 +225,16 @@ export let PRODUCTS: Array<IProduct> = [
     Title: 'Top essential Trends in 2023',
     currentPrice: 211,
     originalPrice: 232,
+    brand: 'Glassiness',
+    discountOffer: 25,
+    category: 'Other',
   },
   {
     id: 15,
     owner: 'Jon Doe',
     date: new Date('2023-08-21'),
     description:
-      'Nullam nec fringilla erat, ac dapibus nunc. Integer semper ipsum in fermentum aliquam. ',
+      'Nullam nec fringilla erat, ac dapibus nunc. Integer semper ipsum in fermentum aliquam.',
     url: 'Home-trand2.svg',
     type: 'Home',
     rating: 5,
@@ -194,6 +242,9 @@ export let PRODUCTS: Array<IProduct> = [
     Title: 'Top essential Trends in 2023',
     currentPrice: 211,
     originalPrice: 232,
+    brand: 'Glassiness',
+    discountOffer: 25,
+    category: 'Other',
   },
   {
     _id: 3,
@@ -209,6 +260,9 @@ export let PRODUCTS: Array<IProduct> = [
     Title: 'Top essential Trends in 2023',
     currentPrice: 211,
     originalPrice: 232,
+    brand: 'Glassiness',
+    discountOffer: 25,
+    category: 'Other',
   },
 ];
 

@@ -11,7 +11,7 @@
             <h3 class="heading-4">{{ product()?.name }}</h3>
             <div class="rating">
                 @for (item of [1, 2, 3, 4, 5]; track $index) {
-                <span class="fa fa-star" [class.checked]="item <= (product()?.rating ?? 0)"> </span> }
+                <span class="fa fa-star star" [class.checked]="item <= (product()?.rating ?? 0)"> </span> }
             </div>
         </div>
 
@@ -26,8 +26,8 @@
 
         <div class="actions">
             <button><img src="Basket-icon.svg" alt="basket" /></button>
-            <button><img src="heart-icon.svg" alt="" /></button>
-            <button><img src="Zoom-icon.svg" alt="" /></button>
+            <button><img src="heart-icon.svg" alt="heart icon" /></button>
+            <button><img src="Zoom-icon.svg" alt="Zoom icon" /></button>
         </div>
     </div>
 </div>

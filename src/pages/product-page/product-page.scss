@@ -1,14 +1,14 @@
 @import '../../styles/variables';
-// Main Shop Layout
+@import '../../styles/mixins';
 .shop-container {
     display: flex; // REQUIRED to see sidebar and products side-by-side
     max-width: 1200px;
     margin: 40px auto;
     gap: 30px;
     .filter-sidebar {
-        flex: 0 0 250px; // Sidebar stays 250px wide
+        flex: 0 0 250px;
         .filter-group {
-            margin-bottom: 30px;
+            margin-bottom: 42px;
             h3 {
                 color: $grey-4;
                 font-size: 18px;
@@ -21,24 +21,29 @@
                 list-style: none;
                 padding: 0;
                 li {
-                    margin-bottom: 10px;
+                    margin-bottom: 12px;
                     display: flex;
                     align-items: center;
-                    color: $grey-3;
-                    font-size: 14px;
-                    input[type='checkbox'] {
-                        margin-right: 10px;
-                        accent-color: $primary;
+                    gap: 10px;
+                    cursor: pointer;
+                    label {
+                        font-size: 14px;
+                        color: $grey-3;
+                        transition: color 0.2s ease;
+                    }
+                    &:hover label {
+                        color: $primary;
                     }
                 }
             }
         }
         .stars {
             color: $star-active-color;
+            @include flex-box($width: 40%);
         }
     }
     .products-area {
-        flex: 1; // Takes remaining width
+        flex: 1;
         &.grid-mode {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -52,7 +57,6 @@
     }
 }
 
-// Toolbar Styles
 .product-toolbar {
     display: flex;
     align-items: center;
@@ -91,8 +95,7 @@
     }
 }
 
-$pink-accent: #fb2e86;
-$navy-blue: #151875;
+$primary-pink: #fb2e86;
 $text-light: #9096b2;
 .pagination-container {
     display: flex;
@@ -110,29 +113,29 @@ $text-light: #9096b2;
     }
     .number-btn {
         background: transparent;
-        border: 1px solid #e1e1e1; // Subtle border
-        color: $navy-blue;
+        border: 1px solid #e1e1e1;
+        color: $grey-3;
         width: 35px;
         height: 35px;
-        border-radius: 2px; // Slightly rounded corners like screenshot
+        border-radius: 2px;
         font-family: 'Josefin Sans', sans-serif;
         font-weight: 600;
         cursor: pointer;
         transition: all 0.2s ease;
         &:hover {
-            border-color: $pink-accent;
-            color: $pink-accent;
+            border-color: $primary-pink;
+            color: $primary-pink;
         }
         &.active {
-            background-color: $pink-accent;
-            border-color: $pink-accent;
+            background-color: $primary-pink;
+            border-color: $primary-pink;
             color: #ffffff;
         }
     }
     .page-btn {
         background: transparent;
         border: none;
-        color: $navy-blue;
+        color: $grey-3;
         cursor: pointer;
         padding: 5px 10px;
         font-size: 1.1rem;
@@ -142,10 +145,132 @@ $text-light: #9096b2;
             cursor: not-allowed;
         }
         &:not(:disabled):hover {
-            color: $pink-accent;
+            color: $primary-pink;
         }
         .arrow {
             font-weight: bold;
         }
     }
+}
+
+.flex-header {
+    @include flex-box($direction: column, $gap: 2rem);
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+}
+
+.breadcrumb {
+    @include flex-box($align: center, $justify: center, $gap: 1rem);
+}
+
+.rating-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    gap: 12px;
+}
+
+.checkBox-primary,
+.checkBox-info,
+.checkBox-rating {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 18px;
+    height: 18px;
+    border: 2px solid $grey-2;
+    border-radius: 4px;
+    background: $white;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.checkBox-primary {
+    background-color: $danger-light;
+    border-radius: 4px;
+    &:hover {
+        border-color: $primary;
+        box-shadow: 0 0 0 3px rgba($primary, 0.08);
+    }
+    &:checked {
+        background: $primary;
+        border-color: $primary;
+    }
+    &:checked::after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 5px;
+        width: 5px;
+        height: 9px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba($primary, 0.15);
+    }
+}
+
+.checkBox-info {
+    background-color: $info-light;
+    &:hover {
+        border-color: $info;
+        box-shadow: 0 0 0 3px rgba($info, 0.08);
+    }
+    &:checked {
+        background: $info;
+        border-color: $info;
+    }
+    &:checked::after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 5px;
+        width: 5px;
+        height: 9px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba($info, 0.15);
+    }
+}
+
+.checkBox-rating {
+    background-color: $star-secondary-color;
+    &:hover {
+        border-color: $star-active-color;
+        box-shadow: 0 0 0 3px rgba($star-active-color, 0.08);
+    }
+    &:checked {
+        background: $star-active-color;
+        border-color: $star-active-color;
+    }
+    &:checked::after {
+        content: '';
+        position: absolute;
+        top: 2px;
+        left: 5px;
+        width: 5px;
+        height: 9px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: rotate(45deg);
+    }
+    &:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba($star-active-color, 0.15);
+    }
+}
+
+.checked {
+    color: $star-active-color;
+}
+
+.gray {
+    color: $grey-2;
 }

@@ -109,10 +109,6 @@
     @include flex-box($justify: space-between, $width: 80%);
 }
 
-.checked {
-    color: $star-active-color;
-}
-
 .card-wrapper {
     position: fixed;
     top: 0;
@@ -205,6 +201,14 @@
             }
         }
     }
+}
+
+.star {
+    color: $grey-2;
+}
+
+.star.checked {
+    color: $star-active-color;
 }
 
 @keyframes zoomIn {

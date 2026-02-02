@@ -1,4 +1,5 @@
 @import '../../styles/variables';
+@import '../../styles/mixins';
 .checked {
     color: $star-active-color;
 }
@@ -7,7 +8,6 @@ $navy-blue: #151875;
 $pink-accent: #fb2e86;
 $sky-blue: #f1f0ff;
 $text-muted: #9295aa;
-$star-gold: #ffc416;
 $border-color: #f6f7fb;
 :host {
     display: block;
@@ -25,26 +25,23 @@ $border-color: #f6f7fb;
     cursor: pointer;
     text-align: left;
     &:hover {
-        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.05);
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.08);
         transform: translateY(-13px);
-        .image-container {
-            background-color: #ebf0ff;
-        }
     }
     .image-container {
-        background-color: #f6f7fb;
         border-radius: 3px;
-        height: 250px;
         display: flex;
         align-items: center;
         justify-content: center;
         overflow: hidden;
-        margin-bottom: 15px;
         transition: background 0.3s;
         img {
-            max-width: 90%;
-            max-height: 90%;
+            max-width: 100%;
+            max-height: 100%;
+            width: 100%;
+            height: 100%;
             object-fit: contain;
+            border-radius: 4px;
         }
     }
     .content-container {
@@ -58,16 +55,18 @@ $border-color: #f6f7fb;
             align-items: flex-end;
             gap: 4px;
             .title {
-                color: $navy-blue;
+                color: $grey-3;
                 font-size: 1.15rem;
                 font-weight: 700;
                 margin: 0;
             }
             .rating {
                 font-size: 0.8rem;
-                color: #e2e2e2; // Empty star
+                color: #e2e2e2;
+                @include flex-box($gap: 0.1rem, $justify: space-between, $align: flex-end);
+                width: 20%;
                 .checked {
-                    color: $star-gold;
+                    color: $star-active-color;
                 }
             }
         }
@@ -80,7 +79,7 @@ $border-color: #f6f7fb;
                 font-weight: 600;
             }
             .original-price {
-                color: $pink-accent;
+                color: $grey-3;
                 text-decoration: line-through;
                 opacity: 0.8;
             }

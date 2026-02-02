@@ -115,3 +115,19 @@
     margin: 0 auto;
     width: 100%;
 }
+
+.color-grey {
+    &-2 {
+        color: $grey-2;
+    }
+    &-3 {
+        color: $grey-3;
+    }
+    &-4 {
+        color: $grey-4;
+    }
+}
+
+.color-pink {
+    color: $primary-dark;
+}
