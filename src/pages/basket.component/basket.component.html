@@ -2,13 +2,6 @@
   <div class="basket-container">
     <div class="basket-layout">
       <div class="products-column">
-        <div class="products-header">
-          <span>Product</span>
-          <span>Price</span>
-          <span>Quantity</span>
-          <span>Total</span>
-        </div>
-
         <div class="products-list">
           @for (item of items(); track item.id) {
             <app-basket-item
@@ -33,12 +26,13 @@
             <span>Total:</span>
             <span>${{ calculateSubtotal() + 100 | number: '1.2-2' }}</span>
           </div>
-          <p class="shipping-info"><span class="dote active"></span> Shipping: $100.00</p>
-
-          <button class="btn-primary">Proceed to checkout</button>
+          <p class="shipping-info">Shipping: $100.00</p>
+          <div class="flex-container">
+            <button class="btn-primary">Proceed to checkout</button>
+          </div>
         </div>
         <div class="basket-actions">
-          <button class="btn-primary" (click)="clearCart()">Clear cart</button>
+          <button class="btn-clear" (click)="clearCart()">Clear cart</button>
         </div>
       </div>
     </div>

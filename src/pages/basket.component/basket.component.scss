@@ -1,4 +1,5 @@
 @import '../../styles/variables';
+@import '../../styles/mixins';
 .basket-container {
   max-width: 1200px;
   margin: 80px auto;
@@ -10,6 +11,14 @@
   gap: 30px;
   align-items: flex-start;
   flex-wrap: nowrap;
+}
+
+.flex-container {
+  @include flex-box($justify: center);
+  button {
+    width: 100%;
+    height: 52px;
+  }
 }
 
 .products-column {
@@ -26,19 +35,31 @@
 
 .basket-actions {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   margin-top: 30px;
   .btn-clear {
-    background: $primary;
-    color: $white;
+    color: $primary-dark;
+    background-color: transparent;
     border: none;
     padding: 10px 25px;
     border-radius: 2px;
     cursor: pointer;
     font-weight: 600;
-    transition: background 0.3s;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     &:hover {
-      background: $primary-dark;
+      background-color: rgba($primary-dark, 0.05);
+      color: lighten($primary-dark, 10%);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    &:focus {
+      outline: none;
+      border-color: $primary-dark;
+      box-shadow: 0 0 0 3px rgba($primary-dark, 0.2);
+    }
+    &:active {
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
   }
 }
@@ -55,7 +76,7 @@
 }
 
 .summary-card {
-  background-color: $hero-section;
+  background-color: $grey-1;
   padding: 35px;
   border-radius: 5px;
   text-align: left;
@@ -87,7 +108,7 @@
   }
   .btn-checkout {
     width: 100%;
-    background-color: #19d16f; // Success green from button in image
+    background-color: #19d16f;
     color: $white;
     border: none;
     padding: 15px;
@@ -106,5 +127,5 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 5rem;
+  gap: 2rem;
 }
