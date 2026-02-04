@@ -1,4 +1,4 @@
-@import '../../styles/variables';
+@use '../../styles/variables' as * ;
 header {
   width: 100%;
   display: flex;
@@ -14,7 +14,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 42px;
+  height: 72px;
 }
 
 .options {
@@ -23,6 +23,7 @@ header {
     align-items: center;
     gap: 10px;
     list-style: none;
+    cursor: pointer;
   }
 }
 
@@ -73,6 +74,10 @@ header {
       }
     }
   }
+}
+
+.height { 
+  height: 42px;
 }
 
 .infoWrapper {

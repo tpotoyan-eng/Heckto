@@ -1,6 +1,6 @@
-import { discountProduct, IProduct } from '../interfaces/app.model';
+import { IDiscountProduct, IProduct } from '../Models/inteface';
 
-export const PRODUCTS: Array<IProduct> = [
+export const PRODUCTS: IProduct[] = [
   {
     id: 0,
     name: 'Watches',
@@ -222,7 +222,7 @@ export const PRODUCTS: Array<IProduct> = [
     type: 'Home',
     rating: 5,
     name: 'Home',
-    Title: 'Top essential Trends in 2023',
+    title: 'Top essential Trends in 2023',
     currentPrice: 211,
     originalPrice: 232,
     brand: 'Glassiness',
@@ -239,7 +239,7 @@ export const PRODUCTS: Array<IProduct> = [
     type: 'Home',
     rating: 5,
     name: 'Home',
-    Title: 'Top essential Trends in 2023',
+    title: 'Top essential Trends in 2023',
     currentPrice: 211,
     originalPrice: 232,
     brand: 'Glassiness',
@@ -257,7 +257,7 @@ export const PRODUCTS: Array<IProduct> = [
     type: 'Home',
     rating: 5,
     name: 'Home',
-    Title: 'Top essential Trends in 2023',
+    title: 'Top essential Trends in 2023',
     currentPrice: 211,
     originalPrice: 232,
     brand: 'Glassiness',
@@ -266,36 +266,36 @@ export const PRODUCTS: Array<IProduct> = [
   },
 ];
 
-export const DISCOUNT_PRODUCTS: discountProduct[] = [
+export const DISCOUNT_PRODUCTS: IDiscountProduct[] = [
   {
     _id: 3,
     smallTitle: 'Ultimate Gaming Experience',
-    Title: 'Next-Gen Gaming \n Control Systems',
+    title: 'Next-Gen Gaming \n Control Systems',
     paragraph:
       'Take your gaming to the next level with high-precision controllers and lightning-fast response times.',
     imgUrl: 'playstation.svg',
     id: 8,
-    Type: 'LapTop',
+    type: 'LapTop',
   },
   {
     _id: 1,
     smallTitle: 'Premium Home Furniture Collection',
-    Title: 'Elegant Blue Velvet \n Accent Chairs',
+    title: 'Elegant Blue Velvet \n Accent Chairs',
     paragraph:
       'Enhance your living space with our latest ergonomic designs. Crafted for comfort and styled for the modern home.',
     imgUrl: 'Chaire-blue.svg',
     id: 7,
-    Type: 'Other',
+    type: 'Other',
   },
   {
     _id: 2,
-    Title: 'New Trendy Collection Headphones',
+    title: 'New Trendy Collection Headphones',
     smallTitle: 'Headphones Compact',
     paragraph:
       'Experience immersive sound quality and noise cancellation. Perfect for music lovers and professionals alike.',
     imgUrl: 'hero-HeadPoint.svg',
     id: 2,
-    Type: 'HeadPhone',
+    type: 'HeadPhone',
   },
 ];
 
@@ -362,7 +362,7 @@ export const HOMES: IProduct[] = [
     type: 'Home',
     rating: 5,
     name: 'Home',
-    Title: 'Top essential Trends in 2023',
+    title: 'Top essential Trends in 2023',
     currentPrice: 211,
     originalPrice: 232,
   },
@@ -377,7 +377,7 @@ export const HOMES: IProduct[] = [
     type: 'Home',
     rating: 5,
     name: 'Home',
-    Title: 'Top essential Trends in 2023',
+    title: 'Top essential Trends in 2023',
     currentPrice: 211,
     originalPrice: 232,
   },
@@ -392,7 +392,7 @@ export const HOMES: IProduct[] = [
     type: 'Home',
     rating: 5,
     name: 'Home',
-    Title: 'Top essential Trends in 2023',
+    title: 'Top essential Trends in 2023',
     currentPrice: 211,
     originalPrice: 232,
   },

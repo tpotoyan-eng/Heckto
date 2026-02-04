@@ -1,5 +1,5 @@
-import { Component, input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { discountProduct } from '../../../interfaces/app.model';
+import { Component, input } from '@angular/core';
+import { IDiscountProduct } from '../../../Models/inteface';
 @Component({
   selector: 'app-discount',
   imports: [],
@@ -7,5 +7,5 @@ import { discountProduct } from '../../../interfaces/app.model';
   styleUrl: './discount.component.scss',
 })
 export class DiscountComponent {
-  product = input.required<discountProduct>();
+  product = input.required<IDiscountProduct>();
 }

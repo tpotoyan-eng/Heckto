@@ -1,11 +1,10 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { DataBase } from '../../app/services/DataBaseService/data-base';
-import { discountProduct, IProduct } from '../../interfaces/app.model';
+import { IDiscountProduct, IProduct } from '../../Models/inteface';
 import { Product } from '../../app/product/product';
-import { CommonModule, CurrencyPipe, NgStyle } from '@angular/common';
+import { CommonModule, CurrencyPipe } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { CycleProductComponent } from '../../app/cycle-product-component/cycle-product-component';
-import { sign } from 'crypto';
 
 @Component({
   selector: 'app-home.component',
@@ -22,7 +21,7 @@ export class HomeComponent implements OnInit {
 
   featurdProducts = signal<IProduct[]>([]);
   leastestProducts = signal<IProduct[]>([]);
-  discountProducts = signal<discountProduct[]>([]);
+  discountProducts = signal<IDiscountProduct[]>([]);
   topCategories = signal<IProduct[]>([]);
   activeNavIndex = signal(0);
   activeDiscountNavIndex = signal(0);

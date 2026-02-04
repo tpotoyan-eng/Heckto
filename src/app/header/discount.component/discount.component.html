@@ -5,7 +5,7 @@
   <div class="hero-wrapper">
     <div class="hero-content">
       <span class="sub-title">{{ product().smallTitle }}</span>
-      <h1 class="main-title heading-2">{{ product().Title }} <br /></h1>
+      <h1 class="main-title heading-2">{{ product().title }} <br /></h1>
       <p class="paragraph">
         {{ product().paragraph }}
       </p>
@@ -14,7 +14,7 @@
 
     <div class="hero-image-container">
       <div class="image-wrapper">
-        <img [src]="product().imgUrl" alt="Headphones" />
+        <img [src]="product().imgUrl" [alt]="product().title" />
         <div class="discount-badge">
           <span>50%</span>
           <span>Off</span>

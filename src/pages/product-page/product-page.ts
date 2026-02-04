@@ -1,17 +1,17 @@
-import { Component, inject, OnInit, signal, computed } from '@angular/core';
-import { IProduct } from '../../interfaces/app.model';
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { IProduct } from '../../Models/inteface';
 import { DataBase } from '../../app/services/DataBaseService/data-base';
 import { CommonModule } from '@angular/common';
 import { ShopProduct } from '../../app/shop-product/shop-product';
 import {
-  Brend,
-  DiscountProcent,
-  Rating,
-  Catgeroies,
-  Price,
-  filterSettings,
-} from '../../interfaces/app.model';
-import { FilterProducts } from '../../app/services/FilterProducts-service/filter-products';
+  BrendType,
+  DiscountProcentType,
+  RatingType,
+  CatgeroiesType,
+  PriceType,
+} from '../../Models/type';
+import { IFilterSettings } from '../../Models/inteface';
+import { FilterProducts } from '../../app/services/FilterProductsService/filter-products';
 
 @Component({
   selector: 'app-product-page',
@@ -41,11 +41,11 @@ export class ProductPage implements OnInit {
   pageNum = signal(1);
   perPage = signal(10);
 
-  selectedBrands: Set<Brend> = new Set<Brend>();
-  selectedDiscounts: Set<DiscountProcent> = new Set<DiscountProcent>();
-  selectedRatings: Set<Rating> = new Set<Rating>();
-  selectedCategories: Set<Catgeroies> = new Set<Catgeroies>();
-  selectedPrices: Set<Price> = new Set<Price>();
+  selectedBrands: Set<BrendType> = new Set<BrendType>();
+  selectedDiscounts: Set<DiscountProcentType> = new Set<DiscountProcentType>();
+  selectedRatings: Set<RatingType> = new Set<RatingType>();
+  selectedCategories: Set<CatgeroiesType> = new Set<CatgeroiesType>();
+  selectedPrices: Set<PriceType> = new Set<PriceType>();
 
   ngOnInit(): void {
     this.loadProducts();
@@ -55,33 +55,33 @@ export class ProductPage implements OnInit {
     console.log(value, type);
     switch (type) {
       case 'brend':
-        if (this.selectedBrands.has(value as Brend)) {
-          this.selectedBrands.delete(value as Brend);
+        if (this.selectedBrands.has(value as BrendType)) {
+          this.selectedBrands.delete(value as BrendType);
         } else {
-          this.selectedBrands.add(value as Brend);
+          this.selectedBrands.add(value as BrendType);
         }
         break;
 
       case 'discount':
-        if (this.selectedDiscounts.has(value as DiscountProcent)) {
-          this.selectedDiscounts.delete(value as DiscountProcent);
+        if (this.selectedDiscounts.has(value as DiscountProcentType)) {
+          this.selectedDiscounts.delete(value as DiscountProcentType);
         } else {
-          this.selectedDiscounts.add(value as DiscountProcent);
+          this.selectedDiscounts.add(value as DiscountProcentType);
         }
         break;
 
       case 'rating':
-        if (this.selectedRatings.has(value as Rating)) {
-          this.selectedRatings.delete(value as Rating);
+        if (this.selectedRatings.has(value as RatingType)) {
+          this.selectedRatings.delete(value as RatingType);
         } else {
-          this.selectedRatings.add(value as Rating);
+          this.selectedRatings.add(value as RatingType);
         }
         break;
       case 'category':
-        if (this.selectedCategories.has(value as Catgeroies)) {
-          this.selectedCategories.delete(value as Catgeroies);
+        if (this.selectedCategories.has(value as CatgeroiesType)) {
+          this.selectedCategories.delete(value as CatgeroiesType);
         } else {
-          this.selectedCategories.add(value as Catgeroies);
+          this.selectedCategories.add(value as CatgeroiesType);
         }
         break;
     }
@@ -90,12 +90,12 @@ export class ProductPage implements OnInit {
   }
 
   applyFilters() {
-    const filterObj: filterSettings = {
-      ProductBrand: [...this.selectedBrands],
-      DiscountOffer: [...this.selectedDiscounts],
-      Rating: [...this.selectedRatings],
-      Categories: [...this.selectedCategories],
-      Price: [...this.selectedPrices],
+    const filterObj: IFilterSettings = {
+      productBrand: [...this.selectedBrands],
+      discountOffer: [...this.selectedDiscounts],
+      rating: [...this.selectedRatings],
+      categories: [...this.selectedCategories],
+      price: [...this.selectedPrices],
     };
 
     const filtered = this.filterService.filterProducts(filterObj);

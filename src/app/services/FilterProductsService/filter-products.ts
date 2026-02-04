@@ -1,13 +1,12 @@
-import { inject, Injectable, OnInit } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import {
-  Brend,
-  Catgeroies,
-  DiscountProcent,
-  filterSettings,
-  IProduct,
-  Rating,
-  Price,
-} from '../../../interfaces/app.model';
+  CatgeroiesType,
+  DiscountProcentType,
+  RatingType,
+  PriceType,
+  BrendType,
+} from '../../../Models/type';
+import { IFilterSettings, IProduct } from '../../../Models/inteface';
 import { DataBase } from '../DataBaseService/data-base';
 
 @Injectable({
@@ -27,39 +26,39 @@ export class FilterProducts {
     }
     return this.products.findIndex((p) => p.name.toLowerCase().trim().startsWith(name));
   }
-  filterProducts(filterObj: filterSettings): IProduct[] {
+  filterProducts(filterObj: IFilterSettings): IProduct[] {
     return this.products.filter(
       (p) =>
-        this.matchesBrand(p, filterObj.ProductBrand) &&
-        this.matchesDiscount(p, filterObj.DiscountOffer) &&
-        this.matchesRating(p, filterObj.Rating) &&
-        this.matchesCategory(p, filterObj.Categories) &&
-        this.matchesPrice(p, filterObj.Price),
+        this.matchesBrand(p, filterObj.productBrand) &&
+        this.matchesDiscount(p, filterObj.discountOffer) &&
+        this.matchesRating(p, filterObj.rating) &&
+        this.matchesCategory(p, filterObj.categories) &&
+        this.matchesPrice(p, filterObj.price),
     );
   }
 
-  private matchesBrand(product: IProduct, brands: Brend[]): boolean {
+  private matchesBrand(product: IProduct, brands: BrendType[]): boolean {
     if (!brands.length) return true;
     return brands.includes(product.brand!);
   }
 
-  private matchesDiscount(product: IProduct, discounts: DiscountProcent[]): boolean {
+  private matchesDiscount(product: IProduct, discounts: DiscountProcentType[]): boolean {
     if (!discounts.length) return true;
     return discounts.includes(product.discountOffer!);
   }
 
-  private matchesRating(product: IProduct, ratings: Rating[]): boolean {
+  private matchesRating(product: IProduct, ratings: RatingType[]): boolean {
     if (!ratings.length) return true;
-    return ratings.includes(product.rating as Rating);
+    return ratings.includes(product.rating as RatingType);
   }
 
-  private matchesCategory(product: IProduct, categories: Catgeroies[]): boolean {
+  private matchesCategory(product: IProduct, categories: CatgeroiesType[]): boolean {
     console.log(categories);
     if (!categories.length) return true;
     return categories.includes(product.category!);
   }
 
-  private matchesPrice(product: IProduct, prices: Price[]): boolean {
+  private matchesPrice(product: IProduct, prices: PriceType[]): boolean {
     if (!prices.length) return true;
     return prices.some(
       ([min, max]) => product.currentPrice >= min && (max === null || product.currentPrice <= max),

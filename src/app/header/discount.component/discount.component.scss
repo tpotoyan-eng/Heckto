@@ -1,5 +1,6 @@
-@import '../../../styles/variables';
-@import '../../../styles/_typography';
+@use '../../../styles/variables' as *;
+@use '../../../styles/_typography' as *;
+
 :host {
   display: block;
   background-color: #f2f0ff;

@@ -1,33 +1,32 @@
 import { Injectable } from '@angular/core';
-import { discountProduct } from '../../../interfaces/app.model';
+import { IDiscountProduct } from '../../../Models/inteface';
 import { DISCOUNT_PRODUCTS, HOMES, PRODUCTS, TOP_CATEGORIES } from '../../../DB/indexDb';
-import { IProduct } from '../../../interfaces/app.model';
-import { type filterSettings } from '../../../interfaces/app.model';
+import { IProduct } from '../../../Models/inteface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataBase {
-  private discountedProducts: discountProduct[] = DISCOUNT_PRODUCTS;
+  private discountedProducts: IDiscountProduct[] = DISCOUNT_PRODUCTS;
   private products: IProduct[] = PRODUCTS;
   private topCategories: IProduct[] = TOP_CATEGORIES;
   private homes: IProduct[] = HOMES;
   readonly defaultPerPage = 10;
 
-  getProductsInRange(pageNum: number, PerPage: number = 10): [IProduct[], number] {
+  getProductsInRange(pageNum: number, PerPage = 10): [IProduct[], number] {
     const to = pageNum * PerPage;
     const from = (pageNum - 1) * PerPage;
     return [this.products.slice(from, to), this.getPageCount(PerPage)];
   }
 
-  getPageCount(perPage: number = 10): number {
+  getPageCount(perPage = 10): number {
     return Math.ceil(this.products.length / perPage);
   }
 
   getTopCategories(): IProduct[] {
     return this.topCategories;
   }
-  getDiscountedProducts(): discountProduct[] {
+  getDiscountedProducts(): IDiscountProduct[] {
     return this.discountedProducts;
   }
 

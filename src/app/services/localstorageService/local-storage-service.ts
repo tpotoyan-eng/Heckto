@@ -1,7 +1,6 @@
-import { Injectable, afterNextRender, signal, inject, OnDestroy } from '@angular/core';
-import { IProduct } from '../../../interfaces/app.model';
+import { Injectable, afterNextRender, signal, inject } from '@angular/core';
+import { IProduct } from '../../../Models/inteface';
 import { Router } from '@angular/router';
-import { PLATFORM_ID } from '@angular/core';
 
 @Injectable({
   providedIn: 'root',

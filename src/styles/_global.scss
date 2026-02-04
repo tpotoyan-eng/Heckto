@@ -1,4 +1,5 @@
-@import '../styles/mixins';
+@use '../styles/mixins' as *;
+@use './variables' as *;
 .flex-container {
   @include flex-box($gap: 1rem);
 }
@@ -137,3 +138,5 @@
 .section-container {
   @include flex-box($direction: column, $align: center, $gap: 4rem);
 }
+
+

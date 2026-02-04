@@ -1,6 +1,6 @@
-@import '../styles/variables';
-@import '../styles/typography';
-@import '../styles/mixins';
+@use '../styles/variables' as * ;
+@use '../styles/typography' as * ;
+@use '../styles/mixins' as * ;
 .align-column {
   display: flex;
   flex-direction: column;

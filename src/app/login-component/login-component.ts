@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -11,8 +11,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
-
-  constructor(private fb: FormBuilder) {}
+  fb = inject(FormBuilder);
 
   ngOnInit(): void {
     this.loginForm = this.fb.group({
@@ -21,7 +20,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  onSubmit(event: Event) {
+  onSubmit() {
     console.log(this.loginForm);
     if (this.loginForm.valid) {
       console.log('Form Data:', this.loginForm.value);

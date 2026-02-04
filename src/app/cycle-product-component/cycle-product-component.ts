@@ -1,5 +1,5 @@
 import { Component, inject, input, signal } from '@angular/core';
-import { IProduct } from '../../interfaces/app.model';
+import { IProduct } from '../../Models/inteface';
 import { Router } from '@angular/router';
 
 @Component({

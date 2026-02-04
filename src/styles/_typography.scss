@@ -1,3 +1,5 @@
+@use './variables' as *;
+
 .heading {
     font-weight: bold;
     &-1,
@@ -46,6 +48,7 @@
     align-items: center;
     list-style: none;
     gap: 2.5rem;
+
     .nav__item {
         cursor: pointer;
         &.big a {

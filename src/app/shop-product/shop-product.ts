@@ -1,7 +1,8 @@
-import { Component, inject, input, OnChanges, SimpleChanges } from '@angular/core';
-import { IProduct, Layout } from '../../interfaces/app.model';
+import { Component, inject, input } from '@angular/core';
+import { IProduct } from '../../Models/inteface';
 import { CurrencyPipe, NgClass } from '@angular/common';
-import { LocalStorageService } from '../services/localstorageServicee/local-storage-service';
+import { LocalStorageService } from '../services/localstorageService/local-storage-service';
+import { LayoutType } from '../../Models/type';
 
 @Component({
   selector: 'app-shop-product',
@@ -9,14 +10,11 @@ import { LocalStorageService } from '../services/localstorageServicee/local-stor
   templateUrl: './shop-product.html',
   styleUrl: './shop-product.scss',
 })
-export class ShopProduct implements OnChanges {
-  layout = input.required<Layout>();
+export class ShopProduct {
+  layout = input.required<LayoutType>();
   product = input.required<IProduct>();
   private localStorageService = inject(LocalStorageService);
   isZoomed = false;
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.layout());
-  }
 
   handleAction(actionType: string) {
     actionType = actionType.toLowerCase();

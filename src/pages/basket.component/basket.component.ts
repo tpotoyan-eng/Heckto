@@ -1,9 +1,9 @@
 import { Component, computed, inject } from '@angular/core';
-import { IProduct } from '../../interfaces/app.model';
+import { IProduct } from '../../Models/inteface';
 import { BasketItem } from '../../app/basket-item/basket-item';
 import { DecimalPipe } from '@angular/common';
 import { Router } from '@angular/router';
-import { LocalStorageService } from '../../app/services/localstorageServicee/local-storage-service';
+import { LocalStorageService } from '../../app/services/localstorageService/local-storage-service';
 
 @Component({
   selector: 'app-basket',

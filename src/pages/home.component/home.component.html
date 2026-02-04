@@ -1,186 +1,209 @@
 <ng-container>
-    <div class="section-container">
-        <section class="features">
-            <div class="flex-row">
-                <h2 class="heading-2">Featured Products</h2>
-            </div>
-            <div class="product-container container">
-                @for (item of featurdProducts(); track item.id) {
-                <app-product [product]="item" /> }
-            </div>
-        </section>
+  <div class="section-container">
+    <section class="features">
+      <div class="flex-row">
+        <h2 class="heading-2">Featured Products</h2>
+      </div>
+      <div class="product-container container">
+        @for (item of featurdProducts(); track item.id) {
+          <app-product [product]="item" />
+        }
+      </div>
+    </section>
 
-        <section class="leatest-products">
-            <div class="section-title container">
-                <h2 class="heading-2">Leatest Products</h2>
-                <div class="subtitles">
-                    <ul class="nav-list">
-                        @for (item of navItems; track $index) {
-                        <li class="nav__item">
-                            <a [routerLink]="item.link" [class.active]="activeNavIndex() === $index" (click)="setActiveNav($index)">
+    <section class="leatest-products">
+      <div class="section-title container">
+        <h2 class="heading-2">Leatest Products</h2>
+        <div class="subtitles">
+          <ul class="nav-list">
+            @for (item of navItems; track $index) {
+              <li class="nav__item">
+                <a
+                  [routerLink]="item.link"
+                  [class.active]="activeNavIndex() === $index"
+                  (click)="setActiveNav($index)"
+                >
                   {{ item.name }}
                 </a>
-                        </li>
-                        }
-                    </ul>
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+      <div class="product-grid container">
+        @for (item of leastestProducts(); track item.id) {
+          <div class="product-grid__item" (click)="seeItem(item)">
+            <div class="image-wrapper">
+              <div class="product__actions">
+                <div
+                  class="icon-circle"
+                  (click)="$event.stopPropagation(); handleAction('Basket', item)"
+                >
+                  <img src="Basket-icon.svg" alt="cart" />
                 </div>
-            </div>
-            <div class="product-grid container">
-                @for (item of leastestProducts(); track item.id) {
-                <div class="product-grid__item" (click)="seeItem(item)">
-                    <div class="image-wrapper">
-                        <div class="product__actions">
-                            <div class="icon-circle" (click)="$event.stopPropagation(); handleAction('Basket', item)">
-                                <img src="Basket-icon.svg" alt="cart" />
-                            </div>
-                            <div class="icon-circle" (click)="$event.stopPropagation(); handleAction('Like', item)">
-                                <img src="heart-icon.svg" alt="wishlist" />
-                            </div>
-                            <div class="icon-circle zoom-btn" (click)="$event.stopPropagation(); handleAction('Zoom', item)">
-                                <img src="Zoom-icon.svg" alt="zoom" />
-                            </div>
-                        </div>
-
-                        <img [src]="item.url" alt="Product" />
-                    </div>
-
-                    <div class="info">
-                        <p class="product-name">{{ item.name }}</p>
-                        <div class="prices">
-                            <span class="current-price">{{ item.currentPrice | currency }}</span>
-                            <span class="original-price">{{ item.originalPrice | currency }}</span>
-                        </div>
-                    </div>
+                <div
+                  class="icon-circle"
+                  (click)="$event.stopPropagation(); handleAction('Like', item)"
+                >
+                  <img src="heart-icon.svg" alt="wishlist" />
                 </div>
-                } @empty {
-                <p>No products found.</p>
-                }
-            </div>
-        </section>
-
-        <section class="unique">
-            <div class="unique-wrapper container">
-                <div class="unique-img">
-                    <img [src]="chaire.url" alt="chaire" />
+                <div
+                  class="icon-circle zoom-btn"
+                  (click)="$event.stopPropagation(); handleAction('Zoom', item)"
+                >
+                  <img src="Zoom-icon.svg" alt="zoom" />
                 </div>
-                <div class="unique-Info">
-                    <div class="titile">
-                        <h2 class="heading-2">Unique Features Of Leatest & Trending Poducts</h2>
-                    </div>
-                    <div class="unique-info__cons">
-                        <ul>
-                            <li>All frames constructed with hardwood solids and laminates</li>
-                            <li>Reinforced with double wood dowels, glue, screw - nails corner</li>
-                            <li>Arms, backs and seats are structurally reinforced</li>
-                        </ul>
-                    </div>
-                    <div class="action">
-                        <button class="btn-primary">Add To Cart</button>
-                        <div class="product-meta">
-                            <span>B&B Italian Sofa</span>
-                            <span>$32.00</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+              </div>
 
-        <section class="Trending-products">
-            <div class="section-title">
-                <h2 class="heading-2">Trending Products</h2>
+              <img [src]="item.url" alt="Product" />
             </div>
-            <div class="product-container container">
-                @for (item of trandProducts; track $index) {
-                <app-product [product]="item" [typeProduct]="item.type"></app-product>
-                }
-            </div>
-        </section>
 
-        <section class="DiscountItem">
-            <div class="section-title">
-                <h2 class="heading-2">Discount Item</h2>
-                <div class="subtitles">
-                    <ul class="nav-list">
-                        @for (item of discountNavItems; track $index) {
-                        <li class="nav__item">
-                            <a [routerLink]="item.link" [class.active]="activeDiscountNavIndex() === $index" (click)="setActiveDiscountNav($index)">
+            <div class="info">
+              <p class="product-name">{{ item.name }}</p>
+              <div class="prices">
+                <span class="current-price">{{ item.currentPrice | currency }}</span>
+                <span class="original-price">{{ item.originalPrice | currency }}</span>
+              </div>
+            </div>
+          </div>
+        } @empty {
+          <p>No products found.</p>
+        }
+      </div>
+    </section>
+
+    <section class="unique">
+      <div class="unique-wrapper container">
+        <div class="unique-img">
+          <img [src]="chaire.url" alt="chaire" />
+        </div>
+        <div class="unique-Info">
+          <div class="titile">
+            <h2 class="heading-2">Unique Features Of Leatest & Trending Poducts</h2>
+          </div>
+          <div class="unique-info__cons">
+            <ul>
+              <li>All frames constructed with hardwood solids and laminates</li>
+              <li>Reinforced with double wood dowels, glue, screw - nails corner</li>
+              <li>Arms, backs and seats are structurally reinforced</li>
+            </ul>
+          </div>
+          <div class="action">
+            <button class="btn-primary">Add To Cart</button>
+            <div class="product-meta">
+              <span>B&B Italian Sofa</span>
+              <span>$32.00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="Trending-products">
+      <div class="section-title">
+        <h2 class="heading-2">Trending Products</h2>
+      </div>
+      <div class="product-container container">
+        @for (item of trandProducts; track $index) {
+          <app-product [product]="item" [typeProduct]="item.type"></app-product>
+        }
+      </div>
+    </section>
+
+    <section class="DiscountItem">
+      <div class="section-title">
+        <h2 class="heading-2">Discount Item</h2>
+        <div class="subtitles">
+          <ul class="nav-list">
+            @for (item of discountNavItems; track $index) {
+              <li class="nav__item">
+                <a
+                  [routerLink]="item.link"
+                  [class.active]="activeDiscountNavIndex() === $index"
+                  (click)="setActiveDiscountNav($index)"
+                >
                   {{ item.name }}
                 </a>
-                        </li>
-                        }
-                    </ul>
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+      <div class="itemInfo container">
+        <div class="itemInfo__container">
+          @for (item of discountProducts(); track $index) {
+            @if (item.type === discountNavItems[activeDiscountNavIndex()].type) {
+              <div class="shortInfo">
+                <h3 class="heading-3">20% Discount Of All Products</h3>
+                <h4 class="heading-4 primary-color">{{ item.smallTitle }}</h4>
+                <span class="paragraph grey font-size">{{ item.paragraph }}</span>
+                <div class="extentions grey font-size">
+                  <div class="ext-item">
+                    <span>Material expose like metals</span>
+                  </div>
+                  <div class="ext-item">
+                    <span>Clear lines and geomatric figures</span>
+                  </div>
+                  <div class="ext-item">
+                    <span>Material expose like metals</span>
+                  </div>
+                  <div class="ext-item">
+                    <span>Simple neutral colours.</span>
+                  </div>
                 </div>
-            </div>
-            <div class="itemInfo container">
-                <div class="itemInfo__container">
-                    @for (item of discountProducts(); track $index) { @if (item.Type === discountNavItems[activeDiscountNavIndex()].type) {
-                    <div class="shortInfo">
-                        <h3 class="heading-3">20% Discount Of All Products</h3>
-                        <h4 class="heading-4 primary-color">{{ item.smallTitle }}</h4>
-                        <span class="paragraph grey font-size">{{ item.paragraph }}</span>
-                        <div class="extentions grey font-size">
-                            <div class="ext-item">
-                                <span>Material expose like metals</span>
-                            </div>
-                            <div class="ext-item">
-                                <span>Clear lines and geomatric figures</span>
-                            </div>
-                            <div class="ext-item">
-                                <span>Material expose like metals</span>
-                            </div>
-                            <div class="ext-item">
-                                <span>Simple neutral colours.</span>
-                            </div>
-                        </div>
-                        <button class="btn-primary">Shop Now</button>
-                    </div>
-                    <div class="item__img">
-                        <img [src]="item.imgUrl" [alt]="item.Type" />
-                    </div>
-                    } }
-                </div>
-            </div>
-        </section>
-        <section class="topCategories">
-            <div class="section-title">
-                <h2 class="heading-2">Top Categories</h2>
-            </div>
-            <div class="flex-container container">
-                @for (item of topCategories(); track $index) {
-                <app-cycle-product-component [product]="item" /> }
-            </div>
-            <div class="container-full-width margin-top-middle">
-                <div class="dotes">
-                    @for (item of dotes; track $index) {
-                    <span class="dote" [class.active]="item.active" (click)="doteClick($index)"></span> }
-                </div>
-            </div>
-        </section>
-        <section class="subscrbe">
-            <div class="section-title container">
-                <h2 class="heading-2" style="width: 60%; text-align: center">
-                    Get Latest Update By Subscribe 0ur Newsletter
-                </h2>
-                <button class="btn-primary">Subscribe</button>
-            </div>
-        </section>
-        <section class="leastBlog">
-            <div class="section-title">
-                <h2 class="heading-2">Least Blog</h2>
-            </div>
-            <div class="leastBlog__product container">
-                @for (item of homes(); track $index) {
-                <app-product [product]="item" [typeProduct]="item.type" /> }
-            </div>
-        </section>
-    </div>
+                <button class="btn-primary">Shop Now</button>
+              </div>
+              <div class="item__img">
+                <img [src]="item.imgUrl" [alt]="item.type" />
+              </div>
+            }
+          }
+        </div>
+      </div>
+    </section>
+    <section class="topCategories">
+      <div class="section-title">
+        <h2 class="heading-2">Top Categories</h2>
+      </div>
+      <div class="flex-container container">
+        @for (item of topCategories(); track $index) {
+          <app-cycle-product-component [product]="item" />
+        }
+      </div>
+      <div class="container-full-width margin-top-middle">
+        <div class="dotes">
+          @for (item of dotes; track $index) {
+            <span class="dote" [class.active]="item.active" (click)="doteClick($index)"></span>
+          }
+        </div>
+      </div>
+    </section>
+    <section class="subscrbe">
+      <div class="section-title container">
+        <h2 class="heading-2" style="width: 60%; text-align: center">
+          Get Latest Update By Subscribe 0ur Newsletter
+        </h2>
+        <button class="btn-primary">Subscribe</button>
+      </div>
+    </section>
+    <section class="leastBlog">
+      <div class="section-title">
+        <h2 class="heading-2">Least Blog</h2>
+      </div>
+      <div class="leastBlog__product container">
+        @for (item of homes(); track $index) {
+          <app-product [product]="item" [typeProduct]="item.type" />
+        }
+      </div>
+    </section>
+  </div>
 </ng-container>
 
 @if (isZoomed()) {
-<div class="zoom-overlay" (click)="handleZoom(false, null)">
+  <div class="zoom-overlay" (click)="handleZoom(false, null)">
     <div class="zoom-content" (click)="$event.stopPropagation()">
-        <img [src]="url()" alt="Zoomed Product" />
-        <button class="close-btn" (click)="handleZoom(false, null)">Close</button>
+      <img [src]="url()" alt="Zoomed Product" />
+      <button class="close-btn" (click)="handleZoom(false, null)">Close</button>
     </div>
-</div>
+  </div>
 }

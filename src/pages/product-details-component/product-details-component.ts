@@ -1,5 +1,5 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { IProduct } from '../../interfaces/app.model';
+import { IProduct } from '../../Models/inteface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DataBase } from '../../app/services/DataBaseService/data-base';
 import { Product } from '../../app/product/product';
@@ -50,6 +50,7 @@ export class ProductDetailsComponent implements OnInit {
       alert('Product Not found');
       return;
     }
+
     this.starsCount.set(Product.rating ?? 0);
 
     const similarItems: IProduct[] = this.db.getSimilarItems(Product.name) ?? [];
