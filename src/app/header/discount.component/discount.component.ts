@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { IDiscountProduct } from '../../../Models/inteface';
+import { IDiscountProduct } from '../../../Models/interface';
 @Component({
   selector: 'app-discount',
   imports: [],

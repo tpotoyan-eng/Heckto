@@ -1,4 +1,4 @@
-import { IDiscountProduct, IProduct } from '../Models/inteface';
+import { IDiscountProduct, IProduct } from '../Models/interface';
 
 export const PRODUCTS: IProduct[] = [
   {

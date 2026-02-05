@@ -1,4 +1,4 @@
-// src/app/footer/footer.ts
+// src/app/footer/footer.component.ts
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { SocialMedia } from '../../Models/enum';

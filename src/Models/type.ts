@@ -1,3 +1,5 @@
+import { IBrandDescription , ICategories , IPriceRange } from "./interface";
+
 export type ProductType = 'Tech' | 'Fashion' | 'Home' | 'Beauty' | 'Sports' | 'Trend';
 export type DiscountType = 'HeadPhone' | 'LapTop' | 'Other';
 export type ProductActionType = 'Basket' | 'Zoom' | 'Like';
@@ -16,3 +18,10 @@ export type CatgeroiesType =
   | 'Perfume';
 
 export type PriceType = [0, 150] | [150, 350] | [350, 500] | [550, 800] | [800, null];
+export type ActiveDropdownType = 'lang' | 'curr' | 'none';
+export type FilterOptionsType = 
+  | IBrandDescription[] 
+  | boolean[][] 
+  | ICategories[] 
+  | IPriceRange[]
+;

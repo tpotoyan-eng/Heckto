@@ -1,0 +1,21 @@
+<div class="basket-item">
+  <div class="product-info">
+    <div class="product-image">
+      <img [src]="itemInp().url" [alt]="itemInp().name" />
+    </div>
+    <div class="product-details">
+      <h3 class="product-name">{{ itemInp().name }}</h3>
+      <p class="product-price">${{ itemInp().currentPrice | number: numberFormat.Currency }}</p>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="quantity-selector">
+      <button (click)="updateCount(quantityAction.DecreaseByOne)" type="button">-</button>
+      <span class="count">{{ quantity() }}</span>
+      <button (click)="updateCount(quantityAction.IncreaseByOne)" type="button">+</button>
+    </div>
+    <div class="total-price">
+      ${{ itemInp().currentPrice * quantity() | number: numberFormat.Currency }}
+    </div>
+  </div>
+</div>

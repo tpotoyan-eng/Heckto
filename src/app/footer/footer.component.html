@@ -1,0 +1,36 @@
+<footer>
+  <div class="bckColor-grey-1">
+    <div class="container">
+      <div class="linkes">
+        <div class="additonal">
+          <h2 class="heading-2">Heckto</h2>
+          <div class="search">
+            <input type="text" placeholder="Enter Email Address" class="search__input" />
+            <button class="search__button">Sign Up</button>
+          </div>
+          <span class="paragraph">17 Princess Road, London, Greater London NW1 8JR, UK</span>
+        </div>
+        @for (section of footerSections; track section.title) {
+          <div class="additonal">
+            <h4 class="heading-4">{{ section.title }}</h4>
+            @for (link of section.links; track link) {
+              <a (click)="handleNavigate(link)">{{ link }}</a>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+  <div class="bckColor-grey-2">
+    <div class="container">
+      <div class="static-info">
+        <span class="paragraph">©Webecy - All Rights Reserved</span>
+        <div class="icons-container">
+          @for (social of socialMedia; track social) {
+            <img [src]="social + '.svg'" [alt]="social + ' icon'" />
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

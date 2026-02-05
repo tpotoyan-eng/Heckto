@@ -1,23 +1,37 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from '../pages/home.component/home.component';
-import { LoginComponent } from './login-component/login-component';
-import { BasketComponent } from '../pages/basket.component/basket.component';
-import { ProductPage } from '../pages/product-page/product-page';
-import { ProductDetailsComponent } from '../pages/product-details-component/product-details-component';
+import { HomeComponent } from '../pages/homePage/homePage.component';
+import { ProductPage } from '../pages/productPage/productPage.component';
+import { ProductDetailsComponent } from '../pages/productDetailsPage/productDetailsPage.component';
+import { BasketComponent } from '../pages/basketPage/basketPage.component';
+import { LoginComponent } from '../pages/loginComponent/login-component';
+import { DataBase } from './services/DataBaseService/dataBase';
+import { FilterProducts } from './services/FilterProductsService/filterProducts';
 
 export const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
+    pathMatch: 'full',
   },
   {
     path: 'home',
     redirectTo: '',
   },
   {
-    path: 'product/:id',
-    component: ProductDetailsComponent,
+    path: 'products',
+    providers: [DataBase, FilterProducts],
+    children: [
+      {
+        path: '',
+        component: ProductPage,
+      },
+      {
+        path: ':id',
+        component: ProductDetailsComponent,
+      },
+    ],
   },
+
   {
     path: 'login',
     component: LoginComponent,
@@ -26,8 +40,9 @@ export const routes: Routes = [
     path: 'basket',
     component: BasketComponent,
   },
+
   {
-    path: 'products',
-    component: ProductPage,
+    path: '**',
+    redirectTo: '',
   },
 ];
