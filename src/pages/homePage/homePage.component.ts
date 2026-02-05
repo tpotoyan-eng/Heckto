@@ -1,6 +1,6 @@
 // src/pages/homePage/homePage.component.ts
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { DataBase } from '../../app/services/DataBaseService/dataBase';
+import { DataBase } from '../../app/services/dataBaseService/dataBase';
 import { IDiscountProduct, IProduct } from '../../models/interface';
 import { ProductComponent } from '../../app/product/product.component';
 import { CommonModule, CurrencyPipe } from '@angular/common';

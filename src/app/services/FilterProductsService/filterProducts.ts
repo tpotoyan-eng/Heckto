@@ -8,7 +8,7 @@ import {
   BrendType,
 } from '../../../models/type';
 import { IFilterSettings, IProduct } from '../../../models/interface';
-import { DataBase } from '../DataBaseService/dataBase';
+import { DataBase } from '../dataBaseService/dataBase';
 
 @Injectable({
   providedIn: 'root',

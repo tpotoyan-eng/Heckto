@@ -1,7 +1,7 @@
 // src/pages/productPage/productPage.component.ts
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { IProduct , ICategories  , IBrandDescription , IFilterSettings , IFilterGroupConfig}  from '../../models/interface';
-import { DataBase } from '../../app/services/DataBaseService/dataBase';
+import { DataBase } from '../../app/services/dataBaseService/dataBase';
 import { CommonModule } from '@angular/common';
 import { ShopProduct } from '../../app/shopProduct/shopProduct.component';
 import {
@@ -12,7 +12,7 @@ import {
   PriceType,
 } from '../../models/type';
 
-import { FilterProducts } from '../../app/services/FilterProductsService/filterProducts';
+import { FilterProducts } from '../../app/services/filterProductsService/filterProducts';
 import { BrandNames, FilterBy } from '../../models/enum';
 
 @Component({

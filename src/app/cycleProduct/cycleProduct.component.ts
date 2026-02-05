@@ -1,7 +1,7 @@
 // src/app/cycleProduct/cycleProduct.component.ts
 import { Component, inject, input, signal } from '@angular/core';
 import { IProduct } from '../../models/interface';
-import { NavigatorService } from '../services/NavigatorService/navigatorService';
+import { NavigatorService } from '../services/navigatorService/navigatorService';
 
 @Component({
   selector: 'app-cycle-product-component',

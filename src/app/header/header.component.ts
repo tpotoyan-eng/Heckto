@@ -2,7 +2,6 @@
 import {
   Component,
   OnInit,
-  OnDestroy,
   signal,
   inject,
   computed,
@@ -12,10 +11,10 @@ import {
 import { DiscountComponent } from './discount.component/discount.component';
 import { IDiscountProduct } from '../../models/interface';
 import { CommonModule } from '@angular/common';
-import { FilterProducts } from '../services/FilterProductsService/filterProducts';
-import { NavigatorService } from '../services/NavigatorService/navigatorService';
+import { FilterProducts } from '../services/filterProductsService/filterProducts';
+import { NavigatorService } from '../services/navigatorService/navigatorService';
 import { FormsModule } from '@angular/forms';
-import { DataBase } from '../services/DataBaseService/dataBase';
+import { DataBase } from '../services/dataBaseService/dataBase';
 import { Currencies , Languages  } from '../../models/enum';
 import { ActiveDropdownType } from '../../models/type';
 

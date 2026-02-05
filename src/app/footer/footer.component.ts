@@ -1,6 +1,6 @@
 // src/app/footer/footer.component.ts
 import { Component, inject } from '@angular/core';
-import { NavigatorService } from '../services/NavigatorService/navigatorService';
+import { NavigatorService } from '../services/navigatorService/navigatorService';
 import { SocialMedia } from '../../models/enum';
 
 @Component({

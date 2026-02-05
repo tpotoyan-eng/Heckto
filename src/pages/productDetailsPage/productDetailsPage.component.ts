@@ -2,10 +2,10 @@
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { IProduct } from '../../models/interface';
 import { ActivatedRoute } from '@angular/router';
-import { DataBase } from '../../app/services/DataBaseService/dataBase';
+import { DataBase } from '../../app/services/dataBaseService/dataBase';
 import { ProductComponent } from '../../app/product/product.component';
 import { CommonModule } from '@angular/common';
-import { NavigatorService } from '../../app/services/NavigatorService/navigatorService';
+import { NavigatorService } from '../../app/services/navigatorService/navigatorService';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
@@ -65,6 +65,7 @@ export class ProductDetailsPageComponent implements OnInit {
     cvv: new FormControl('', [Validators.required, Validators.maxLength(3)]),
     holderName: new FormControl('', [Validators.required]),
   });
+
   product = signal<null | IProduct | null>(null);
   starsCount = signal<number>(0);
   stars = signal<boolean[]>([]);
@@ -81,11 +82,14 @@ export class ProductDetailsPageComponent implements OnInit {
       }
     });
   }
-  handleNavigation() {}
+  handleNavigation() {
+    
+  }
 
   addToCard(showCard: boolean) {
     this.showCard.set(showCard);
   }
+  
   onPay() {
     console.log(this.paymentForm);
     if (this.paymentForm.valid) {
