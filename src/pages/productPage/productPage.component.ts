@@ -1,6 +1,6 @@
 // src/pages/productPage/productPage.component.ts
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { IProduct , ICategories  , IBrandDescription , IFilterSettings , IFilterGroupConfig}  from '../../Models/interface';
+import { IProduct , ICategories  , IBrandDescription , IFilterSettings , IFilterGroupConfig}  from '../../models/interface';
 import { DataBase } from '../../app/services/DataBaseService/dataBase';
 import { CommonModule } from '@angular/common';
 import { ShopProduct } from '../../app/shopProduct/shopProduct.component';
@@ -10,10 +10,10 @@ import {
   RatingType,
   CatgeroiesType,
   PriceType,
-} from '../../Models/type';
+} from '../../models/type';
 
 import { FilterProducts } from '../../app/services/FilterProductsService/filterProducts';
-import { BrandNames, FilterBy } from '../../Models/enum';
+import { BrandNames, FilterBy } from '../../models/enum';
 
 @Component({
   selector: 'app-product-page',
@@ -23,7 +23,7 @@ import { BrandNames, FilterBy } from '../../Models/enum';
   styleUrl: './productPage.component.scss',
   providers: [DataBase]
 })
-export class ProductPage implements OnInit {
+export class ProductPageComponent implements OnInit {
   
   private filterService = inject(FilterProducts);
   private db = inject(DataBase);

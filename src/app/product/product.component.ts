@@ -1,10 +1,10 @@
 // src/app/product/product.component.ts
 import { Component, input, signal, inject } from '@angular/core';
 
-import { IProduct } from '../../Models/interface';
+import { IProduct } from '../../models/interface';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { type ProductActionType } from '../../Models/type';
+import {  ProductActionType } from '../../models/type';
 import { LocalStorageService } from '../services/localstorageService/localStorageService';
 import {
   DateFormat,
@@ -12,7 +12,7 @@ import {
   ProductAction,
   ProductActionIcons,
   ProductDescription,
-} from '../../Models/enum';
+} from '../../models/enum';
 
 @Component({
   selector: 'app-product',
@@ -20,7 +20,7 @@ import {
   templateUrl: 'product.component.html',
   styleUrl: 'product.component.scss',
 })
-export class Product {
+export class ProductComponent {
   private navigate = inject(Router);
   private localStorageService = inject(LocalStorageService);
 

@@ -1,8 +1,8 @@
 // src/app/services/DataBaseService/dataBase.ts
 import { Injectable } from '@angular/core';
-import { IDiscountProduct } from '../../../Models/interface';
+import { IDiscountProduct } from '../../../models/interface';
 import { DISCOUNT_PRODUCTS, HOMES, PRODUCTS, TOP_CATEGORIES } from '../../../DB/indexDb';
-import { IProduct } from '../../../Models/interface';
+import { IProduct } from '../../../models/interface';
 
 @Injectable({
   providedIn: 'root',

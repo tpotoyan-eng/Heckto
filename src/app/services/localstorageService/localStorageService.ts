@@ -1,6 +1,6 @@
 // src/app/services/localstorageService/localStorageService.ts
 import { Injectable, afterNextRender, signal, inject } from '@angular/core';
-import { IProduct } from '../../../Models/interface';
+import { IProduct } from '../../../models/interface';
 import { Router } from '@angular/router';
 
 @Injectable({

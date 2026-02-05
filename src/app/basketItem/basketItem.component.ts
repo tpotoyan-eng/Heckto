@@ -1,8 +1,8 @@
 // src/app/basketItem/basketItem.component.ts
 import { Component, input, inject, computed } from '@angular/core';
-import { IProduct } from '../../Models/interface';
+import { IProduct } from '../../models/interface';
 import { CommonModule } from '@angular/common';
-import { NumberFormat, QuantityAction } from '../../Models/enum';
+import { NumberFormat , QuantityAction } from '../../models/enum';
 import { LocalStorageService } from '../services/localstorageService/localStorageService';
 
 @Component({
@@ -12,7 +12,7 @@ import { LocalStorageService } from '../services/localstorageService/localStorag
   templateUrl: 'basketItem.component.html',
   styleUrl: 'basketItem.component.scss',
 })
-export class BasketItem {
+export class BasketItemComponent {
 
   private localStorageService = inject(LocalStorageService);
 

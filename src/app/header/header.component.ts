@@ -10,14 +10,14 @@ import {
   effect,
 } from '@angular/core';
 import { DiscountComponent } from './discount.component/discount.component';
-import { IDiscountProduct } from '../../Models/interface';
+import { IDiscountProduct } from '../../models/interface';
 import { CommonModule } from '@angular/common';
 import { FilterProducts } from '../services/FilterProductsService/filterProducts';
-import { Currencies, Languages } from '../../Models/enum';
 import { NavigatorService } from '../services/NavigatorService/navigatorService';
 import { FormsModule } from '@angular/forms';
-import { ActiveDropdownType } from '../../Models/type';
 import { DataBase } from '../services/DataBaseService/dataBase';
+import { Currencies , Languages  } from '../../models/enum';
+import { ActiveDropdownType } from '../../models/type';
 
 @Component({
   selector: 'app-header',
@@ -26,7 +26,7 @@ import { DataBase } from '../services/DataBaseService/dataBase';
   styleUrl: 'header.component.scss',
   providers: [DataBase],
 })
-export class Header implements OnInit {
+export class HeaderComponent implements OnInit {
   
 
   private navService = inject(NavigatorService);

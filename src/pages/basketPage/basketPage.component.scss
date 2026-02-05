@@ -1,5 +1,6 @@
-@import '../../styles/variables';
-@import '../../styles/mixins';
+// src/pages/basketPage/basketPage.component.scss
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
 .basket-container {
   max-width: 1200px;
   margin: 80px auto;

@@ -1,3 +1,5 @@
+// src/Models/enum.ts
+
 export enum NumberFormat {
   Currency = '1.2-2',
   Percent = '1.0-0',

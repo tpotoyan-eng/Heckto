@@ -1,3 +1,4 @@
+// src/app/services/FilterProductsService/filterProducts.ts
 import { inject, Injectable } from '@angular/core';
 import {
   CatgeroiesType,
@@ -5,8 +6,8 @@ import {
   RatingType,
   PriceType,
   BrendType,
-} from '../../../Models/type';
-import { IFilterSettings, IProduct } from '../../../Models/interface';
+} from '../../../models/type';
+import { IFilterSettings, IProduct } from '../../../models/interface';
 import { DataBase } from '../DataBaseService/dataBase';
 
 @Injectable({

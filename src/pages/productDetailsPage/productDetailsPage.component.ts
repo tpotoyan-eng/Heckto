@@ -1,21 +1,21 @@
 // src/pages/productDetailsPage/productDetailsPage.component.ts
 import { Component, inject, OnInit, signal } from '@angular/core';
-import { IProduct } from '../../Models/interface';
+import { IProduct } from '../../models/interface';
 import { ActivatedRoute } from '@angular/router';
 import { DataBase } from '../../app/services/DataBaseService/dataBase';
-import { Product } from '../../app/product/product.component';
+import { ProductComponent } from '../../app/product/product.component';
 import { CommonModule } from '@angular/common';
 import { NavigatorService } from '../../app/services/NavigatorService/navigatorService';
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-product-details-component',
-  imports: [Product, CommonModule, ReactiveFormsModule],
+  imports: [ProductComponent, CommonModule, ReactiveFormsModule],
   templateUrl: './productDetailsPage.component.html',
   styleUrl: './productDetailsPage.component.scss',
   providers: [DataBase],
 })
-export class ProductDetailsComponent implements OnInit {
+export class ProductDetailsPageComponent implements OnInit {
   private route = inject(ActivatedRoute);
   private db = inject(DataBase);
   private navigator = inject(NavigatorService);

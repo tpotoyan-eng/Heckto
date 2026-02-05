@@ -3,17 +3,17 @@ import { Component, computed, inject } from '@angular/core';
 import { DecimalPipe, NgClass } from '@angular/common';
 import { Router } from '@angular/router';
 import { LocalStorageService } from '../../app/services/localstorageService/localStorageService';
-import { NumberFormat } from '../../Models/enum';
-import { BasketItem } from '../../app/basketItem/basketItem.component';
+import { NumberFormat } from '../../models/enum';
+import { BasketItemComponent } from '../../app/basketItem/basketItem.component';
 
 @Component({
   selector: 'app-basket',
   standalone: true,
   templateUrl: './basketPage.component.html',
   styleUrl: './basketPage.component.scss',
-  imports: [BasketItem, DecimalPipe, NgClass],
+  imports: [BasketItemComponent, DecimalPipe, NgClass],
 })
-export class BasketComponent {
+export class BasketPageComponent {
   private localStorageService = inject(LocalStorageService);
   private navigator = inject(Router);
 

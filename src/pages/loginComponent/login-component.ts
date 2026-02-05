@@ -1,3 +1,4 @@
+// src/pages/loginComponent/login-component.ts
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -9,7 +10,7 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [CommonModule, ReactiveFormsModule],
   styleUrls: ['./login-component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginPageComponent implements OnInit {
   loginForm!: FormGroup;
   fb = inject(FormBuilder);
 

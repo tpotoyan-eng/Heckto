@@ -1,21 +1,21 @@
 // src/pages/homePage/homePage.component.ts
 import { Component, inject, OnInit, signal } from '@angular/core';
 import { DataBase } from '../../app/services/DataBaseService/dataBase';
-import { IDiscountProduct, IProduct } from '../../Models/interface';
-import { Product } from '../../app/product/product.component';
+import { IDiscountProduct, IProduct } from '../../models/interface';
+import { ProductComponent } from '../../app/product/product.component';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import { ProductAction, ProductActionIcons } from '../../Models/enum';
+import { ProductAction, ProductActionIcons } from '../../models/enum';
 import { CycleProductComponent } from '../../app/cycleProduct/cycleProduct.component';
 
 @Component({
   selector: 'app-home.component',
-  imports: [Product, RouterLink, CurrencyPipe, CycleProductComponent, CommonModule],
+  imports: [ProductComponent, RouterLink, CurrencyPipe, CycleProductComponent, CommonModule],
   templateUrl: './homePage.component.html',
   styleUrl: './homePage.component.scss',
   providers: [DataBase],
 })
-export class HomeComponent implements OnInit {
+export class HomePageComponent implements OnInit {
   protected db = inject(DataBase);
   protected navigator = inject(Router);
 

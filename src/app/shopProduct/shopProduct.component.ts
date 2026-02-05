@@ -1,9 +1,9 @@
 // src/app/shopProduct/shopProduct.component.ts
 import { Component, inject, input } from '@angular/core';
-import { IProduct } from '../../Models/interface';
+import { IProduct } from '../../models/interface';
 import { CurrencyPipe, NgClass } from '@angular/common';
 import { LocalStorageService } from '../services/localstorageService/localStorageService';
-import { LayoutType } from '../../Models/type';
+import { LayoutType } from '../../models/type';
 
 @Component({
   selector: 'app-shop-product',

@@ -1,16 +1,16 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from '../pages/homePage/homePage.component';
-import { ProductPage } from '../pages/productPage/productPage.component';
-import { ProductDetailsComponent } from '../pages/productDetailsPage/productDetailsPage.component';
-import { BasketComponent } from '../pages/basketPage/basketPage.component';
-import { LoginComponent } from '../pages/loginComponent/login-component';
+import { HomePageComponent } from '../pages/homePage/homePage.component';
+import { ProductPageComponent } from '../pages/productPage/productPage.component';
+import { ProductDetailsPageComponent } from '../pages/productDetailsPage/productDetailsPage.component';
+import { BasketPageComponent } from '../pages/basketPage/basketPage.component';
+import { LoginPageComponent } from '../pages/loginComponent/login-component';
 import { DataBase } from './services/DataBaseService/dataBase';
 import { FilterProducts } from './services/FilterProductsService/filterProducts';
 
 export const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: HomePageComponent,
     pathMatch: 'full',
   },
   {
@@ -23,22 +23,22 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        component: ProductPage,
+        component: ProductPageComponent,
       },
       {
         path: ':id',
-        component: ProductDetailsComponent,
+        component: ProductDetailsPageComponent,
       },
     ],
   },
 
   {
     path: 'login',
-    component: LoginComponent,
+    component: LoginPageComponent,
   },
   {
     path: 'basket',
-    component: BasketComponent,
+    component: BasketPageComponent,
   },
 
   {

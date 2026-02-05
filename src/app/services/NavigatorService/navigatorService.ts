@@ -1,3 +1,4 @@
+// src/app/services/NavigatorService/navigatorService.ts
 import { inject, Injectable, signal, Signal } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs';
