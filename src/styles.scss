@@ -1,10 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import './styles/_variables';
-@import './styles/buttons';
-@import './styles/typography';
-@import './styles/global';
-@import './styles/mixins';
+@use './styles/_variables' as *;
+@use './styles/buttons' as *;
+@use './styles/typography' as *;
+@use './styles/global' as *;
+@use './styles/mixins' as *;
 * {
     margin: 0;
     box-sizing: border-box;

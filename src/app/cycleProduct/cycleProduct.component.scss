@@ -1,0 +1,38 @@
+// src/app/cycleProduct/cycleProduct.component.scss
+.product {
+    position: relative;
+    cursor: pointer;
+    backface-visibility: hidden;
+}
+
+.img {
+    position: relative;
+    border-radius: 50%;
+    background-color: #10175026;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    img {
+        height: 17rem;
+        border-radius: 50%;
+        object-fit: cover;
+        z-index: 5;
+        transition: transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
+        width: 272px;
+    }
+    &.isHovered {
+        background-color: #10175040;
+        img {
+            transform: translate(8px, -8px);
+        }
+    }
+}
+
+.heading-3 {
+    margin-top: 10px;
+    color: #151875;
+    transition: color 0.3s ease;
+}
+
+.view-details-btn.visible {
+    opacity: 1;
+    transform: translateX(-50%) translateY(-76px);
+}

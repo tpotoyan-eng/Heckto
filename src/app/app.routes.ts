@@ -1,33 +1,50 @@
+// src/app/app.routes.ts
 import { Routes } from '@angular/router';
-import { HomeComponent } from '../pages/home.component/home.component';
-import { LoginComponent } from './login-component/login-component';
-import { BasketComponent } from '../pages/basket.component/basket.component';
-import { ProductPage } from '../pages/product-page/product-page';
-import { ProductDetailsComponent } from '../pages/product-details-component/product-details-component';
+import { HomePageComponent } from '../pages/homePage/homePage.component';
+import { ProductPageComponent } from '../pages/productPage/productPage.component';
+import { ProductDetailsPageComponent } from '../pages/productDetailsPage/productDetailsPage.component';
+import { BasketPageComponent } from '../pages/basketPage/basketPage.component';
+import { LoginPageComponent } from '../pages/loginComponent/login-component';
+import { DataBase } from './services/dataBaseService/dataBase';
+import { FilterProducts } from './services/filterProductsService/filterProducts';
+import { ErrorPageComponent } from '../pages/errorPage/errorPage.component';
 
 export const routes: Routes = [
   {
     path: '',
-    component: HomeComponent,
+    component: HomePageComponent,
+    pathMatch: 'full',
   },
   {
     path: 'home',
     redirectTo: '',
   },
   {
-    path: 'product/:id',
-    component: ProductDetailsComponent,
+    path: 'products',
+    providers: [DataBase, FilterProducts],
+    children: [
+      {
+        path: '',
+        component: ProductPageComponent,
+      },
+      {
+        path: ':id',
+        component: ProductDetailsPageComponent,
+      },
+    ],
   },
+
   {
     path: 'login',
-    component: LoginComponent,
+    component: LoginPageComponent,
   },
   {
     path: 'basket',
-    component: BasketComponent,
+    component: BasketPageComponent,
   },
+
   {
-    path: 'products',
-    component: ProductPage,
+    path: '**',
+    component: ErrorPageComponent,
   },
 ];
