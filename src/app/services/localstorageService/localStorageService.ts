@@ -1,14 +1,15 @@
 // src/app/services/localstorageService/localStorageService.ts
 import { Injectable, afterNextRender, signal, inject } from '@angular/core';
-import { IProduct } from '../../../models/interface';
-import { Router } from '@angular/router';
+import { IProduct } from '../../models/interface';
+import { NavigatorService } from '../navigatorService/navigatorService';
+import { AppRoutes } from '../../models/enum';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LocalStorageService {
   private basket = signal<IProduct[]>([]);
-  private navigate = inject(Router);
+  private navService = inject(NavigatorService);
 
   constructor() {
     afterNextRender(() => {
@@ -83,11 +84,19 @@ export class LocalStorageService {
       alert('Product is already in the basket');
     }
 
-    this.navigate.navigate(['/basket']);
+    this.navService.handleNavigate(AppRoutes.Basket);
   }
 
-  private syncToStorage(items: IProduct[]) {
-    localStorage.setItem('Heckto', JSON.stringify({ basket: items }));
+  private syncToStorage(items: any[]) {
+    const productString = items
+      .map((item) =>
+        Object.entries(item)
+          .map(([key, value]) => `${key}:${value}`)
+          .join(', '),
+      )
+      .join(' | ');
+
+    localStorage.setItem('Heckto', productString);
   }
 
   private loadBasketFromStorage() {

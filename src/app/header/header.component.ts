@@ -1,22 +1,15 @@
 // src/app/header/header.component.ts
-import {
-  Component,
-  OnInit,
-  signal,
-  inject,
-  computed,
-  Signal,
-  effect,
-} from '@angular/core';
+import { Component, OnInit, signal, inject, computed, Signal, effect , ElementRef , HostListener} from '@angular/core';
 import { DiscountComponent } from './discount.component/discount.component';
-import { IDiscountProduct } from '../../models/interface';
+import { IDiscountProduct, IMenuOption } from '../models/interface';
 import { CommonModule } from '@angular/common';
 import { FilterProducts } from '../services/filterProductsService/filterProducts';
 import { NavigatorService } from '../services/navigatorService/navigatorService';
 import { FormsModule } from '@angular/forms';
 import { DataBase } from '../services/dataBaseService/dataBase';
-import { Currencies , Languages  } from '../../models/enum';
-import { ActiveDropdownType } from '../../models/type';
+import { ActiveDropdownType } from '../models/type';
+import { MenuOptions, Currencies, Languages, AppRoutes } from '../models/enum';
+import { Helper } from '../helpers/helperClass';
 
 @Component({
   selector: 'app-header',
@@ -26,17 +19,16 @@ import { ActiveDropdownType } from '../../models/type';
   providers: [DataBase],
 })
 export class HeaderComponent implements OnInit {
-  
-
   private navService = inject(NavigatorService);
   private filterService = inject(FilterProducts);
   private db = inject(DataBase);
+  private eRef = inject(ElementRef);
 
+  readonly menuOptionsEnum = MenuOptions;
   readonly languages = Object.values(Languages);
   readonly currencies = Object.values(Currencies);
-  readonly options = ['Login', 'Wishings', 'Basket'];
-  readonly optionsImgs = ['white-user.svg', 'white-heart.svg', 'white-basket.svg'];
-  readonly navItems = ['Heckto', 'Home', 'Products', 'Blog', 'Contact'];
+  readonly menuOptions = Helper.getMenuOptions();
+  readonly navItems = Helper.getRouteMenu();
   readonly dropdownConfigs = computed(() => [
     {
       id: 'lang' as const,
@@ -50,6 +42,7 @@ export class HeaderComponent implements OnInit {
     },
   ]);
 
+  activeNavIndex = signal<number>(-1);
   discountes: IDiscountProduct[] = [];
   currentIndex = signal<number>(0);
   showHero!: Signal<boolean>;
@@ -74,10 +67,17 @@ export class HeaderComponent implements OnInit {
 
     this.showHero = computed(() => {
       const url = urlSignal().split('?')[0];
-      return url === '/' || url === '/home' || url.endsWith('home');
+      return url === '/' || url === `/${AppRoutes.HomeAlias}` || url.endsWith(AppRoutes.HomeAlias);
     });
 
     this.discountes = this.db.getDiscountedProducts();
+  }
+  
+  @HostListener('document:click', ['$event'])
+  handleOutsideClick(event: Event) {
+    if (this.activeDropdown() !== 'none' && !this.eRef.nativeElement.contains(event.target)) {
+      this.activeDropdown.set('none');
+    }
   }
 
   toggleDropdown(menu: ActiveDropdownType) {
@@ -105,9 +105,18 @@ export class HeaderComponent implements OnInit {
     return `translateX(-${this.currentIndex() * 100}%)`;
   }
 
-  handleNavigation(path: string, params?: string) {
-    if (path === 'Heckto') path = '';
+  isActiveNav(index: number): boolean {
+    return this.activeNavIndex() === index;
+  }
+
+  handleNavigation(path: string, params?: string, index = -1) {
+    if (path === AppRoutes.Heckto) path = AppRoutes.Home;
+
     this.navService.handleNavigate(path, params);
+
+    if (index === 0) return this.activeNavIndex.set(-1);
+
+    this.activeNavIndex.set(index);
   }
 
   goToSlide(index: number) {
@@ -122,7 +131,11 @@ export class HeaderComponent implements OnInit {
       alert('Item not found');
       return;
     }
-    this.handleNavigation('product', index.toString());
+    this.handleNavigation(AppRoutes.Products, index.toString());
+  }
+
+  isBasket(option: IMenuOption): boolean {
+    return option.optionName === this.menuOptionsEnum.Basket;
   }
 
   private startAutoSlide() {
@@ -138,6 +151,4 @@ export class HeaderComponent implements OnInit {
       this.intervalId = null;
     }
   }
-
- 
 }

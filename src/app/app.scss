@@ -1,7 +1,7 @@
 // src/app/app.scss
-@use '../styles/variables' as * ;
-@use '../styles/typography' as * ;
-@use '../styles/mixins' as * ;
+@use 'styles/variables' as * ;
+@use 'styles/typography' as * ;
+@use 'styles/mixins' as * ;
 .align-column {
   display: flex;
   flex-direction: column;

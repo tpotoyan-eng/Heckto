@@ -1,3 +1,5 @@
+<!-- src/app/header/header.component.html -->
+
 <header>
   <div class="infoWrapper">
     <div class="container height">
@@ -34,10 +36,10 @@
               }
             </li>
           }
-          @for (option of options; track option) {
-            <li class="options__item">
-              <a (click)="handleNavigation(option)">{{ option }}</a>
-              <img [src]="optionsImgs[$index]" [alt]="option" />
+          @for (option of menuOptions; track option) {
+            <li class="options__item" (click)="handleNavigation(option.optionName)">
+              <a>{{ isBasket(option) ? '' : option.optionName }}</a>
+              <img [src]="option.optionImg" [alt]="option.optionName" />
             </li>
           }
         </ul>
@@ -51,9 +53,9 @@
           <li
             class="nav__item"
             [class.big]="navItem === 'Heckto'"
-            (click)="handleNavigation(navItem)"
+            (click)="handleNavigation(navItem, undefined, $index)"
           >
-            <a> {{ navItem }}</a>
+            <a [class.active]="isActiveNav($index)"> {{ navItem }}</a>
           </li>
         }
       </ul>

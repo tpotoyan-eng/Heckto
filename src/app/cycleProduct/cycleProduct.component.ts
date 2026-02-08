@@ -1,7 +1,8 @@
 // src/app/cycleProduct/cycleProduct.component.ts
 import { Component, inject, input, signal } from '@angular/core';
-import { IProduct } from '../../models/interface';
+import { IProduct } from '../models/interface';
 import { NavigatorService } from '../services/navigatorService/navigatorService';
+import { AppRoutes } from '../models/enum';
 
 @Component({
   selector: 'app-cycle-product-component',
@@ -9,15 +10,15 @@ import { NavigatorService } from '../services/navigatorService/navigatorService'
   styleUrl: 'cycleProduct.component.scss',
 })
 export class CycleProductComponent {
-  private navigator = inject(NavigatorService);
+  private navService = inject(NavigatorService);
 
   hovered = signal(false);
   product = input.required<IProduct>();
 
   viewDetails() {
-    const param = this.product().id + '';
-    const path = '/product';
-    this.navigator.handleNavigate(path, param);
+    const param = this.product().id.toString();
+    const path = AppRoutes.Products;
+    this.navService.handleNavigate(path, param);
   }
 
   onHover(state: boolean) {

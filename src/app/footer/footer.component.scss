@@ -1,5 +1,6 @@
-@use '../../styles/variables' as * ;
-@use '../../styles/mixins' as * ;
+// src/app/footer/footer.component.scss
+@use '../styles/variables' as * ;
+@use '../styles/mixins' as * ;
 .linkes {
   display: flex;
   align-items: flex-start;
@@ -47,3 +48,13 @@ footer {
 .bckColor-grey-2 {
   background-color: $grey-2;
 }
+
+.search {
+  max-height: 40px;
+  &__button {
+    width: 80%;
+    color: white;
+    font-size: .7rem;
+  }
+}
+

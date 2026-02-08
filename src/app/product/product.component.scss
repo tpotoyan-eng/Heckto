@@ -1,4 +1,6 @@
-@use '../../styles/variables' as *;
+// src/app/product/product.component.scss
+@use '../styles/variables' as *;
+
 .product--big {
   max-width: 416px !important;
   min-height: 475px !important;

@@ -1,0 +1,190 @@
+<!-- src/app/pages/homePage/homePage.component.html -->
+<!-- src/pages/homePage/homePage.component.html -->
+<ng-container>
+  <div class="section-container">
+    <section class="features">
+      <div class="section-title container">
+        <h2 class="heading-2">Featured Products</h2>
+      </div>
+      <div class="product-container container">
+        @for (item of featurdProducts(); track item.id) {
+          <app-product [product]="item" />
+        }
+      </div>
+    </section>
+
+    <section class="leatest-products">
+      <div class="section-title container">
+        <h2 class="heading-2">Leatest Products</h2>
+        <div class="subtitles">
+          <ul class="nav-list">
+            @for (item of navItems; track $index) {
+              <li class="nav__item">
+                <a
+                  [routerLink]="item.link"
+                  [class.active]="activeNavIndex() === $index"
+                  (click)="setActiveNav($index)"
+                >
+                  {{ item.name }}
+                </a>
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+      <div class="product-grid container">
+        @for (product of leastestProducts(); track product.id) {
+          <div class="product-grid__item" (click)="seeItem(product)">
+            <div class="image-wrapper">
+              <div class="product__actions">
+                @for (action of productActions; track $index) {
+                  <div
+                    class="icon-circle"
+                    [class.zoom-btn]="action.type === productAction.Zoom"
+                    (click)="$event.stopPropagation(); handleAction(action.type, product)"
+                  >
+                    <img [src]="action.iconUrl" [alt]="action.type" />
+                  </div>
+                }
+              </div>
+              <img [src]="product.url" alt="Product" />
+            </div>
+            <div class="info">
+              <p class="product-name">{{ product.name }}</p>
+              <div class="prices">
+                <span class="current-price">{{ product.currentPrice | currency }}</span>
+                <span class="original-price">{{ product.originalPrice | currency }}</span>
+              </div>
+            </div>
+          </div>
+        } @empty {
+          <p>No products found.</p>
+        }
+      </div>
+    </section>
+    <section class="unique">
+      <div class="unique-wrapper container">
+        <div class="unique-img">
+          <img [src]="chaire.url" alt="chaire" />
+        </div>
+        <div class="unique-Info">
+          <div class="titile">
+            <h2 class="heading-2">Unique Features Of Leatest & Trending Poducts</h2>
+          </div>
+          <div class="unique-info__cons">
+            <ul>
+              @for (info of uniqueInfoCons; track $index) {
+                <li>{{ info }}</li>
+              }
+            </ul>
+          </div>
+          <div class="action">
+            <button class="btn-primary">Add To Cart</button>
+            <div class="product-meta">
+              <span>B&B Italian Sofa</span>
+              <span>$32.00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="Trending-products">
+      <div class="section-title container">
+        <h2 class="heading-2">Trending Products</h2>
+      </div>
+      <div class="product-container container">
+        @for (item of trandProducts; track $index) {
+          <app-product [product]="item" [typeProduct]="item.type"></app-product>
+        }
+      </div>
+    </section>
+    <section class="DiscountItem">
+      <div class="section-title container">
+        <h2 class="heading-2">Discount Item</h2>
+        <div class="subtitles">
+          <ul class="nav-list">
+            @for (item of discountNavItems; track $index) {
+              <li class="nav__item">
+                <a
+                  [routerLink]="item.link"
+                  [class.active]="activeDiscountNavIndex() === $index"
+                  (click)="setActiveDiscountNav($index)"
+                >
+                  {{ item.name }}
+                </a>
+              </li>
+            }
+          </ul>
+        </div>
+      </div>
+      <div class="itemInfo container">
+        <div class="itemInfo__container">
+          @for (item of discountProducts(); track $index) {
+            @if (item.type === discountNavItems[activeDiscountNavIndex()].type) {
+              <div class="shortInfo">
+                <h3 class="heading-3">20% Discount Of All Products</h3>
+                <h4 class="heading-4 primary-color">{{ item.smallTitle }}</h4>
+                <span class="paragraph grey font-size">{{ item.paragraph }}</span>
+                <div class="extentions grey font-size">
+                  @for (item of extentionsDiscountItems; track $index) {
+                    <div class="ext-item">
+                      <span>{{ item }}</span>
+                    </div>
+                  }
+                </div>
+                <button class="btn-primary">Shop Now</button>
+              </div>
+              <div class="item__img">
+                <img [src]="item.imgUrl" [alt]="item.type" />
+              </div>
+            }
+          }
+        </div>
+      </div>
+    </section>
+    <section class="topCategories">
+      <div class="section-title">
+        <h2 class="heading-2">Top Categories</h2>
+      </div>
+      <div class="flex-container container">
+        @for (item of topCategories(); track $index) {
+          <app-cycle-product-component [product]="item" />
+        }
+      </div>
+      <div class="container-full-width margin-top-middle">
+        <div class="dotes">
+          @for (item of dotes; track $index) {
+            <span class="dote" [class.active]="item.active" (click)="doteClick($index)"></span>
+          }
+        </div>
+      </div>
+    </section>
+    <section class="subscrbe">
+      <div class="section-title container">
+        <h2 class="heading-2" style="width: 60%; text-align: center">
+          Get Latest Update By Subscribe 0ur Newsletter
+        </h2>
+        <button class="btn-primary">Subscribe</button>
+      </div>
+    </section>
+    <section class="leastBlog">
+      <div class="section-title">
+        <h2 class="heading-2">Least Blog</h2>
+      </div>
+      <div class="leastBlog__product container">
+        @for (item of homes(); track $index) {
+          <app-product [product]="item" [typeProduct]="item.type" />
+        }
+      </div>
+    </section>
+  </div>
+</ng-container>
+
+@if (isZoomed()) {
+  <div class="zoom-overlay" (click)="handleZoom(false, null)">
+    <div class="zoom-content" (click)="$event.stopPropagation()">
+      <img [src]="url()" alt="Zoomed Product" />
+      <button class="close-btn" (click)="handleZoom(false, null)">Close</button>
+    </div>
+  </div>
+}

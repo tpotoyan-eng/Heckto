@@ -6,8 +6,8 @@ import {
   RatingType,
   PriceType,
   BrendType,
-} from '../../../models/type';
-import { IFilterSettings, IProduct } from '../../../models/interface';
+} from '../../models/type';
+import { IFilterSettings, IProduct } from '../../models/interface';
 import { DataBase } from '../dataBaseService/dataBase';
 
 @Injectable({

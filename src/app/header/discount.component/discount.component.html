@@ -1,3 +1,4 @@
+<!-- src/app/header/discount.component/discount.component.html -->
 <div class="hero-section">
   <div class="decorative-lamp">
     <img src="hero-light.svg" alt="lamp" />
@@ -9,7 +10,7 @@
       <p class="paragraph">
         {{ product().paragraph }}
       </p>
-      <button class="btn-primary">Shop Now</button>
+      <button class="btn-primary" (click)="handleShop()">Shop Now</button>
     </div>
 
     <div class="hero-image-container">

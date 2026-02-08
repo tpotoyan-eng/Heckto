@@ -1,5 +1,6 @@
-@use '../../../styles/variables' as *;
-@use '../../../styles/_typography' as *;
+// src/app/header/discount.component/discount.component.scss
+@use '../../styles/variables' as *;
+@use '../../styles/_typography' as *;
 
 :host {
   display: block;

@@ -1,12 +1,24 @@
 // src/app/header/discount.component/discount.component.ts
-import { Component, input } from '@angular/core';
-import { IDiscountProduct } from '../../../models/interface';
+import { Component, inject, input } from '@angular/core';
+import { IDiscountProduct, IProduct } from '../../models/interface';
+import { NavigatorService } from '../../services/navigatorService/navigatorService';
+import { AppRoutes } from '../../models/enum';
+import { LocalStorageService } from '../../services/localstorageService/localStorageService';
+import { DataBase } from '../../services/dataBaseService/dataBase';
 @Component({
   selector: 'app-discount',
-  imports: [],
   templateUrl: './discount.component.html',
   styleUrl: './discount.component.scss',
 })
 export class DiscountComponent {
+  private localStorageService = inject(LocalStorageService);
+  private db = inject(DataBase);
+
   product = input.required<IDiscountProduct>();
+
+  handleShop() {
+    const product = this.db.getProductById(this.product().id);
+    if (!product) return;
+    this.localStorageService.addToBasket(product);
+  }
 }
