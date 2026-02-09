@@ -1,6 +1,4 @@
-<!-- src/app/pages/productPage/shopProduct/shopProduct.component.html -->
-<!-- src/app/shopProduct/shopProduct.component.html -->
-<!-- src/app/shopProduct/shopProduct.html -->
+
 <div
   class="product-card"
   [ngClass]="{
@@ -8,7 +6,7 @@
     grid: layout() === 'grid',
   }"
 >
-  <div class="image-container">
+  <div class="image-container"   (click)="viewDetails()">
     <img [src]="product().url" [alt]="product().title" />
   </div>
 
@@ -54,7 +52,7 @@
   <div class="zoom-overlay" (click)="isZoomed = false">
     <div class="zoom-content" (click)="$event.stopPropagation()">
       <img [src]="product().url" [alt]="product().name" />
-      <button class="close-btn" (click)="closeZoom()">Close</button>
+      <button class="close-btn" (click)="toggleZoom(false)">Close</button>
     </div>
   </div>
 }

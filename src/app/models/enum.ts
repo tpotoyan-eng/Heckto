@@ -103,6 +103,7 @@ export enum RouteMenuEnum {
   Products = 'Products',
   Blog = 'Blog',
   Contact = 'Contact',
+
 }
 
 export enum AppRoutes {
@@ -112,7 +113,9 @@ export enum AppRoutes {
   ProductDetails = ':id',
   Login = 'login',
   Basket = 'basket',
-  Heckto = 'Heckto',
+  Heckto = 'heckto',
+  Blog = 'blog',
+  Contact = 'contact',
   NotFound = '**',
 }
 
@@ -173,4 +176,9 @@ export enum FutureProduct {
 export enum SortBy {
   HighToLow = 'high-low',
   LowToHigh = 'low-high',
+}
+
+export enum SocialMediaLinks {
+  INST__LINK = 'https://www.instagram.com/?hl=en',
+  FB__LINK = 'https://www.facebook.com/'
 }

@@ -17,14 +17,11 @@
           @for (tableItem of summaryTable(); track $index) {
             <div class="summary-row" [ngClass]="tableItem.className">
               <span>{{ tableItem.title }}</span>
-              @if (tableItem.title === 'total') {
-                <span>{{ subtotal() + SHIPPING_COST | number: numberFormat.Currency }}</span>
-              } @else {
-                <span>${{ subtotal() | number: numberFormat.Currency }}</span>
-              }
+
+              <span>$ {{ tableItem.value | number: numberFormat.Currency }}</span>
             </div>
           }
-          <p class="shipping-info">Shipping: $100.00</p>
+          <p class="shipping-info">Shipping:  ${{ SHIPPING_COST | number: numberFormat.Currency}}</p>
           <div class="flex-container">
             <button class="btn-primary">Proceed to checkout</button>
           </div>

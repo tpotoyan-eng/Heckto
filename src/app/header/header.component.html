@@ -52,12 +52,15 @@
         @for (navItem of navItems; track $index) {
           <li
             class="nav__item"
-            [class.big]="navItem === 'Heckto'"
-            (click)="handleNavigation(navItem, undefined, $index)"
+            [class.big]="navItem.label === routeMenue.Heckto"
+            (click)="handleNavigation(navItem.route)"
           >
-            <a [class.active]="isActiveNav($index)"> {{ navItem }}</a>
+            <a [class.active]="isActiveNav(navItem.route,navItem.label) ">
+              {{ navItem.label }}
+            </a>
           </li>
         }
+
       </ul>
     </nav>
     <form class="search" (ngSubmit)="handleSearch()">

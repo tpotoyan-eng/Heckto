@@ -1,5 +1,7 @@
 // src/app/pages/productPage/productPage.component.ts
 import { Component, inject, OnInit, signal } from '@angular/core';
+import {Event, Router, NavigationStart, NavigationEnd} from '@angular/router';
+
 import { IProduct, IFilterSettings } from '../../models/interface';
 import { DataBase } from '../../services/dataBaseService/dataBase';
 import { CommonModule } from '@angular/common';
@@ -16,6 +18,7 @@ import {
 import { FilterProducts } from '../../services/filterProductsService/filterProducts';
 import { FilterBy, ProductLayout, SortBy, ViewMode } from '../../models/enum';
 import { Helper } from '../../helpers/helperClass';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-product-page',
@@ -52,9 +55,27 @@ export class ProductPageComponent implements OnInit {
   selectedPrices: Set<PriceType> = new Set<PriceType>();
   filteredProducts = signal<IProduct[]>([]);
 
+  private readonly router = inject(Router);
+
+  constructor() {
+    this.router.events.pipe(takeUntilDestroyed()).subscribe((event: Event) => {
+      if (event instanceof NavigationStart) {
+        console.log('Navigation starting:', event.url);
+      }
+      if (event instanceof NavigationEnd) {
+       
+        console.log('Navigation completed:', event.url);
+      }
+    });
+  }
+  
+  
   ngOnInit(): void {
     this.loadProducts();
   }
+
+
+
 
   toggleSelection<T>(value: T, type: string) {
     console.log(value, type);
@@ -89,6 +110,8 @@ export class ProductPageComponent implements OnInit {
           this.selectedCategories.add(value as CatgeroiesType);
         }
         break;
+      default:
+        break;
     }
     this.applyFilters();
   }
@@ -122,13 +145,14 @@ export class ProductPageComponent implements OnInit {
     this.viewMode.set(mode);
   }
 
-  onSortChange(event: Event): void {
-    const value = (event.target as HTMLSelectElement).value;
+  onSortChange(event: any): void {
+    const value = (event?.target as HTMLSelectElement).value;
     this.sortBy.set(value);
-    this.applySort();
+    this.applySort(); 
   }
-  onPerPageChange(event: Event): void {
-    const value = Number((event.target as HTMLSelectElement).value);
+
+  onPerPageChange(event: any): void {
+    const value = Number((event?.target as HTMLSelectElement).value);
     this.perPage.set(value);
     this.pageNum.set(1);
     this.updateProductsForPage();
@@ -142,11 +166,15 @@ export class ProductPageComponent implements OnInit {
 
   private applySort(): void {
     const current = [...this.productes()];
+    
     if (this.sortBy() === SortBy.HighToLow) {
       current.sort((a, b) => b.currentPrice - a.currentPrice);
-    } else if (this.sortBy() === SortBy.LowToHigh) {
+    } 
+
+    if (this.sortBy() === SortBy.LowToHigh) {
       current.sort((a, b) => a.currentPrice - b.currentPrice);
     }
+    
     this.productes.set(current);
   }
 

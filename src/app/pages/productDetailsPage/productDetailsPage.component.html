@@ -1,5 +1,4 @@
-<!-- src/app/pages/productDetailsPage/productDetailsPage.component.html -->
-<!-- src/pages/productDetailsPage/productDetailsPage.component.html -->
+
 <div class="details-container container">
   <div class="gallery-section">
     <div class="thumbnails">
@@ -22,8 +21,8 @@
     </div>
 
     <div class="pricing">
-      <span class="current">$26.00</span>
-      <span class="discounted">$52.00</span>
+      <span class="current">${{product()?.currentPrice | number : numFormat.Currency }}</span>
+      <span class="discounted">${{product()?.originalPrice | number : numFormat.Currency }}</span>
     </div>
 
     <p class="description">

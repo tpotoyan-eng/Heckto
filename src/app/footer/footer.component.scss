@@ -39,6 +39,10 @@ footer {
   align-items: center;
   justify-content: space-around;
   gap: 2rem;
+  img {
+    display: inline-block;
+    cursor: pointer;
+  }
 }
 
 .bckColor-grey-1 {
@@ -48,13 +52,3 @@ footer {
 .bckColor-grey-2 {
   background-color: $grey-2;
 }
-
-.search {
-  max-height: 40px;
-  &__button {
-    width: 80%;
-    color: white;
-    font-size: .7rem;
-  }
-}
-

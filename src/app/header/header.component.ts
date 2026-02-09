@@ -18,7 +18,7 @@ import { NavigatorService } from '../services/navigatorService/navigatorService'
 import { FormsModule } from '@angular/forms';
 import { DataBase } from '../services/dataBaseService/dataBase';
 import { ActiveDropdownType } from '../models/type';
-import { MenuOptions, Currencies, Languages, AppRoutes } from '../models/enum';
+import { MenuOptions, Currencies, Languages, AppRoutes, RouteMenuEnum } from '../models/enum';
 import { Helper } from '../helpers/helperClass';
 
 @Component({
@@ -34,11 +34,13 @@ export class HeaderComponent implements OnInit {
   private dbService = inject(DataBase);
   private eRef = inject(ElementRef);
 
+  readonly currentUrl = this.navService.currentUrl();
   readonly menuOptionsEnum = MenuOptions;
   readonly languages = Object.values(Languages);
   readonly currencies = Object.values(Currencies);
   readonly menuOptions = Helper.getMenuOptions();
   readonly navItems = Helper.getRouteMenu();
+  readonly routeMenue = RouteMenuEnum;
   readonly dropdownConfigs = computed(() => [
     {
       id: 'lang' as const,
@@ -115,19 +117,32 @@ export class HeaderComponent implements OnInit {
     return `translateX(-${this.currentIndex() * 100}%)`;
   }
 
-  isActiveNav(index: number): boolean {
-    return this.activeNavIndex() === index;
-  }
+    isActiveNav(route: string, label: string): boolean {
+      const url = this.currentUrl().split('?')[0];
+      console.log(label , RouteMenuEnum.Heckto);
 
-  handleNavigation(path: string, params?: string, index = -1) {
-    if (path === AppRoutes.Heckto) path = AppRoutes.Home;
+      if (label === RouteMenuEnum.Heckto) {
+        return false;
+      }
 
-    this.navService.handleNavigate(path, params);
+      if (route === AppRoutes.Home || route === AppRoutes.HomeAlias) {
+        return url === '/' || url === `/${AppRoutes.HomeAlias}`;
+      }
 
-    if (index === 0) return this.activeNavIndex.set(-1);
+      return url === `/${route}` || url.startsWith(`/${route}/`);
+    }
 
-    this.activeNavIndex.set(index);
-  }
+
+
+    handleNavigation(path: string, params?: string) {
+      if (path === AppRoutes.Heckto) {
+        path = AppRoutes.Home;
+      }
+
+      this.navService.handleNavigate(path, params);
+    }
+
+
 
   goToSlide(index: number) {
     this.currentIndex.set(index);
@@ -136,6 +151,7 @@ export class HeaderComponent implements OnInit {
 
   handleSearch() {
     const name = this.searchQuery();
+    this.searchQuery.set('');
     const index = this.filterService.filterProductsByName(name);
     if (index === -1 || index === null || index === undefined) {
       alert('Item not found');

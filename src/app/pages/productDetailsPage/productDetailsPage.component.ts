@@ -10,6 +10,9 @@ import { NavigatorService } from '../../services/navigatorService/navigatorServi
 import { ReactiveFormsModule, FormGroup, FormControl, Validators } from '@angular/forms';
 import { IFormInput, IProductNav, IDiscountNavItem } from '../../models/interface';
 import { Helper } from '../../helpers/helperClass';
+import {Event, Router, NavigationStart, NavigationEnd} from '@angular/router';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { NumberFormat } from '../../models/enum';
 
 @Component({
   selector: 'app-product-details-component',
@@ -23,11 +26,13 @@ export class ProductDetailsPageComponent implements OnInit {
   private dbService = inject(DataBase);
   private navigator = inject(NavigatorService);
 
+  
   readonly defaultStarCount = 5;
   readonly cartFormInfo: IFormInput[] = Helper.getCartFormInfo();
   readonly productDetailsNav: IProductNav[] = Helper.getProductDetailsNav();
   readonly discountNavItems: IDiscountNavItem[] = Helper.getDiscountNavItems();
   readonly productMoreDetailsInfo = Helper.getProductMoreDetailsInfo();
+  readonly numFormat = NumberFormat;
 
   paymentForm = new FormGroup({
     cardNumber: new FormControl('', [Validators.required, Validators.pattern('^[0-9 ]*$')]),
@@ -42,8 +47,13 @@ export class ProductDetailsPageComponent implements OnInit {
   similarItems = signal<IProduct[]>([]);
   showCard = signal(false);
 
+
+
+
   ngOnInit(): void {
     this.route.paramMap.subscribe((routObj) => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      this.stars.set([]);
       const Productid = routObj.get('id');
       if (Productid != null) {
         this.configProps(+Productid);

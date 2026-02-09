@@ -28,7 +28,7 @@
         <span class="paragraph">©Webecy - All Rights Reserved</span>
         <div class="icons-container">
           @for (social of socialMedia; track social) {
-            <img [src]="social + '.svg'" [alt]="social + ' icon'" />
+            <img [src]="social.mediaName + '.svg'" [alt]="social.mediaName + ' icon'"  (click)="handleNavigate(social.link, true)"/>
           }
         </div>
       </div>

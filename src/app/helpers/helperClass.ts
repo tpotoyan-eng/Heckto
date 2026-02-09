@@ -4,8 +4,16 @@ import * as Enums from '../../app/models/enum';
 import * as Interfaces from '../../app/models/interface';
 
 export class Helper {
-  static getSocialMedias(): Enums.SocialMedia[] {
-    return Object.values(Enums.SocialMedia);
+  static getSocialMedias() {
+    const socialMedia =  Object.values(Enums.SocialMedia);
+    const mediaLinks = Object.values(Enums.SocialMediaLinks);
+
+    return socialMedia.map((name , index) => {
+      return {
+        mediaName : name,
+        link : mediaLinks[index]
+      }
+    });
   }
 
   static getFooterSections(): Interfaces.IFooterSection[] {
@@ -28,8 +36,15 @@ export class Helper {
     }));
   }
 
-  static getRouteMenu(): string[] {
-    return Object.values(Enums.RouteMenuEnum);
+  static getRouteMenu() {
+    return  [
+      { label: Enums.RouteMenuEnum.Heckto, route: Enums.AppRoutes.Home },
+      { label: Enums.RouteMenuEnum.Home, route: Enums.AppRoutes.Home },
+      { label: Enums.RouteMenuEnum.Products, route: Enums.AppRoutes.Products },
+      { label: Enums.RouteMenuEnum.Blog, route: Enums.AppRoutes.Blog},
+      { label: Enums.RouteMenuEnum.Contact, route: Enums.AppRoutes.Contact },
+    ];
+
   }
 
   static getDiscountExtensionText() {

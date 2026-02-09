@@ -24,7 +24,7 @@ export class BasketPageComponent {
   );
   readonly totalWithShipping = computed(() => {
     const sub = this.subtotal();
-    return sub > 0 ? sub + 100 : 0;
+    return sub > 0 ? sub + this.SHIPPING_COST : 0;
   });
   readonly summaryTable = computed(() => [
     { title: 'Subtotal', className: 'subtotal', value: this.subtotal() },

@@ -70,7 +70,7 @@ export class HomePageComponent implements OnInit {
     this.activeDiscountNavIndex.set(index);
   }
 
-  doteClick(index: number, forDot = false) {
+  doteClick(index: number, forDot: boolean = false) {
     if (forDot) {
       const newArr = Helper.shuffleArray(this.featurdProducts());
       this.featurdProducts.set(newArr);

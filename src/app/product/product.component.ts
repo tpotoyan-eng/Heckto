@@ -56,12 +56,12 @@ export class ProductComponent {
     }
 
     if (actionType === Enums.ProductAction.Zoom) {
-      this.isZoomed = !this.isZoomed;
+      this.toggleZoom(!this.isZoomed);
     }
   }
 
-  closeZoom() {
-    this.isZoomed = false;
+  toggleZoom(event: boolean) {
+    this.isZoomed = event;
   }
 
   private addToBasket(item: IProduct) {

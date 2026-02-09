@@ -21,6 +21,10 @@ export class NavigatorService {
     return this.urlSignal.asReadonly();
   }
 
+  currentUrl(): Signal<string> {
+    return this.urlSignal.asReadonly();
+  }
+
   handleNavigate(url: string, params?: string) {
     const path = url.toLowerCase().replace(/\s+/g, '-');
     console.log(path);

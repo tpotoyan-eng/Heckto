@@ -14,7 +14,11 @@ export class FooterComponent {
   readonly socialMedia = Helper.getSocialMedias();
   readonly footerSections = Helper.getFooterSections();
 
-  handleNavigate(path: string) {
+  handleNavigate(path: string , isMedia = false) {
+    if (isMedia) {
+      window.open(path, '_blank', 'noopener,noreferrer');
+      return;
+    }
     this.navService.handleNavigate(path);
   }
 }

@@ -81,7 +81,7 @@
   <div class="zoom-overlay" (click)="isZoomed = false">
     <div class="zoom-content" (click)="$event.stopPropagation()">
       <img [src]="product().url" [alt]="product().name" />
-      <button class="close-btn" (click)="closeZoom()">Close</button>
+      <button class="close-btn" (click)="toggleZoom(false)">Close</button>
     </div>
   </div>
 }

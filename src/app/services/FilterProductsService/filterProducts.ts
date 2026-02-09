@@ -21,6 +21,7 @@ export class FilterProducts {
   constructor() {
     this.products = this.dbService.getProducts();
   }
+
   filterProductsByName(name: string): boolean | number {
     name = name.toLowerCase().trim();
     if (!name) {
@@ -28,6 +29,7 @@ export class FilterProducts {
     }
     return this.products.findIndex((p) => p.name.toLowerCase().trim().startsWith(name));
   }
+  
   filterProducts(filterObj: IFilterSettings): IProduct[] {
     return this.products.filter(
       (p) =>
