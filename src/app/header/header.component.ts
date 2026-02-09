@@ -1,5 +1,15 @@
 // src/app/header/header.component.ts
-import { Component, OnInit, signal, inject, computed, Signal, effect , ElementRef , HostListener} from '@angular/core';
+import {
+  Component,
+  OnInit,
+  signal,
+  inject,
+  computed,
+  Signal,
+  effect,
+  ElementRef,
+  HostListener,
+} from '@angular/core';
 import { DiscountComponent } from './discount.component/discount.component';
 import { IDiscountProduct, IMenuOption } from '../models/interface';
 import { CommonModule } from '@angular/common';
@@ -21,7 +31,7 @@ import { Helper } from '../helpers/helperClass';
 export class HeaderComponent implements OnInit {
   private navService = inject(NavigatorService);
   private filterService = inject(FilterProducts);
-  private db = inject(DataBase);
+  private dbService = inject(DataBase);
   private eRef = inject(ElementRef);
 
   readonly menuOptionsEnum = MenuOptions;
@@ -70,9 +80,9 @@ export class HeaderComponent implements OnInit {
       return url === '/' || url === `/${AppRoutes.HomeAlias}` || url.endsWith(AppRoutes.HomeAlias);
     });
 
-    this.discountes = this.db.getDiscountedProducts();
+    this.discountes = this.dbService.getDiscountedProducts();
   }
-  
+
   @HostListener('document:click', ['$event'])
   handleOutsideClick(event: Event) {
     if (this.activeDropdown() !== 'none' && !this.eRef.nativeElement.contains(event.target)) {

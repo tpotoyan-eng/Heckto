@@ -33,7 +33,11 @@
   <div class="toolbar-group">
     <label class="color-grey-3">View</label>
     <div class="icon-group view-mode">
-      <button class="view-btn" [class.active]="viewMode() === layoutType.grid" (click)="toggleView(layoutType.grid)">
+      <button
+        class="view-btn"
+        [class.active]="viewMode() === layoutType.grid"
+        (click)="toggleView(layoutType.grid)"
+      >
         <svg
           width="15"
           height="12"
@@ -47,16 +51,15 @@
           <rect x="7.5" y="7.5" width="4" height="4" stroke="currentColor" />
         </svg>
       </button>
-      <button class="view-btn" [class.active]="viewMode() === layoutType.list" (click)="toggleView(layoutType.list)">
-        <svg
-            width="15"
-            height="12"
-            viewBox="0 0 15 13"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <rect class="line" x="0.5" y="0.5" width="14" height="4" rx="2" fill="currentColor" />
-            <rect class="line" x="0.5" y="7.5" width="14" height="4" rx="2" fill="currentColor" />
-          </svg>
+      <button
+        class="view-btn"
+        [class.active]="viewMode() === layoutType.list"
+        (click)="toggleView(layoutType.list)"
+      >
+        <svg width="15" height="12" viewBox="0 0 15 13" xmlns="http://www.w3.org/2000/svg">
+          <rect class="line" x="0.5" y="0.5" width="14" height="4" rx="2" fill="currentColor" />
+          <rect class="line" x="0.5" y="7.5" width="14" height="4" rx="2" fill="currentColor" />
+        </svg>
       </button>
     </div>
   </div>
@@ -86,7 +89,6 @@
             }
           } @else {
             @for (option of $any(group.options); track option.id) {
-
               <li>
                 <input
                   type="checkbox"
@@ -107,7 +109,7 @@
   </aside>
   <div
     class="products-area container"
-    [ngClass]="viewMode() === layoutType.grid ?  viewModes.GridMode  : viewModes.ListMode"
+    [ngClass]="viewMode() === layoutType.grid ? viewModes.GridMode : viewModes.ListMode"
   >
     @for (item of productes(); track $index) {
       <app-shop-product

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { IDiscountProduct } from '../../models/interface';
 import { DISCOUNT_PRODUCTS, HOMES, PRODUCTS, TOP_CATEGORIES } from '../../../DB/indexDb';
 import { IProduct } from '../../models/interface';
-import { FutureProduct} from '../../models/enum';
+import { FutureProduct } from '../../models/enum';
 
 @Injectable({
   providedIn: 'root',
@@ -42,7 +42,9 @@ export class DataBase {
 
   getFeaturedProducts() {
     const firstFoure = 4;
-    const featuredPr = this.products.filter((pr) => pr.type === FutureProduct.Tech).slice(0, firstFoure);
+    const featuredPr = this.products
+      .filter((pr) => pr.type === FutureProduct.Tech)
+      .slice(0, firstFoure);
 
     return featuredPr;
   }

@@ -87,27 +87,21 @@ export class LocalStorageService {
     this.navService.handleNavigate(AppRoutes.Basket);
   }
 
-  private syncToStorage(items: any[]) {
-    const productString = items
-      .map((item) =>
-        Object.entries(item)
-          .map(([key, value]) => `${key}:${value}`)
-          .join(', '),
-      )
-      .join(' | ');
-
+  private syncToStorage(items: IProduct[]) {
+    const productString = JSON.stringify(items);
     localStorage.setItem('Heckto', productString);
   }
-
   private loadBasketFromStorage() {
     const rawData = localStorage.getItem('Heckto');
     if (rawData) {
       try {
         const data = JSON.parse(rawData);
 
-        this.basket.set(data.basket || []);
+        this.basket.set(Array.isArray(data) ? data : []);
       } catch (e) {
-        console.error('Error parsing storage', e);
+        console.error('Error parsing storage. Clearing corrupted data.', e);
+        localStorage.removeItem('Heckto');
+        this.basket.set([]);
       }
     }
   }

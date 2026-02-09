@@ -14,7 +14,7 @@ import {
 } from '../../models/type';
 
 import { FilterProducts } from '../../services/filterProductsService/filterProducts';
-import { FilterBy, ProductLayout, ViewMode } from '../../models/enum';
+import { FilterBy, ProductLayout, SortBy, ViewMode } from '../../models/enum';
 import { Helper } from '../../helpers/helperClass';
 
 @Component({
@@ -26,7 +26,7 @@ import { Helper } from '../../helpers/helperClass';
 })
 export class ProductPageComponent implements OnInit {
   private filterService = inject(FilterProducts);
-  private db = inject(DataBase);
+  private dbService = inject(DataBase);
 
   readonly filterBy = FilterBy;
   readonly brandOptions = Helper.getBrandOptions();
@@ -42,7 +42,7 @@ export class ProductPageComponent implements OnInit {
   perPageArr: number[] = [];
   productes = signal<IProduct[]>([]);
   viewMode = signal<'grid' | 'list'>(ProductLayout.list);
-  sortBy = signal<string>('high-low');
+  sortBy = signal<string>(SortBy.HighToLow);
   pageNum = signal(1);
   perPage = signal(10);
   selectedBrands: Set<BrendType> = new Set<BrendType>();
@@ -135,16 +135,16 @@ export class ProductPageComponent implements OnInit {
   }
 
   private loadProducts(): void {
-    const allProducts = this.db.getProducts();
+    const allProducts = this.dbService.getProducts();
     this.filteredProducts.set(allProducts);
     this.updateProductsForPage();
   }
 
   private applySort(): void {
     const current = [...this.productes()];
-    if (this.sortBy() === 'high-low') {
+    if (this.sortBy() === SortBy.HighToLow) {
       current.sort((a, b) => b.currentPrice - a.currentPrice);
-    } else if (this.sortBy() === 'low-high') {
+    } else if (this.sortBy() === SortBy.LowToHigh) {
       current.sort((a, b) => a.currentPrice - b.currentPrice);
     }
     this.productes.set(current);

@@ -24,6 +24,36 @@
   height: 150px;
 }
 
+
+
+.pagination-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;           
+  list-style: none;
+  padding: 0;
+  margin: 20px 0;
+
+  .dot {
+    width: 24px;     
+    height: 4px;      
+    border-radius: 10px; 
+    background-color: $primary-lighter;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &.active {
+      background-color: $primary-dark;
+      width: 24px;   
+    }
+
+    &:hover:not(.active) {
+      background-color: $primary-lighter;
+    }
+  }
+}
+
 .subtitles {
 
   width: 100%;

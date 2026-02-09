@@ -162,10 +162,15 @@ export enum ViewMode {
 
 export enum ProductLayout {
   grid = 'grid',
-  list = 'list'
+  list = 'list',
 }
 
-export enum  FutureProduct {
+export enum FutureProduct {
   Tech = 'Tech',
-  Trend = 'Trend'
+  Trend = 'Trend',
+}
+
+export enum SortBy {
+  HighToLow = 'high-low',
+  LowToHigh = 'low-high',
 }

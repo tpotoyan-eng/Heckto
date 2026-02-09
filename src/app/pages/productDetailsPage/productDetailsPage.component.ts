@@ -20,7 +20,7 @@ import { Helper } from '../../helpers/helperClass';
 })
 export class ProductDetailsPageComponent implements OnInit {
   private route = inject(ActivatedRoute);
-  private db = inject(DataBase);
+  private dbService = inject(DataBase);
   private navigator = inject(NavigatorService);
 
   readonly defaultStarCount = 5;
@@ -71,7 +71,7 @@ export class ProductDetailsPageComponent implements OnInit {
   }
 
   private configProps(Productid: number) {
-    this.product.set(this.db.getProductById(+Productid));
+    this.product.set(this.dbService.getProductById(+Productid));
     const Product: IProduct | null = this.product();
 
     if (Product == null) {
@@ -81,7 +81,7 @@ export class ProductDetailsPageComponent implements OnInit {
 
     this.starsCount.set(Product.rating ?? 0);
 
-    const similarItems: IProduct[] = this.db.getSimilarItems(Product.name) ?? [];
+    const similarItems: IProduct[] = this.dbService.getSimilarItems(Product.name) ?? [];
     const rating: number = this.product()?.rating ?? 0;
     this.similarItems.set(similarItems);
     if (this.starsCount() != null) {

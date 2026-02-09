@@ -1,3 +1,4 @@
+// src/app/services/filterProductsService/filterProducts.ts
 // src/app/services/FilterProductsService/filterProducts.ts
 import { inject, Injectable } from '@angular/core';
 import {
@@ -15,10 +16,10 @@ import { DataBase } from '../dataBaseService/dataBase';
 })
 export class FilterProducts {
   private products!: IProduct[];
-  private db = inject(DataBase);
+  private dbService = inject(DataBase);
 
   constructor() {
-    this.products = this.db.getProducts();
+    this.products = this.dbService.getProducts();
   }
   filterProductsByName(name: string): boolean | number {
     name = name.toLowerCase().trim();

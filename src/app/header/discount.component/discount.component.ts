@@ -12,12 +12,12 @@ import { DataBase } from '../../services/dataBaseService/dataBase';
 })
 export class DiscountComponent {
   private localStorageService = inject(LocalStorageService);
-  private db = inject(DataBase);
+  private dbService = inject(DataBase);
 
   product = input.required<IDiscountProduct>();
 
   handleShop() {
-    const product = this.db.getProductById(this.product().id);
+    const product = this.dbService.getProductById(this.product().id);
     if (!product) return;
     this.localStorageService.addToBasket(product);
   }

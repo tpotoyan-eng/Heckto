@@ -1,3 +1,4 @@
+// src/app/services/navigatorService/navigatorService.ts
 // src/app/services/NavigatorService/navigatorService.ts
 import { inject, Injectable, signal, Signal } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
