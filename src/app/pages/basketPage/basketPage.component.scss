@@ -1,0 +1,133 @@
+// src/app/pages/basketPage/basketPage.component.scss
+// src/pages/basketPage/basketPage.component.scss
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+.basket-container {
+  max-width: 1200px;
+  margin: 80px auto;
+  padding: 0 20px;
+}
+
+.basket-layout {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  flex-wrap: nowrap;
+}
+
+.flex-container {
+  @include flex-box($justify: center);
+  button {
+    width: 100%;
+    height: 52px;
+  }
+}
+
+.products-column {
+  flex: 2;
+  .products-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    padding-bottom: 20px;
+    color: $grey-4;
+    font-weight: 700;
+    font-size: 20px;
+  }
+}
+
+.basket-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+  .btn-clear {
+    color: $primary-dark;
+    background-color: transparent;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 2px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    &:hover {
+      background-color: rgba($primary-dark, 0.05);
+      color: lighten($primary-dark, 10%);
+      transform: translateY(-3px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+    &:focus {
+      outline: none;
+      border-color: $primary-dark;
+      box-shadow: 0 0 0 3px rgba($primary-dark, 0.2);
+    }
+    &:active {
+      transform: translateY(-1px);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+.summary-column {
+  flex: 1;
+  text-align: center;
+  .summary-title {
+    color: $grey-4;
+    font-size: 20px;
+    margin-bottom: 25px;
+    font-weight: 700;
+  }
+}
+
+.summary-card {
+  background-color: $grey-1;
+  padding: 35px;
+  border-radius: 5px;
+  text-align: left;
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px 0;
+    border-bottom: 2px solid #e8e6f1;
+    color: $grey-4;
+    font-weight: 600;
+    &.total {
+      margin-top: 20px;
+      font-size: 18px;
+    }
+  }
+  .shipping-info {
+    color: #8a8fb9;
+    font-size: 14px;
+    margin: 25px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: #19d16f;
+      border-radius: 50%;
+    }
+  }
+  .btn-checkout {
+    width: 100%;
+    background-color: #19d16f;
+    color: $white;
+    border: none;
+    padding: 15px;
+    border-radius: 3px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 10px;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}

@@ -1,0 +1,87 @@
+<!-- src/app/product/product.component.html -->
+<div
+  class="product"
+  (mouseenter)="onHover(true)"
+  (mouseleave)="onHover(false)"
+  [ngClass]="{
+    'product--big': typeProduct() === productType.Home,
+    'is-hovered': isHovered(),
+  }"
+>
+  <div class="product__actions">
+    @for (action of productActions; track $index) {
+      <div class="icon-circle" (click)="handleProductAction(action.type)">
+        <img [src]="action.iconUrl" [alt]="action.type" />
+      </div>
+    }
+  </div>
+
+  <div class="product__img" [class.product__img__big]="typeProduct() === productType.Home">
+    <img
+      [src]="product().url"
+      [alt]="product().name"
+      [ngStyle]="{
+        'border-radius': typeProduct() === productType.Home ? '8px' : '0',
+      }"
+    />
+    <button class="view-details-btn" (click)="viewDetailes()">View Details</button>
+  </div>
+  @switch (typeProduct()) {
+    @case (productType.Trend) {
+      <div class="product__fullIn">
+        <h3 class="product-title">{{ product().name }}</h3>
+        <br />
+        <br />
+        <div class="flex-row">
+          <p class="product-price">${{ product().currentPrice | number: numberFormat.Currency }}</p>
+          <p class="product-price grey">
+            <s>${{ product().originalPrice | number: numberFormat.Currency }}</s>
+          </p>
+        </div>
+      </div>
+    }
+    @case (productType.Home) {
+      <div class="product__home-info">
+        <div class="home-meta">
+          <div class="meta-item">
+            <img src="pen-icon.svg" alt="author" class="meta-icon" />
+            <span>{{ product().owner }}</span>
+          </div>
+
+          <div class="meta-item">
+            <img src="calendar-icon.svg" alt="calendar" class="meta-icon" />
+            <p>
+              {{
+                product().date
+                  ? (product().date | date: dateFormat.MediumDate)
+                  : dateFormat.NotAvailable
+              }}
+            </p>
+          </div>
+        </div>
+
+        <p class="subtitle-4 small-title" [ngStyle]="{ color: isHovered() ? '#FB2E86' : '' }">
+          {{ product().title }}
+        </p>
+        <p class="home-description paragraph">{{ product().description }}</p>
+        <a class="read-more-link" (click)="viewDetailes()" class="link">Read More</a>
+      </div>
+    }
+    @default {
+      <div class="product__fullIn">
+        <h3 class="product-title">{{ product().name }}</h3>
+        <p class="product-code">Code - Y523{{ product().id }}</p>
+        <p class="product-price">${{ product().currentPrice | number: numberFormat.Currency }}</p>
+      </div>
+    }
+  }
+</div>
+
+@if (isZoomed) {
+  <div class="zoom-overlay" (click)="isZoomed = false">
+    <div class="zoom-content" (click)="$event.stopPropagation()">
+      <img [src]="product().url" [alt]="product().name" />
+      <button class="close-btn" (click)="toggleZoom(false)">Close</button>
+    </div>
+  </div>
+}

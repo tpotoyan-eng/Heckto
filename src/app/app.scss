@@ -1,3 +1,15 @@
-@import '../styles/variables';
-@import '../styles/typography';
-@import '../styles/mixins';
+// src/app/app.scss
+@use 'styles/variables' as * ;
+@use 'styles/typography' as * ;
+@use 'styles/mixins' as * ;
+.align-column {
+  display: flex;
+  flex-direction: column;
+  /* Forces the container to be at least the full height of the screen */
+  min-height: 100vh;
+}
+
+main {
+  /* This pushes the footer down by growing to fill the remaining space */
+  flex: 1;
+}

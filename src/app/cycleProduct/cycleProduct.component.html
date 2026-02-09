@@ -1,0 +1,12 @@
+<!-- src/app/cycleProduct/cycleProduct.component.html -->
+<div class="product" (mouseenter)="onHover(true)" (mouseleave)="onHover(false)">
+  <div class="img" [class.isHovered]="hovered()">
+    <img [src]="product().url" [alt]="product().name" />
+  </div>
+  <button class="view-details-btn" [class.visible]="hovered()" (click)="viewDetails()">
+    View Categories
+  </button>
+  <div class="flex-row">
+    <h3 class="heading-3">{{ product().name }}</h3>
+  </div>
+</div>

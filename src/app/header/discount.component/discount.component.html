@@ -1,26 +1,26 @@
+<!-- src/app/header/discount.component/discount.component.html -->
 <div class="hero-section">
-    <div class="decorative-lamp">
-        <img src="hero-light.svg" alt="lamp" />
+  <div class="decorative-lamp">
+    <img src="hero-light.svg" alt="lamp" />
+  </div>
+  <div class="hero-wrapper">
+    <div class="hero-content">
+      <span class="sub-title">{{ product().smallTitle }}</span>
+      <h1 class="main-title heading-2">{{ product().title }} <br /></h1>
+      <p class="paragraph">
+        {{ product().paragraph }}
+      </p>
+      <button class="btn-primary" (click)="handleShop()">Shop Now</button>
     </div>
-    <div class="hero-wrapper">
-        <div class="hero-content">
-            <span class="sub-title">{{ product().smallTitle }}</span>
-            <h1 class="main-title heading-2">{{ product().Title }} <br /></h1>
-            <p class="paragraph">
-                {{ product().paragraph }}
-            </p>
-            <button class="btn-primary">Shop Now</button>
-        </div>
 
-        <div class="hero-image-container">
-            <div class="image-wrapper">
-                <img [src]="product().imgUrl" alt="Headphones" />
-
-                <div class="discount-badge">
-                    <span>50%</span>
-                    <span>Off</span>
-                </div>
-            </div>
+    <div class="hero-image-container">
+      <div class="image-wrapper">
+        <img [src]="product().imgUrl" [alt]="product().title" />
+        <div class="discount-badge">
+          <span>50%</span>
+          <span>Off</span>
         </div>
+      </div>
     </div>
+  </div>
 </div>

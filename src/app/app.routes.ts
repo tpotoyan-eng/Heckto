@@ -1,33 +1,49 @@
+// src/app/app.routes.ts
 import { Routes } from '@angular/router';
-import { HomeComponent } from '../pages/home.component/home.component';
-import { LoginComponent } from './login-component/login-component';
-import { BasketComponent } from '../pages/basket.component/basket.component';
-import { ProductPage } from '../pages/product-page/product-page';
-import { ProductDetailsComponent } from '../pages/product-details-component/product-details-component';
+import { HomePageComponent } from './pages/homePage/homePage.component';
+import { ProductPageComponent } from './pages/productPage/productPage.component';
+import { ProductDetailsPageComponent } from './pages/productDetailsPage/productDetailsPage.component';
+import { BasketPageComponent } from './pages/basketPage/basketPage.component';
+import { LoginPageComponent } from './pages/loginComponent/login-component';
+import { DataBase } from './services/dataBaseService/dataBase';
+import { FilterProducts } from './services/filterProductsService/filterProducts';
+import { ErrorPageComponent } from './pages/errorPage/errorPage.component';
+import { AppRoutes } from './models/enum';
 
 export const routes: Routes = [
   {
-    path: '',
-    component: HomeComponent,
+    path: AppRoutes.Home,
+    component: HomePageComponent,
+    pathMatch: 'full',
   },
   {
-    path: 'home',
-    redirectTo: '',
+    path: AppRoutes.HomeAlias,
+    redirectTo: AppRoutes.Home,
   },
   {
-    path: 'product/:id',
-    component: ProductDetailsComponent,
+    path: AppRoutes.Products,
+    providers: [DataBase, FilterProducts],
+    children: [
+      {
+        path: AppRoutes.Home,
+        component: ProductPageComponent,
+      },
+      {
+        path: AppRoutes.ProductDetails,
+        component: ProductDetailsPageComponent,
+      },
+    ],
   },
   {
-    path: 'login',
-    component: LoginComponent,
+    path: AppRoutes.Login,
+    component: LoginPageComponent,
   },
   {
-    path: 'basket',
-    component: BasketComponent,
+    path: AppRoutes.Basket,
+    component: BasketPageComponent,
   },
   {
-    path: 'products',
-    component: ProductPage,
+    path: AppRoutes.NotFound,
+    component: ErrorPageComponent,
   },
 ];

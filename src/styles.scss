@@ -1,10 +1,12 @@
+// src/styles.scss
 /* You can add global styles to this file, and also import other style files */
 
-@import './styles/_variables';
-@import './styles/buttons';
-@import './styles/typography';
-@import './styles/global';
-@import './styles/mixins';
+@use '../src/app/styles/variables';
+@use '../src/app/styles/buttons' as *;
+@use '../src/app/styles/typography' as *;
+@use '../src/app/styles/global' as *;
+@use '../src/app/styles/mixins' as *;
+
 * {
     margin: 0;
     box-sizing: border-box;
